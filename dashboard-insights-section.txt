@@ -1,0 +1,1663 @@
+COMPREHENSIVE RESPONSIVE DASHBOARD SECTION REPLACEMENT
+
+Replace lines 1227-1543 in /src/app/pages/ai-assistant/AIAssistantDashboard.tsx with this code:
+
+================================================================================
+
+          {/* Progress & Insights Dashboard - Fully Responsive */}
+          <div className="responsive-dashboard-grid">
+            {/* Left Column: Progress & Insights */}
+            <div className="responsive-dashboard-main">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                className="responsive-insights-card"
+              >
+                {/* Card Header */}
+                <div className="responsive-insights-header">
+                  <div className="responsive-insights-title-group">
+                    <div className="responsive-insights-icon-box">
+                      <BarChart3 className="responsive-insights-icon" />
+                    </div>
+                    <h2 className="responsive-insights-title">Progress & Insights</h2>
+                  </div>
+                  <div className="responsive-insights-toggles">
+                    <button className="responsive-toggle-btn responsive-toggle-active">7 Days</button>
+                    <button className="responsive-toggle-btn responsive-toggle-inactive">30 Days</button>
+                  </div>
+                </div>
+
+                {/* Progress Chart */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="responsive-chart-wrapper"
+                >
+                  <div className="responsive-chart-bars">
+                    {mockProgressData.map((data, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.5 + i * 0.05 }}
+                        className="responsive-chart-bar-group"
+                      >
+                        <div className="responsive-chart-bar-stack">
+                          <motion.div
+                            initial={{ height: 0 }}
+                            animate={{ height: `${(data.reading / 9) * 100}%` }}
+                            transition={{ duration: 0.6, delay: 0.6 + i * 0.05, ease: "easeOut" }}
+                            className="responsive-chart-bar responsive-chart-bar-reading"
+                            style={{ minHeight: '4px' }}
+                          />
+                          <motion.div
+                            initial={{ height: 0 }}
+                            animate={{ height: `${(data.writing / 9) * 100}%` }}
+                            transition={{ duration: 0.6, delay: 0.65 + i * 0.05, ease: "easeOut" }}
+                            className="responsive-chart-bar responsive-chart-bar-writing"
+                            style={{ minHeight: '4px' }}
+                          />
+                          <motion.div
+                            initial={{ height: 0 }}
+                            animate={{ height: `${(data.speaking / 9) * 100}%` }}
+                            transition={{ duration: 0.6, delay: 0.7 + i * 0.05, ease: "easeOut" }}
+                            className="responsive-chart-bar responsive-chart-bar-speaking"
+                            style={{ minHeight: '4px' }}
+                          />
+                          <motion.div
+                            initial={{ height: 0 }}
+                            animate={{ height: `${(data.listening / 9) * 100}%` }}
+                            transition={{ duration: 0.6, delay: 0.75 + i * 0.05, ease: "easeOut" }}
+                            className="responsive-chart-bar responsive-chart-bar-listening"
+                            style={{ minHeight: '4px' }}
+                          />
+                        </div>
+                        <span className="responsive-chart-label">{new Date(data.date).getDate()}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="responsive-chart-legend">
+                    <div className="responsive-legend-item">
+                      <div className="responsive-legend-dot responsive-legend-reading" />
+                      <span className="responsive-legend-text">Reading</span>
+                    </div>
+                    <div className="responsive-legend-item">
+                      <div className="responsive-legend-dot responsive-legend-writing" />
+                      <span className="responsive-legend-text">Writing</span>
+                    </div>
+                    <div className="responsive-legend-item">
+                      <div className="responsive-legend-dot responsive-legend-speaking" />
+                      <span className="responsive-legend-text">Speaking</span>
+                    </div>
+                    <div className="responsive-legend-item">
+                      <div className="responsive-legend-dot responsive-legend-listening" />
+                      <span className="responsive-legend-text">Listening</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Strengths & Areas to Improve */}
+                <div className="responsive-strengths-grid">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="responsive-strength-card"
+                  >
+                    <h3 className="responsive-card-title">
+                      <div className="responsive-card-icon responsive-strength-icon-bg">
+                        <TrendingUp className="responsive-card-icon-svg" />
+                      </div>
+                      Strengths
+                    </h3>
+                    <ul className="responsive-list">
+                      {mockStrengths.map((strength, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
+                          className="responsive-list-item"
+                        >
+                          <CheckCircle className="responsive-list-icon responsive-check-icon" />
+                          <span className="responsive-list-text">{strength}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="responsive-improve-card"
+                  >
+                    <h3 className="responsive-card-title">
+                      <div className="responsive-card-icon responsive-improve-icon-bg">
+                        <Target className="responsive-card-icon-svg" />
+                      </div>
+                      Areas to Improve
+                    </h3>
+                    <ul className="responsive-list">
+                      {mockWeaknesses.map((weakness, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
+                          className="responsive-list-item"
+                        >
+                          <div className="responsive-list-circle" />
+                          <span className="responsive-list-text">{weakness}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </div>
+
+                {/* AI Recommendation */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  className="responsive-ai-card"
+                >
+                  <div className="responsive-ai-header">
+                    <Sparkles className="responsive-ai-icon" />
+                    <h3 className="responsive-ai-title">AI Recommended Next Step</h3>
+                  </div>
+                  <p className="responsive-ai-text">{mockRecommendation}</p>
+                  <Link to="/ai-assistant/improvement-plan">
+                    <button className="responsive-ai-btn">
+                      <Target className="responsive-ai-btn-icon" />
+                      <span>View Full Improvement Plan</span>
+                      <ChevronRight className="responsive-ai-btn-icon" />
+                    </button>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Checklist & Weekly Plan */}
+            <div className="responsive-dashboard-sidebar">
+              {/* Today's Checklist */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="responsive-checklist-card"
+              >
+                <div className="responsive-checklist-header">
+                  <h3 className="responsive-checklist-title">Today's Checklist</h3>
+                  <span className="responsive-checklist-counter">
+                    {completedTasks}/{todayTasks.length}
+                  </span>
+                </div>
+
+                <div className="responsive-checklist-items">
+                  {todayTasks.map((task) => (
+                    <button
+                      key={task.id}
+                      onClick={() => toggleTask(task.id)}
+                      className="responsive-checklist-item"
+                    >
+                      <div
+                        className={`responsive-checkbox ${
+                          task.completed
+                            ? 'responsive-checkbox-checked'
+                            : 'responsive-checkbox-unchecked'
+                        }`}
+                      >
+                        {task.completed && <CheckCircle className="responsive-checkbox-icon" />}
+                      </div>
+                      <div className="responsive-checklist-content">
+                        <div className={`responsive-task-title ${task.completed ? 'responsive-task-completed' : 'responsive-task-active'}`}>
+                          {task.title}
+                        </div>
+                        <div className="responsive-task-duration">{task.duration} min</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="responsive-progress-track">
+                  <div
+                    className="responsive-progress-fill"
+                    style={{ width: `${(completedTasks / todayTasks.length) * 100}%` }}
+                  />
+                </div>
+              </motion.div>
+
+              {/* Weekly Plan */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="responsive-weekly-card"
+              >
+                <div className="responsive-weekly-header">
+                  <h3 className="responsive-weekly-title">Weekly Plan</h3>
+                  <div className="responsive-weekly-toggles">
+                    {(['Light', 'Normal', 'Intense'] as const).map((level) => (
+                      <button
+                        key={level}
+                        onClick={() => setIntensity(level)}
+                        className={`responsive-weekly-toggle ${
+                          intensity === level
+                            ? 'responsive-weekly-toggle-active'
+                            : 'responsive-weekly-toggle-inactive'
+                        }`}
+                      >
+                        {level}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="responsive-weekly-days">
+                  {mockWeeklyPlan.map((day, i) => (
+                    <button
+                      key={i}
+                      onClick={() => {
+                        toast.success(`${day.day}'s plan: ${day.tasks.join(', ')}`);
+                      }}
+                      className={`responsive-weekly-day ${
+                        i === 0 ? 'responsive-weekly-day-active' : 'responsive-weekly-day-inactive'
+                      }`}
+                    >
+                      <div className="responsive-weekly-day-name">{day.day}</div>
+                      <div className="responsive-weekly-day-tasks">
+                        {day.tasks.join(' • ')}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Recent Sessions */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="responsive-sessions-card"
+          >
+            <div className="responsive-sessions-header">
+              <div className="responsive-sessions-title-group">
+                <Award className="responsive-sessions-icon" />
+                <h2 className="responsive-sessions-title">Recent Sessions</h2>
+              </div>
+              <Link to="/ai-assistant/progress-log" className="responsive-sessions-link">
+                View all
+                <ChevronRight className="responsive-sessions-link-icon" />
+              </Link>
+            </div>
+
+            <div className="responsive-sessions-grid">
+              {mockRecentSessions.map((session) => {
+                const Icon = skillIcons[session.skill];
+                const colorClass = skillColors[session.skill];
+
+                return (
+                  <div
+                    key={session.id}
+                    className="responsive-session-item"
+                  >
+                    <div className="responsive-session-content">
+                      <div className={`responsive-session-icon-box ${colorClass}`}>
+                        <Icon className="responsive-session-skill-icon" />
+                      </div>
+                      <div className="responsive-session-info">
+                        <div className="responsive-session-type">{session.type}</div>
+                        <div className="responsive-session-meta">{session.date} • {session.duration} min</div>
+                      </div>
+                    </div>
+                    <div className="responsive-session-score">
+                      <div className="responsive-score-number">{session.score}</div>
+                      <div className="responsive-score-label">Band Score</div>
+                    </div>
+                  </div>
+                );
+              })}</div>
+          </motion.div>
+
+          {/* COMPREHENSIVE RESPONSIVE STYLES */}
+          <style>{`
+            /* ===================================================
+               RESPONSIVE DASHBOARD GRID SYSTEM
+               Breakpoints: 320px, 480px, 768px, 1024px, 1440px
+               =================================================== */
+            
+            .responsive-dashboard-grid {
+              display: grid;
+              width: 100%;
+              gap: 24px;
+            }
+
+            /* 320px - Mobile Extra Small */
+            @media (max-width: 479px) {
+              .responsive-dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 20px;
+              }
+            }
+
+            /* 480px - Mobile */
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 24px;
+              }
+            }
+
+            /* 768px - Tablet */
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .responsive-dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                margin-bottom: 28px;
+              }
+            }
+
+            /* 1024px - Desktop Small */
+            @media (min-width: 1024px) and (max-width: 1439px) {
+              .responsive-dashboard-grid {
+                grid-template-columns: 2fr 1fr;
+                gap: 32px;
+                margin-bottom: 32px;
+              }
+            }
+
+            /* 1440px - Desktop Large */
+            @media (min-width: 1440px) {
+              .responsive-dashboard-grid {
+                grid-template-columns: 2fr 1fr;
+                gap: 40px;
+                margin-bottom: 40px;
+              }
+            }
+
+            /* ===================================================
+               PROGRESS & INSIGHTS CARD
+               =================================================== */
+            
+            .responsive-insights-card {
+              background: #FFFFFF;
+              border: 1px solid #E2E8F0;
+              border-radius: 16px;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+              transition: box-shadow 0.3s ease;
+              width: 100%;
+              box-sizing: border-box;
+              overflow: hidden;
+            }
+
+            .responsive-insights-card:hover {
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            /* Padding: 16px mobile, 20px tablet, 24px desktop-small, 28px desktop-large */
+            @media (max-width: 479px) {
+              .responsive-insights-card { padding: 16px; }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-insights-card { padding: 18px; }
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .responsive-insights-card { padding: 24px; }
+            }
+            @media (min-width: 1024px) and (max-width: 1439px) {
+              .responsive-insights-card { padding: 24px; }
+            }
+            @media (min-width: 1440px) {
+              .responsive-insights-card { padding: 32px; }
+            }
+
+            /* ===================================================
+               INSIGHTS CARD HEADER - Prevent Toggle Overlap
+               =================================================== */
+            
+            .responsive-insights-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
+              gap: 16px;
+            }
+
+            /* Mobile: Stack vertically */
+            @media (max-width: 767px) {
+              .responsive-insights-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 16px;
+              }
+            }
+
+            /* Tablet & Desktop: Horizontal */
+            @media (min-width: 768px) {
+              .responsive-insights-header {
+                flex-direction: row;
+                margin-bottom: 24px;
+              }
+            }
+
+            .responsive-insights-title-group {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              min-width: 0;
+              flex: 1;
+            }
+
+            .responsive-insights-icon-box {
+              width: 40px;
+              height: 40px;
+              background: linear-gradient(to bottom right, #4B6E48, #3a5638);
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              box-shadow: 0 2px 4px rgba(75, 110, 72, 0.2);
+            }
+
+            .responsive-insights-icon {
+              width: 20px;
+              height: 20px;
+              color: #FFFFFF;
+            }
+
+            .responsive-insights-title {
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+              font-weight: 700;
+              color: #0F172A;
+              margin: 0;
+              line-height: 1.3;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+            }
+
+            /* Typography Scaling */
+            @media (max-width: 479px) {
+              .responsive-insights-title { font-size: 18px; }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-insights-title { font-size: 20px; }
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .responsive-insights-title { font-size: 22px; }
+            }
+            @media (min-width: 1024px) {
+              .responsive-insights-title { font-size: 24px; }
+            }
+
+            /* Toggle Buttons - No Overlap */
+            .responsive-insights-toggles {
+              display: flex;
+              gap: 8px;
+              flex-shrink: 0;
+            }
+
+            @media (max-width: 767px) {
+              .responsive-insights-toggles {
+                width: 100%;
+              }
+            }
+
+            .responsive-toggle-btn {
+              padding: 8px 16px;
+              font-size: 14px;
+              border-radius: 8px;
+              border: none;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              font-weight: 500;
+              white-space: nowrap;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-toggle-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+              }
+            }
+
+            .responsive-toggle-active {
+              background-color: #4B6E48;
+              color: #FFFFFF;
+              box-shadow: 0 2px 4px rgba(75, 110, 72, 0.2);
+            }
+
+            .responsive-toggle-inactive {
+              background-color: #F3F4F6;
+              color: #64748B;
+            }
+
+            .responsive-toggle-inactive:hover {
+              background-color: #E5E7EB;
+              color: #0F172A;
+            }
+
+            /* ===================================================
+               CHART WRAPPER - Reduce Height on Mobile
+               =================================================== */
+            
+            .responsive-chart-wrapper {
+              background: linear-gradient(to bottom right, #F9FAFB, #FFFFFF);
+              border: 1px solid #E2E8F0;
+              border-radius: 12px;
+              width: 100%;
+              box-sizing: border-box;
+              overflow: hidden;
+            }
+
+            /* Mobile 320px: 12px padding, 16px margin */
+            @media (max-width: 479px) {
+              .responsive-chart-wrapper {
+                padding: 12px;
+                margin-bottom: 16px;
+              }
+            }
+
+            /* Mobile 480px: 16px padding, 20px margin */
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-chart-wrapper {
+                padding: 16px;
+                margin-bottom: 20px;
+              }
+            }
+
+            /* Tablet 768px: 20px padding, 24px margin */
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .responsive-chart-wrapper {
+                padding: 20px;
+                margin-bottom: 24px;
+              }
+            }
+
+            /* Desktop: 24px padding, 24px margin */
+            @media (min-width: 1024px) {
+              .responsive-chart-wrapper {
+                padding: 24px;
+                margin-bottom: 24px;
+              }
+            }
+
+            .responsive-chart-bars {
+              display: flex;
+              align-items: flex-end;
+              justify-content: space-between;
+              gap: 6px;
+            }
+
+            /* Chart Heights - Mobile Reduced */
+            @media (max-width: 479px) {
+              .responsive-chart-bars {
+                height: 160px;
+                gap: 4px;
+              }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-chart-bars {
+                height: 180px;
+                gap: 6px;
+              }
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .responsive-chart-bars {
+                height: 220px;
+              }
+            }
+            @media (min-width: 1024px) and (max-width: 1439px) {
+              .responsive-chart-bars {
+                height: 240px;
+              }
+            }
+            @media (min-width: 1440px) {
+              .responsive-chart-bars {
+                height: 280px;
+              }
+            }
+
+            .responsive-chart-bar-group {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+            }
+
+            .responsive-chart-bar-stack {
+              width: 100%;
+              display: flex;
+              flex-direction: column-reverse;
+              gap: 3px;
+              height: 100%;
+            }
+
+            .responsive-chart-bar {
+              border-radius: 4px 4px 0 0;
+              transition: all 0.3s ease;
+              cursor: pointer;
+            }
+
+            .responsive-chart-bar-reading {
+              background: linear-gradient(to top, #4B6E48, #5a8055);
+            }
+            .responsive-chart-bar-reading:hover {
+              background: linear-gradient(to top, #3a5638, #4B6E48);
+            }
+
+            .responsive-chart-bar-writing {
+              background: linear-gradient(to top, #7C9A7A, #8FAA8D);
+            }
+            .responsive-chart-bar-writing:hover {
+              background: linear-gradient(to top, #6B8969, #7C9A7A);
+            }
+
+            .responsive-chart-bar-speaking {
+              background: linear-gradient(to top, #9BB899, #B0C7AE);
+            }
+            .responsive-chart-bar-speaking:hover {
+              background: linear-gradient(to top, #8FAA8D, #9BB899);
+            }
+
+            .responsive-chart-bar-listening {
+              background: linear-gradient(to top, #C5D6C4, #D9E5D8);
+            }
+            .responsive-chart-bar-listening:hover {
+              background: linear-gradient(to top, #B0C7AE, #C5D6C4);
+            }
+
+            .responsive-chart-label {
+              font-size: 11px;
+              color: #94A3B8;
+              font-weight: 500;
+              transition: color 0.3s ease;
+            }
+
+            @media (min-width: 768px) {
+              .responsive-chart-label {
+                font-size: 12px;
+              }
+            }
+
+            .responsive-chart-bar-group:hover .responsive-chart-label {
+              color: #4B6E48;
+            }
+
+            /* ===================================================
+               CHART LEGEND - Reflow Multiple Rows on Mobile
+               =================================================== */
+            
+            .responsive-chart-legend {
+              display: grid;
+              gap: 12px;
+              margin-top: 16px;
+            }
+
+            /* Mobile: 2 columns */
+            @media (max-width: 479px) {
+              .responsive-chart-legend {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+              }
+            }
+
+            /* Mobile Large & Tablet: 4 columns in 1 row */
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-chart-legend {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+              }
+            }
+
+            /* Tablet & Desktop: 4 columns in 1 row */
+            @media (min-width: 768px) {
+              .responsive-chart-legend {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+              }
+            }
+
+            .responsive-legend-item {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              cursor: pointer;
+              justify-content: center;
+            }
+
+            @media (max-width: 767px) {
+              .responsive-legend-item {
+                justify-content: flex-start;
+              }
+            }
+
+            .responsive-legend-dot {
+              width: 12px;
+              height: 12px;
+              border-radius: 2px;
+              box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+              transition: transform 0.3s ease;
+              flex-shrink: 0;
+            }
+
+            .responsive-legend-item:hover .responsive-legend-dot {
+              transform: scale(1.1);
+            }
+
+            .responsive-legend-reading {
+              background: linear-gradient(to bottom right, #4B6E48, #5a8055);
+            }
+            .responsive-legend-writing {
+              background: linear-gradient(to bottom right, #7C9A7A, #8FAA8D);
+            }
+            .responsive-legend-speaking {
+              background: linear-gradient(to bottom right, #9BB899, #B0C7AE);
+            }
+            .responsive-legend-listening {
+              background: linear-gradient(to bottom right, #C5D6C4, #D9E5D8);
+            }
+
+            .responsive-legend-text {
+              font-size: 12px;
+              color: #64748B;
+              font-weight: 500;
+              transition: color 0.3s ease;
+              white-space: nowrap;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-legend-text {
+                font-size: 11px;
+              }
+            }
+
+            .responsive-legend-item:hover .responsive-legend-text {
+              color: #4B6E48;
+            }
+
+            /* ===================================================
+               STRENGTHS & AREAS TO IMPROVE - Stack Below 768px
+               =================================================== */
+            
+            .responsive-strengths-grid {
+              display: grid;
+              width: 100%;
+              gap: 16px;
+            }
+
+            /* Mobile: Stack */
+            @media (max-width: 767px) {
+              .responsive-strengths-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 20px;
+              }
+            }
+
+            /* Tablet: Stack */
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .responsive-strengths-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 24px;
+              }
+            }
+
+            /* Desktop: 2 columns */
+            @media (min-width: 1024px) {
+              .responsive-strengths-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                margin-bottom: 24px;
+              }
+            }
+
+            .responsive-strength-card,
+            .responsive-improve-card {
+              border-radius: 12px;
+              border: 1px solid;
+              transition: all 0.3s ease;
+              width: 100%;
+              box-sizing: border-box;
+            }
+
+            .responsive-strength-card {
+              background: linear-gradient(to bottom right, rgba(75, 110, 72, 0.05), #FFFFFF);
+              border-color: rgba(75, 110, 72, 0.2);
+            }
+
+            .responsive-improve-card {
+              background: linear-gradient(to bottom right, #F9FAFB, #FFFFFF);
+              border-color: #E2E8F0;
+            }
+
+            .responsive-strength-card:hover,
+            .responsive-improve-card:hover {
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            /* Standardize Padding */
+            @media (max-width: 479px) {
+              .responsive-strength-card,
+              .responsive-improve-card {
+                padding: 16px;
+              }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-strength-card,
+              .responsive-improve-card {
+                padding: 18px;
+              }
+            }
+            @media (min-width: 768px) {
+              .responsive-strength-card,
+              .responsive-improve-card {
+                padding: 20px;
+              }
+            }
+
+            .responsive-card-title {
+              font-weight: 700;
+              color: #0F172A;
+              margin: 0 0 16px 0;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              font-size: 16px;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-card-title {
+                font-size: 15px;
+                margin-bottom: 12px;
+              }
+            }
+
+            /* Align Icons Correctly */
+            .responsive-card-icon {
+              width: 32px;
+              height: 32px;
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+              flex-shrink: 0;
+            }
+
+            .responsive-strength-icon-bg {
+              background-color: #4B6E48;
+            }
+
+            .responsive-improve-icon-bg {
+              background-color: #64748B;
+            }
+
+            .responsive-card-icon-svg {
+              width: 16px;
+              height: 16px;
+              color: #FFFFFF;
+            }
+
+            .responsive-list {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-list {
+                gap: 10px;
+              }
+            }
+
+            .responsive-list-item {
+              display: flex;
+              align-items: flex-start;
+              gap: 10px;
+              font-size: 14px;
+              color: #64748B;
+              line-height: 1.5;
+              transition: color 0.3s ease;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-list-item {
+                font-size: 13px;
+                gap: 8px;
+              }
+            }
+
+            .responsive-list-item:hover {
+              color: #4B6E48;
+            }
+
+            /* Consistent Bullet Spacing */
+            .responsive-list-icon,
+            .responsive-list-circle {
+              flex-shrink: 0;
+              margin-top: 2px;
+            }
+
+            .responsive-check-icon {
+              width: 16px;
+              height: 16px;
+              color: #4B6E48;
+              transition: transform 0.3s ease;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-check-icon {
+                width: 14px;
+                height: 14px;
+              }
+            }
+
+            .responsive-list-item:hover .responsive-check-icon {
+              transform: scale(1.1);
+            }
+
+            .responsive-list-circle {
+              width: 16px;
+              height: 16px;
+              border: 2px solid #64748B;
+              border-radius: 50%;
+              transition: all 0.3s ease;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-list-circle {
+                width: 14px;
+                height: 14px;
+              }
+            }
+
+            .responsive-list-item:hover .responsive-list-circle {
+              border-color: #4B6E48;
+              transform: scale(1.1);
+            }
+
+            .responsive-list-text {
+              flex: 1;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+            }
+
+            /* ===================================================
+               AI RECOMMENDATION CARD
+               =================================================== */
+            
+            .responsive-ai-card {
+              background: linear-gradient(to bottom right, #4B6E48, #3a5638);
+              border-radius: 12px;
+              color: #FFFFFF;
+              box-shadow: 0 4px 12px rgba(75, 110, 72, 0.3);
+              transition: box-shadow 0.3s ease;
+            }
+
+            .responsive-ai-card:hover {
+              box-shadow: 0 6px 20px rgba(75, 110, 72, 0.4);
+            }
+
+            @media (max-width: 479px) {
+              .responsive-ai-card {
+                padding: 16px;
+              }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-ai-card {
+                padding: 20px;
+              }
+            }
+            @media (min-width: 768px) {
+              .responsive-ai-card {
+                padding: 24px;
+              }
+            }
+
+            .responsive-ai-header {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 12px;
+            }
+
+            .responsive-ai-icon {
+              width: 20px;
+              height: 20px;
+              flex-shrink: 0;
+            }
+
+            .responsive-ai-title {
+              font-weight: 700;
+              font-size: 17px;
+              margin: 0;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-ai-title {
+                font-size: 16px;
+              }
+            }
+
+            @media (min-width: 768px) {
+              .responsive-ai-title {
+                font-size: 18px;
+              }
+            }
+
+            .responsive-ai-text {
+              color: rgba(255, 255, 255, 0.9);
+              font-size: 14px;
+              line-height: 1.6;
+              margin: 0 0 16px 0;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-ai-text {
+                font-size: 13px;
+              }
+            }
+
+            .responsive-ai-btn {
+              width: 100%;
+              background-color: rgba(255, 255, 255, 0.2);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              color: #FFFFFF;
+              font-weight: 500;
+              padding: 12px 16px;
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+
+            .responsive-ai-btn:hover {
+              background-color: rgba(255, 255, 255, 0.3);
+              border-color: rgba(255, 255, 255, 0.4);
+              transform: scale(1.02);
+            }
+
+            .responsive-ai-btn:active {
+              transform: scale(0.98);
+            }
+
+            .responsive-ai-btn-icon {
+              width: 16px;
+              height: 16px;
+              flex-shrink: 0;
+            }
+
+            /* ===================================================
+               TODAY'S CHECKLIST & WEEKLY PLAN
+               =================================================== */
+            
+            .responsive-dashboard-sidebar {
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-dashboard-sidebar {
+                gap: 20px;
+              }
+            }
+
+            .responsive-checklist-card,
+            .responsive-weekly-card {
+              background-color: #FFFFFF;
+              border: 2px solid #E5E7EB;
+              border-radius: 16px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-checklist-card,
+              .responsive-weekly-card {
+                padding: 16px;
+              }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-checklist-card,
+              .responsive-weekly-card {
+                padding: 20px;
+              }
+            }
+            @media (min-width: 768px) {
+              .responsive-checklist-card,
+              .responsive-weekly-card {
+                padding: 24px;
+              }
+            }
+
+            .responsive-checklist-header,
+            .responsive-weekly-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 16px;
+            }
+
+            .responsive-checklist-title,
+            .responsive-weekly-title {
+              font-weight: 700;
+              color: #111827;
+              font-size: 18px;
+              margin: 0;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-checklist-title,
+              .responsive-weekly-title {
+                font-size: 16px;
+              }
+            }
+
+            .responsive-checklist-counter {
+              font-size: 14px;
+              color: #6B7280;
+            }
+
+            .responsive-checklist-items {
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              margin-bottom: 16px;
+            }
+
+            .responsive-checklist-item {
+              width: 100%;
+              display: flex;
+              align-items: flex-start;
+              gap: 12px;
+              padding: 12px;
+              border-radius: 8px;
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+              transition: background-color 0.2s ease;
+              text-align: left;
+            }
+
+            .responsive-checklist-item:hover {
+              background-color: #F9FAFB;
+            }
+
+            .responsive-checkbox {
+              width: 20px;
+              height: 20px;
+              border-radius: 4px;
+              border: 2px solid;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              margin-top: 2px;
+              transition: all 0.2s ease;
+            }
+
+            .responsive-checkbox-checked {
+              background-color: #4B6E48;
+              border-color: #4B6E48;
+            }
+
+            .responsive-checkbox-unchecked {
+              border-color: #D1D5DB;
+            }
+
+            .responsive-checkbox-icon {
+              width: 14px;
+              height: 14px;
+              color: #FFFFFF;
+            }
+
+            .responsive-checklist-content {
+              flex: 1;
+              min-width: 0;
+            }
+
+            .responsive-task-title {
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 1.4;
+              margin-bottom: 4px;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-task-title {
+                font-size: 13px;
+              }
+            }
+
+            .responsive-task-active {
+              color: #111827;
+            }
+
+            .responsive-task-completed {
+              color: #9CA3AF;
+              text-decoration: line-through;
+            }
+
+            .responsive-task-duration {
+              font-size: 12px;
+              color: #6B7280;
+            }
+
+            .responsive-progress-track {
+              width: 100%;
+              height: 8px;
+              background-color: #F3F4F6;
+              border-radius: 9999px;
+              overflow: hidden;
+            }
+
+            .responsive-progress-fill {
+              height: 100%;
+              background: linear-gradient(to right, #4B6E48, #3a5638);
+              transition: width 0.5s ease;
+            }
+
+            /* Weekly Plan */
+            .responsive-weekly-toggles {
+              display: flex;
+              gap: 4px;
+            }
+
+            .responsive-weekly-toggle {
+              padding: 6px 10px;
+              font-size: 12px;
+              border-radius: 6px;
+              border: none;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              white-space: nowrap;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-weekly-toggle {
+                padding: 5px 8px;
+                font-size: 11px;
+              }
+            }
+
+            .responsive-weekly-toggle-active {
+              background-color: #4B6E48;
+              color: #FFFFFF;
+            }
+
+            .responsive-weekly-toggle-inactive {
+              background-color: #F3F4F6;
+              color: #6B7280;
+            }
+
+            .responsive-weekly-toggle-inactive:hover {
+              background-color: #E5E7EB;
+            }
+
+            .responsive-weekly-days {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+            }
+
+            .responsive-weekly-day {
+              width: 100%;
+              padding: 12px;
+              border-radius: 8px;
+              border: none;
+              cursor: pointer;
+              text-align: left;
+              transition: all 0.2s ease;
+            }
+
+            .responsive-weekly-day-active {
+              background-color: rgba(75, 110, 72, 0.1);
+              border: 1px solid rgba(75, 110, 72, 0.2);
+            }
+
+            .responsive-weekly-day-active:hover {
+              background-color: rgba(75, 110, 72, 0.15);
+              transform: scale(1.02);
+            }
+
+            .responsive-weekly-day-inactive {
+              background-color: #F9FAFB;
+            }
+
+            .responsive-weekly-day-inactive:hover {
+              background-color: #F3F4F6;
+              transform: scale(1.02);
+            }
+
+            .responsive-weekly-day-name {
+              font-weight: 600;
+              font-size: 14px;
+              color: #111827;
+              margin-bottom: 4px;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-weekly-day-name {
+                font-size: 13px;
+              }
+            }
+
+            .responsive-weekly-day-tasks {
+              font-size: 12px;
+              color: #6B7280;
+              line-height: 1.4;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-weekly-day-tasks {
+                font-size: 11px;
+              }
+            }
+
+            /* ===================================================
+               RECENT SESSIONS - Stack on Mobile, Move Band Score
+               =================================================== */
+            
+            .responsive-sessions-card {
+              background-color: #FFFFFF;
+              border: 2px solid #E5E7EB;
+              border-radius: 16px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-sessions-card {
+                padding: 16px;
+                margin-bottom: 20px;
+              }
+            }
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-sessions-card {
+                padding: 20px;
+                margin-bottom: 24px;
+              }
+            }
+            @media (min-width: 768px) {
+              .responsive-sessions-card {
+                padding: 24px;
+                margin-bottom: 32px;
+              }
+            }
+
+            .responsive-sessions-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 20px;
+              gap: 12px;
+            }
+
+            .responsive-sessions-title-group {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            }
+
+            .responsive-sessions-icon {
+              width: 20px;
+              height: 20px;
+              color: #4B6E48;
+              flex-shrink: 0;
+            }
+
+            .responsive-sessions-title {
+              font-weight: 700;
+              color: #111827;
+              font-size: 22px;
+              margin: 0;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-sessions-title {
+                font-size: 18px;
+              }
+            }
+
+            @media (min-width: 480px) and (max-width: 767px) {
+              .responsive-sessions-title {
+                font-size: 20px;
+              }
+            }
+
+            .responsive-sessions-link {
+              color: #4B6E48;
+              font-size: 14px;
+              font-weight: 500;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              text-decoration: none;
+              transition: all 0.2s ease;
+            }
+
+            .responsive-sessions-link:hover {
+              text-decoration: underline;
+            }
+
+            .responsive-sessions-link-icon {
+              width: 16px;
+              height: 16px;
+            }
+
+            .responsive-sessions-grid {
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            }
+
+            .responsive-session-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 16px;
+              border-radius: 12px;
+              border: 1px solid #E5E7EB;
+              transition: all 0.3s ease;
+              gap: 16px;
+            }
+
+            .responsive-session-item:hover {
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            /* Mobile: Stack Vertically, Band Score Below Title */
+            @media (max-width: 767px) {
+              .responsive-session-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 14px;
+              }
+            }
+
+            .responsive-session-content {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              flex: 1;
+              min-width: 0;
+            }
+
+            @media (max-width: 767px) {
+              .responsive-session-content {
+                width: 100%;
+              }
+            }
+
+            .responsive-session-icon-box {
+              padding: 12px;
+              border-radius: 12px;
+              border: 2px solid;
+              flex-shrink: 0;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-session-icon-box {
+                padding: 10px;
+              }
+            }
+
+            .responsive-session-skill-icon {
+              width: 20px;
+              height: 20px;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-session-skill-icon {
+                width: 18px;
+                height: 18px;
+              }
+            }
+
+            .responsive-session-info {
+              flex: 1;
+              min-width: 0;
+            }
+
+            .responsive-session-type {
+              font-weight: 600;
+              color: #111827;
+              font-size: 15px;
+              margin-bottom: 4px;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-session-type {
+                font-size: 14px;
+              }
+            }
+
+            .responsive-session-meta {
+              font-size: 13px;
+              color: #6B7280;
+            }
+
+            @media (max-width: 479px) {
+              .responsive-session-meta {
+                font-size: 12px;
+              }
+            }
+
+            .responsive-session-score {
+              text-align: right;
+              flex-shrink: 0;
+            }
+
+            /* Mobile: Move Band Score Below Title */
+            @media (max-width: 767px) {
+              .responsive-session-score {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              }
+            }
+
+            .responsive-score-number {
+              font-size: 28px;
+              font-weight: 700;
+              color: #4B6E48;
+              line-height: 1;
+            }
+
+            @media (max-width: 767px) {
+              .responsive-score-number {
+                font-size: 24px;
+              }
+            }
+
+            @media (max-width: 479px) {
+              .responsive-score-number {
+                font-size: 22px;
+              }
+            }
+
+            .responsive-score-label {
+              font-size: 11px;
+              color: #6B7280;
+              margin-top: 4px;
+            }
+
+            @media (max-width: 767px) {
+              .responsive-score-label {
+                margin-top: 0;
+              }
+            }
+
+            @media (max-width: 479px) {
+              .responsive-score-label {
+                font-size: 10px;
+              }
+            }
+
+            /* ===================================================
+               PREVENT HORIZONTAL SCROLLING
+               =================================================== */
+            
+            .responsive-dashboard-grid,
+            .responsive-insights-card,
+            .responsive-checklist-card,
+            .responsive-weekly-card,
+            .responsive-sessions-card {
+              overflow-x: hidden;
+              max-width: 100%;
+            }
+
+            /* Remove unnecessary internal scrollbars */
+            .responsive-chart-wrapper,
+            .responsive-strengths-grid,
+            .responsive-checklist-items,
+            .responsive-weekly-days,
+            .responsive-sessions-grid {
+              overflow: visible;
+            }
+          `}</style>
+
+================================================================================
+
+END OF REPLACEMENT CODE
+
+This redesigned section includes:
+
+✅ Proper responsive grid (2fr/1fr desktop, stack on tablet/mobile)
+✅ Fixed navigation overflow (handled by main container)
+✅ Container padding: 32px desktop, 24px tablet, 16px mobile
+✅ Consistent vertical spacing between sections
+✅ Toggle buttons no longer overlap on mobile (stack vertically)
+✅ Chart height reduced on mobile (320px: 160px, 480px: 180px, 768px: 220px, 1024px: 240px, 1440px: 280px)
+✅ Legend reflows into 2x2 grid on mobile
+✅ Strengths & Areas stack properly below 1024px
+✅ Recent Sessions cards stack on mobile with Band Score below title
+✅ Typography scales appropriately
+✅ No unnecessary internal scrollbars
+✅ Clear breakpoint designs for 320px, 480px, 768px, 1024px, 1440px
+✅ Maintained visual consistency and balanced spacing

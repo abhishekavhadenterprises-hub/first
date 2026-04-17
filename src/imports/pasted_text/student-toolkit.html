@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Student Toolkit Showcase</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --white: #ffffff;
+      --mac-body: #161617;
+      --card-w: 280px;
+      --card-h: 190px;
+    }
+
+    body {
+      margin: 0; background-color: var(--white);
+      font-family: 'Inter', sans-serif; overflow: hidden;
+      height: 100vh; display: flex; justify-content: center; align-items: center;
+    }
+
+    .stage { position: relative; width: 100vw; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+
+    /* --- Track Architecture --- */
+    .track-wrapper { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+    
+    .arch-card {
+      position: absolute; width: var(--card-w); height: var(--card-h);
+      will-change: transform; left: 0; top: 0;
+      pointer-events: auto;
+      transition: margin-top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .arch-card:hover { margin-top: -25px; cursor: pointer; }
+
+    /* --- Card Aesthetics --- */
+    .card-inner {
+      width: 100%; height: 100%; background: var(--black);
+      border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
+      transition: box-shadow 0.4s ease;
+    }
+
+    .arch-card:hover .card-inner { box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+
+    .category-tag {
+      width: 100%; height: 110px; background: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; opacity: 0.2; filter: grayscale(1);
+      transition: all 0.4s ease;
+    }
+
+    .card-content { padding: 16px; }
+    .card-content h3 { color: rgba(0,0,0,0.2); font-size: 1.1rem; margin: 0; font-weight: 700; letter-spacing: -0.02em; }
+    .card-content p { color: rgba(0,0,0,0.1); font-size: 0.85rem; margin: 6px 0 0; line-height: 1.4; }
+
+    /* --- Lens Reveal Styles --- */
+    .in-screen .category-tag { opacity: 1; filter: grayscale(0); background: #222; }
+    .in-screen .card-content h3 { color: var(--white); }
+    .in-screen .card-content p { color: #888; }
+    .in-screen .card-inner { background: var(--black); border: none; }
+
+    /* --- MacBook Pro 14" Frame --- */
+    .macbook-wrap { position: relative; z-index: 100; width: 850px; transform-style: preserve-3d; pointer-events: none; }
+    .macbook-screen { background: var(--mac-body); border-radius: 36px; padding: 14px; box-shadow: 0 60px 120px rgba(0,0,0,0.12); position: relative; pointer-events: auto; }
+    .screen-mask { width: 100%; height: 520px; background: #fff; border-radius: 22px; overflow: hidden; position: relative; }
+    .screen-mask::after { content: ''; position: absolute; inset: 0; z-index: 20; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,0.25) 0%, transparent 45%); }
+
+    .macbook-base { position: absolute; bottom: -20px; left: -5%; width: 110%; height: 18px; background: linear-gradient(to bottom, #2c2c2e, #000); border-radius: 4px 4px 40px 40px; }
+    .notch { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 160px; height: 28px; background: var(--mac-body); z-index: 30; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
+  </style>
+</head>
+<body>
+
+<div class="stage" id="experience">
+  <div class="track-wrapper" id="bg-track"></div>
+  <div class="macbook-wrap" id="laptop">
+    <div class="macbook-screen">
+      <div class="notch"></div>
+      <div class="screen-mask">
+        <div class="track-wrapper in-screen" id="fg-track"></div>
+      </div>
+    </div>
+    <div class="macbook-base"></div>
+  </div>
+</div>
+
+<script>
+  const toolkitData = [
+    { title: "SIM Cards", desc: "Fast data and wide coverage", icon: "📶" },
+    { title: "Banks", desc: "Open account anywhere, no SSN", icon: "🏦" },
+    { title: "Insurance", desc: "Top providers starting at $0", icon: "🛡️" },
+    { title: "Food", desc: "Easy meals delivered to you", icon: "🍕" },
+    { title: "Visas", desc: "Expert immigration partners", icon: "🛂" },
+    { title: "Events", desc: "Networking and career events", icon: "🎟️" },
+    { title: "Employment", desc: "Understand work opportunities", icon: "💼" },
+    { title: "Taxes", desc: "Simplify complex tax filings", icon: "💵" },
+    { title: "Loans", desc: "Lowest rates on student loans", icon: "🎓" },
+    { title: "Build Credit", desc: "Establish your U.S. credit score", icon: "📈" },
+    { title: "Housing", desc: "Affordable housing near campus", icon: "🏠" },
+    { title: "Courses", desc: "Save on transferable credits", icon: "📖" },
+    { title: "Forex", desc: "Secure RBI-authorized partners", icon: "💱" }
+  ];
+
+  const bgTrack = document.getElementById('bg-track');
+  const fgTrack = document.getElementById('fg-track');
+  const items = [];
+  const cardStep = 320; // 280w + 40 gap
+  let isHovered = false;
+  let currentSpeed = 1.8; // Faster, energetic speed
+
+  // Create Cards
+  toolkitData.forEach((data, i) => {
+    const cardHtml = `
+      <div class="card-inner">
+        <div class="category-tag">${data.icon}</div>
+        <div class="card-content"><h3>${data.title}</h3><p>${data.desc}</p></div>
+      </div>`;
+    
+    const bgCard = document.createElement('div');
+    bgCard.className = 'arch-card';
+    bgCard.innerHTML = cardHtml;
+    bgTrack.appendChild(bgCard);
+
+    const fgCard = document.createElement('div');
+    fgCard.className = 'arch-card';
+    fgCard.innerHTML = cardHtml;
+    fgTrack.appendChild(fgCard);
+
+    [bgCard, fgCard].forEach(c => {
+      c.addEventListener('mouseenter', () => isHovered = true);
+      c.addEventListener('mouseleave', () => isHovered = false);
+    });
+
+    items.push({ bg: bgCard, fg: fgCard, x: i * cardStep });
+  });
+
+  // Sync Engine
+  gsap.ticker.add(() => {
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const totalWidth = toolkitData.length * cardStep;
+
+    let targetSpeed = isHovered ? 0 : 1.8;
+    currentSpeed = gsap.utils.interpolate(currentSpeed, targetSpeed, 0.1);
+
+    items.forEach(item => {
+      item.x -= currentSpeed;
+      if (item.x < -cardStep) item.x += totalWidth;
+
+      const dist = (item.x + 140) - centerX;
+      const yPath = (dist * dist) / 5000;
+      const rotation = dist / 35;
+
+      gsap.set(item.bg, { x: item.x, y: centerY - 95 + yPath, rotation: rotation });
+
+      const lX = (window.innerWidth - 850) / 2;
+      const lY = (window.innerHeight - 520) / 2;
+      gsap.set(item.fg, {
+        x: item.x - lX,
+        y: (centerY - 95 + yPath) - lY,
+        rotation: rotation
+      });
+    });
+  });
+
+  // Global Tilt
+  window.addEventListener('mousemove', (e) => {
+    const rx = (window.innerHeight / 2 - e.pageY) / 70;
+    const ry = (window.innerWidth / 2 - e.pageX) / 70;
+    gsap.to(laptop, { rotationX: rx, rotationY: -ry, duration: 0.6 });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* Import Outfit - Modern geometric sans-serif for banner section */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+
+/* Import Inter - Modern, clean, geometric sans-serif used by top agencies */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Import Righteous - Bold display font for scroll animations page */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/* Font family applied globally */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}

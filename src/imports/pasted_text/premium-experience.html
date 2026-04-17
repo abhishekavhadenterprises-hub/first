@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-by-Step | Premium Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syncopate:wght@700&display=swap');
+
+        :root {
+            --bg: #050505;
+            --card-bg: #0d0d0d;
+            --accent: #ff5c00;
+            --text-dim: #888;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 100px 20px 80vh 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- STACKING ENGINE --- */
+        .card-frame {
+            position: sticky;
+            top: 10vh;
+            height: 75vh;
+            margin-bottom: 15vh;
+            perspective: 1200px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            border-radius: 40px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 -20px 60px rgba(0,0,0,0.8);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+            transform-style: preserve-3d;
+        }
+
+        /* --- VISUAL EFFECTS --- */
+        .video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.35;
+            filter: grayscale(1) brightness(0.7);
+        }
+
+        .mesh-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 1;
+        }
+
+        /* --- CONTENT DESIGN --- */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+
+        .step-tag {
+            font-family: 'Syncopate', sans-serif;
+            color: var(--accent);
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .title {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .description {
+            font-size: 18px;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* PILL BUTTONS */
+        .tag-container {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            padding: 10px 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .pill:hover {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* --- CURSOR GLOW --- */
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: inherit;
+            padding: 2px;
+            background: radial-gradient(
+                600px circle at var(--x) var(--y),
+                rgba(255, 255, 255, 0.3),
+                transparent 40%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 4;
+        }
+
+        .card:hover::after { opacity: 1; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="stack-container">
+        
+        <div class="card-frame" style="z-index: 1;">
+            <div class="card">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-data-center-server-room-racks-1065-large.mp4" type="video/mp4">
+                </video>
+                <div class="mesh-overlay"></div>
+                <div class="content">
+                    <span class="step-tag">Phase 01</span>
+                    <h2 class="title">Ready</h2>
+                    <p class="subtitle">Understand what to do — and what to avoid.</p>
+                    <div class="tag-container">
+                        <a href="#" class="pill">Guides</a>
+                        <a href="#" class="pill">Tools</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-frame" style="z-index: 2;">
+            <div class="card">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-digital-clocks-background-34538-large.mp4" type="video/mp4">
+                </video>
+                <div class="mesh-overlay"></div>
+                <div class="content">
+                    <span class="step-tag">Phase 02</span>
+                    <h2 class="title">Set</h2>
+                    <p class="subtitle">Get everything in place before you land.</p>
+                    <div class="tag-container">
+                        <a href="#" class="pill">Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-frame" style="z-index: 3;">
+            <div class="card">
+                <video class="video-bg" autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-matrix-style-computer-code-9106-large.mp4" type="video/mp4">
+                </video>
+                <div class="mesh-overlay"></div>
+                <div class="content">
+                    <span class="step-tag">Phase 03</span>
+                    <h2 class="title">Go</h2>
+                    <p class="subtitle">Arrive ready, and get on with winning.</p>
+                    <p class="description">Find your people, access opportunities, and move forward with confidence.</p>
+                    <div class="tag-container">
+                        <a href="#" class="pill">Community</a>
+                        <a href="#" class="pill">Events</a>
+                        <a href="#" class="pill">Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const cards = document.querySelectorAll('.card');
+    const frames = document.querySelectorAll('.card-frame');
+
+    // 1. REFINED TILT LOGIC (Max 3 degrees for stability)
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotX = ((y - centerY) / centerY) * -3; 
+            const rotY = ((x - centerX) / centerX) * 3;
+
+            card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.01, 1.01, 1.01)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
+
+    // 2. VANISHING PERSPECTIVE (Scroll Scaling)
+    window.addEventListener('scroll', () => {
+        frames.forEach((frame) => {
+            const rect = frame.getBoundingClientRect();
+            const card = frame.querySelector('.card');
+            
+            // As card moves to top, it shrinks slightly and darkens
+            if (rect.top <= 100 && rect.bottom > 100) {
+                const progress = Math.max(0, Math.min(1, (100 - rect.top) / 500));
+                const scale = 1 - (progress * 0.05);
+                const brightness = 1 - (progress * 0.5);
+                
+                card.style.transform = `scale(${scale})`;
+                card.style.filter = `brightness(${brightness})`;
+            } else if (rect.top > 100) {
+                card.style.transform = `scale(1)`;
+                card.style.filter = `brightness(1)`;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
