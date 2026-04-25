@@ -1,208 +1,213 @@
-import { Link } from 'react-router';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Lock, ArrowRight, Eye, EyeOff, Sparkles, ShieldCheck } from 'lucide-react';
-import { useState } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+import { ShieldCheck, ArrowRight, Eye, EyeOff, Activity, Sparkles, Target } from 'lucide-react';
+import { Link } from 'react-router';
+import { cn } from '@/lib/utils';
+
+const GoogleIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+    <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#0077B5">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+  </svg>
+);
+
+const TechnicalBadge = ({ text }: { text: string }) => (
+  <div className="inline-flex items-center gap-3 px-5 py-2 bg-white/50 backdrop-blur-xl border border-black/5 rounded-full">
+    <div className="w-1.5 h-1.5 rounded-full bg-[#4EA62F] animate-pulse" />
+    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40 font-mono italic">
+      {text}
+    </span>
+  </div>
+);
 
 export default function SignIn() {
+  const [isFocused, setIsFocused] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <>
-      <Navigation />
-      
-      <div className="min-h-screen flex flex-col lg:flex-row bg-[#FAF8F5] selection:bg-[#4EA62F]/20">
-        
-        {/* LEFT COLUMN: Form */}
-        <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 lg:px-24 xl:px-32 relative z-10 pt-32 pb-12 lg:py-0">
+    <div
+      className="h-screen bg-[#FDFDFC] overflow-hidden relative flex flex-col items-center justify-center selection:bg-[#4EA62F]/20 selection:text-[#0F172A]"
+      style={{ fontFamily: "'Outfit', sans-serif" }}
+    >
+      {/* ── CINEMATIC AMBIENT BACKGROUND ── */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#4EA62F]/3 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-[#4EA62F]/2 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* ── LOGO (Navigation-style, Floating Center) ── */}
+      <nav className="absolute top-0 left-0 w-full px-10 py-10 z-50 flex justify-center pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="pointer-events-auto"
+        >
+          <Link to="/" className="flex flex-col items-center group relative">
+            <span className="font-black uppercase flex items-baseline gap-0.5 font-['Outfit',sans-serif] text-[20px] tracking-[0.3em] text-[#0F172A] transition-colors">
+              EDUP<span className="text-[#4EA62F]">ATH</span>
+            </span>
+          </Link>
+        </motion.div>
+      </nav>
+
+      {/* ── CENTRAL CONCENTRIC GRID (Bringing sides to center) ── */}
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          
+          {/* Left Column: Focused Brand Intelligence */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-[440px] mx-auto lg:mx-0"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="hidden lg:flex flex-col space-y-8"
           >
-            {/* Header */}
-            <div className="mb-10">
-              <h1 className="text-4xl lg:text-5xl font-[1000] text-[#0A0A0B] uppercase tracking-tighter leading-none mb-4 font-['Outfit',sans-serif]">
-                Welcome <br/><span className="text-[#4EA62F]">Back</span>
+            <TechnicalBadge text="Student Authentication" />
+            
+            <div className="space-y-4">
+              <h1 className="text-[clamp(3rem,4.5vw,5rem)] font-black tracking-[-0.05em] uppercase leading-[0.85] text-[#0F172A]">
+                Access <br />
+                <span className="text-[#4EA62F] italic font-light lowercase tracking-normal">the</span> Global.
               </h1>
-              <p className="text-[#64748B] text-sm lg:text-base font-medium">
-                Enter your credentials to access your global intelligence dashboard.
+              <p className="text-xl text-black/40 font-bold leading-tight tracking-tighter max-w-sm">
+                International education is broken. Log in and <span className="text-black">re-architect your journey.</span>
               </p>
             </div>
 
-            {/* Social Logins */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <button className="group flex items-center justify-center gap-3 h-12 bg-white border border-[#E2E8F0] rounded-xl hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-all font-bold text-xs tracking-wide uppercase text-[#0F172A] shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md">
-                <svg className="w-4 h-4 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
-                Google
-              </button>
-              <button className="group flex items-center justify-center gap-3 h-12 bg-white border border-[#E2E8F0] rounded-xl hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-all font-bold text-xs tracking-wide uppercase text-[#0F172A] shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md">
-                <svg className="w-4 h-4 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.78 1.18-.19 2.29-.88 3.57-.84 1.58.12 2.81.74 3.65 1.88-3.21 1.88-2.68 5.89.5 7.06-.7 1.8-1.57 3.33-2.8 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                </svg>
-                Apple
-              </button>
-            </div>
-
-            <div className="relative mb-8">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#E2E8F0]" />
+            <div className="flex items-center gap-12 pt-8 border-t border-black/5">
+              <div className="space-y-1">
+                <div className="text-xl font-black text-black">48K+</div>
+                <div className="text-[9px] font-black uppercase tracking-widest text-black/20">Global Nodes</div>
               </div>
-              <div className="relative flex justify-center text-[10px] uppercase tracking-widest font-black">
-                <span className="bg-[#FAF8F5] px-4 text-[#94A3B8]">Or continue with</span>
+              <div className="space-y-1">
+                <div className="text-xl font-black text-black">30+</div>
+                <div className="text-[9px] font-black uppercase tracking-widest text-black/20">Active Markets</div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Form */}
-            <form className="space-y-6">
-              
-              <div className="space-y-2 group">
-                <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#0F172A] group-focus-within:text-[#4EA62F] transition-colors">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4.5 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-[#94A3B8] group-focus-within:text-[#4EA62F] transition-colors" />
-                  </div>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full pl-12 pr-4 py-4 bg-white border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4EA62F]/20 focus:border-[#4EA62F] text-[#0F172A] placeholder:text-[#94A3B8] font-medium transition-all shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)]"
-                    placeholder="name@university.edu"
-                  />
+          {/* Right Column: Premium Auth Interface */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="flex justify-center lg:justify-end"
+          >
+            <div className="w-full max-w-[420px] bg-white border border-black/5 rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.06)] p-10 space-y-8">
+              {/* Header */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-[10px] font-black tracking-[0.5em] text-[#4EA62F] uppercase">
+                  <Target size={12} />
+                  Secure Protocol
                 </div>
+                <h2 className="text-3xl font-black tracking-tight text-[#0F172A] uppercase leading-tight">
+                  Welcome back.
+                </h2>
               </div>
 
-              <div className="space-y-2 group">
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#0F172A] group-focus-within:text-[#4EA62F] transition-colors">
-                    Password
-                  </label>
-                  <a href="#" className="text-[10px] font-black uppercase tracking-widest text-[#4EA62F] hover:text-[#0A0A0B] transition-colors">
-                    Forgot?
-                  </a>
-                </div>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4.5 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-[#94A3B8] group-focus-within:text-[#4EA62F] transition-colors" />
-                  </div>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    className="w-full pl-12 pr-12 py-4 bg-white border border-[#E2E8F0] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4EA62F]/20 focus:border-[#4EA62F] text-[#0F172A] placeholder:text-[#94A3B8] font-medium transition-all shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)]"
-                    placeholder="••••••••"
-                  />
-                  <button 
+              {/* Social Login */}
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { name: 'Google', icon: <GoogleIcon /> },
+                  { name: 'LinkedIn', icon: <LinkedInIcon /> }
+                ].map((p) => (
+                  <button
+                    key={p.name}
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-[#94A3B8] hover:text-[#0F172A] focus:outline-none transition-colors"
+                    className="flex items-center justify-center gap-3 py-3.5 rounded-2xl border border-black/5 bg-white hover:border-[#4EA62F] hover:bg-[#4EA62F]/3 transition-all duration-300 group shadow-sm"
                   >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                    <div className="transition-transform group-hover:scale-110">{p.icon}</div>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-black/40 group-hover:text-[#0F172A] transition-colors">{p.name}</span>
                   </button>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="relative flex items-center justify-center">
+                <div className="w-full h-px bg-black/5" />
+                <span className="absolute px-5 bg-white text-[8px] font-black tracking-[0.5em] text-black/15 uppercase">or email</span>
+              </div>
+
+              {/* Form */}
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="space-y-5">
+                  <div className="space-y-1.5">
+                    <label className={cn("block text-[10px] font-black tracking-[0.4em] uppercase transition-colors", isFocused === 'e' ? "text-[#4EA62F]" : "text-black/30")}>Email</label>
+                    <input
+                      type="email"
+                      required
+                      onFocus={() => setIsFocused('e')}
+                      onBlur={() => setIsFocused(null)}
+                      className={cn(
+                        "w-full bg-transparent border-b-2 pb-3 text-lg font-bold text-[#0F172A]",
+                        "focus:outline-none transition-all duration-300 placeholder:text-black/10",
+                        isFocused === 'e' ? "border-[#4EA62F]" : "border-black/5"
+                      )}
+                      placeholder="name@edu.path"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between">
+                      <label className={cn("block text-[10px] font-black tracking-[0.4em] uppercase transition-colors", isFocused === 'p' ? "text-[#4EA62F]" : "text-black/30")}>Password</label>
+                      <button className="text-[8px] font-black uppercase text-black/15 hover:text-[#4EA62F]">Reset?</button>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        required
+                        onFocus={() => setIsFocused('p')}
+                        onBlur={() => setIsFocused(null)}
+                        className={cn(
+                          "w-full bg-transparent border-b-2 pb-3 text-lg font-bold text-[#0F172A] pr-10",
+                          "focus:outline-none transition-all duration-300 placeholder:text-black/10",
+                          isFocused === 'p' ? "border-[#4EA62F]" : "border-black/5"
+                        )}
+                        placeholder="••••••••"
+                      />
+                      <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-0 top-0 text-black/10 hover:text-[#4EA62F] transition-colors p-2">
+                        {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="pt-2">
-                <button className="group relative w-full h-14 rounded-xl bg-[#0A0A0B] text-white text-[11px] font-[1000] tracking-[0.2em] uppercase overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-[0_20px_40px_-15px_rgba(10,10,11,0.3)] hover:shadow-[0_20px_40px_-15px_rgba(78,166,47,0.4)]">
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    ACCESS PORTAL <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
+                <button
+                  type="submit"
+                  className="group relative w-full h-14 bg-[#0F172A] text-white text-[10px] font-black uppercase tracking-[0.4em] rounded-2xl flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden shadow-xl shadow-black/10 transform"
+                >
+                  <span className="relative z-20 flex items-center gap-3 transition-colors duration-500 group-hover:text-white">
+                    Log In <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </span>
-                  <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                  <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
                 </button>
+              </form>
+
+              {/* Footer */}
+              <div className="text-center">
+                <Link to="/signup" className="text-[10px] font-black uppercase tracking-[0.1em] text-black/25 hover:text-[#4EA62F] transition-colors">
+                  New to Edupath? <span className="text-[#0F172A] ml-1">Sign Up</span>
+                </Link>
               </div>
-
-            </form>
-
-            <p className="mt-10 text-center text-sm font-medium text-[#64748B]">
-              New to EduPath?{' '}
-              <Link to="/signup" className="text-[#0A0A0B] font-bold hover:text-[#4EA62F] transition-colors inline-block relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-[#4EA62F] after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
-                Create an account
-              </Link>
-            </p>
+            </div>
           </motion.div>
         </div>
-
-        {/* RIGHT COLUMN: Visual Elements */}
-        <div className="hidden lg:flex flex-1 relative bg-[#0A0A0B] overflow-hidden p-4 lg:p-6">
-          <div className="relative w-full h-full rounded-[2rem] overflow-hidden group">
-            
-            {/* Immersive Image */}
-            <motion.img 
-              initial={{ scale: 1.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 0.6 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80"
-              className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[20s] ease-linear grayscale group-hover:grayscale-0"
-              alt="Students"
-            />
-            
-            {/* Gradients */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B]/40 to-transparent opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0B]/80 via-[#0A0A0B]/20 to-transparent mix-blend-multiply" />
-            
-            {/* Cinematic overlay UI */}
-            <div className="absolute inset-0 flex flex-col justify-end p-12 lg:p-16">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-              >
-                <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8">
-                  <Sparkles className="w-4 h-4 text-[#4EA62F]" />
-                  <span className="text-[10px] font-black text-white uppercase tracking-[0.2em] shadow-sm">Global Network</span>
-                </div>
-                
-                <h2 className="text-4xl lg:text-5xl font-[1000] text-white tracking-tighter leading-[1.1] mb-6 font-['Outfit',sans-serif]">
-                  YOUR JOURNEY TO <br className="hidden xl:block" />
-                  <span className="text-white/50">WORLD-CLASS</span> EDUCATION.
-                </h2>
-                
-                <p className="text-lg text-white/70 font-medium max-w-lg mb-12 leading-relaxed">
-                  Join thousands of international students securing their visas, housing, and essentials before even landing.
-                </p>
-
-                <div className="grid grid-cols-3 border-t border-white/10 pt-8 gap-8">
-                   <div>
-                     <div className="text-3xl font-[1000] text-white mb-1 tracking-tighter">150+</div>
-                     <div className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Countries</div>
-                   </div>
-                   <div>
-                     <div className="text-3xl font-[1000] text-white mb-1 tracking-tighter">10k+</div>
-                     <div className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Students</div>
-                   </div>
-                   <div>
-                     <div className="text-3xl font-[1000] text-white mb-1 tracking-tighter">24/7</div>
-                     <div className="text-[10px] font-bold text-white/50 uppercase tracking-widest">AI Support</div>
-                   </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Floating verification badge */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="absolute top-10 right-10 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl flex items-center gap-4 shadow-2xl"
-            >
-              <div className="w-10 h-10 bg-[#4EA62F]/20 rounded-full flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5 text-[#4EA62F]" />
-              </div>
-              <div>
-                <div className="text-white font-[1000] text-sm tracking-tight">Secure Portal</div>
-                <div className="text-white/50 text-[10px] font-black uppercase tracking-widest mt-0.5">End-to-end encrypted</div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
       </div>
-    </>
+
+      {/* Floating System HUD */}
+      <footer className="fixed bottom-0 left-0 w-full p-10 pointer-events-none opacity-[0.12] flex justify-between items-end">
+         <div className="text-[9px] font-black tracking-[0.4em] uppercase text-black">V.204 // TERMINAL.ACTIVE</div>
+         <div className="flex items-center gap-3">
+            <ShieldCheck size={14} className="text-[#4EA62F]" />
+            <span className="text-[9px] font-black tracking-[0.4em] uppercase text-black">AES-256 SECURED</span>
+         </div>
+      </footer>
+    </div>
   );
 }

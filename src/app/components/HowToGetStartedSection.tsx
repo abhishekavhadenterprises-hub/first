@@ -23,15 +23,7 @@ export function HowToGetStartedSection({ serviceId }: { serviceId?: string }) {
   if (!isMounted || !data) return <div className="h-[600px] w-full bg-white" />;
 
   return (
-    <section className="relative w-full bg-white overflow-hidden py-24 lg:py-32">
-      {/* Subtle grid texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+    <section className="relative w-full bg-white overflow-hidden py-16 lg:py-20">
 
       <div className="relative z-10 max-w-[1320px] mx-auto px-6 lg:px-12">
 
@@ -50,8 +42,10 @@ export function HowToGetStartedSection({ serviceId }: { serviceId?: string }) {
                 Guided Process
               </span>
             </div>
-            <h2 className="text-[clamp(1.8rem,4vw,3.5rem)] font-[1000] text-[#0F172A] leading-[0.88] tracking-[-0.04em] uppercase">
-              {data.title}
+            <h2 className="relative">
+               <span className="relative z-10 text-[clamp(2.5rem,6vw,4.5rem)] font-[1000] text-[#0F172A] leading-[0.82] tracking-[-0.05em] uppercase">
+                {data.title}
+               </span>
             </h2>
           </div>
 
@@ -70,7 +64,7 @@ export function HowToGetStartedSection({ serviceId }: { serviceId?: string }) {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_480px] gap-6 lg:gap-8 items-start">
 
           {/* LEFT — step list */}
-          <div className="flex flex-col divide-y divide-black/[0.06]">
+          <div className="flex flex-col gap-4">
             {data.steps.map((step, i) => {
               const isActive = display === i;
               return (
@@ -80,8 +74,8 @@ export function HowToGetStartedSection({ serviceId }: { serviceId?: string }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className={`group relative flex items-start gap-6 py-8 lg:py-9 px-6 rounded-2xl cursor-pointer select-none transition-all duration-500 ${
-                    isActive ? 'bg-[#0F172A]' : 'bg-transparent hover:bg-black/[0.02]'
+                  className={`group relative flex items-start gap-6 py-5 lg:py-6 px-6 rounded-2xl cursor-pointer select-none transition-all duration-500 ${
+                    isActive ? 'bg-[#0F172A] shadow-[0_20px_50px_rgba(0,0,0,0.15)]' : 'bg-white border border-black/[0.04] shadow-sm hover:shadow-md'
                   }`}
                   onHoverStart={() => setHoveredStep(i)}
                   onHoverEnd={() => setHoveredStep(null)}

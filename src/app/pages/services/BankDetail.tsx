@@ -1,5 +1,4 @@
-import { useParams, Link, useNavigate } from 'react-router';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useParams, Link, useNavigate } from 'react-router';
 import { Footer } from '@/app/components/Footer';
 import { bankProviders } from '@/app/components/BankProvidersSection';
 import { 
@@ -24,12 +23,11 @@ export default function BankDetail() {
   if (!bank) {
     return (
       <div className="relative min-h-screen bg-white">
-        <Navigation />
         <div className="max-w-7xl mx-auto px-6 py-24 text-center">
           <h1 className="text-3xl font-semibold text-gray-900 mb-4">Bank Not Found</h1>
           <p className="text-gray-600 mb-8">The banking provider you're looking for doesn't exist.</p>
           <Link to="/services/banks" className="text-[#4B6E48] hover:underline">
-            ← Back to All Banks
+            â† Back to All Banks
           </Link>
         </div>
         <Footer />
@@ -39,7 +37,6 @@ export default function BankDetail() {
 
   return (
     <div className="relative min-h-screen bg-white">
-      <Navigation />
 
       {/* Header Section */}
       <div className="bank-detail-header">
@@ -75,7 +72,7 @@ export default function BankDetail() {
                     <span>{bank.accountType}</span>
                   </div>
                   <div className="bank-detail-rating-badge">
-                    <span className="bank-detail-rating-star">⭐</span>
+                    <span className="bank-detail-rating-star">â­</span>
                     <span className="bank-detail-rating-text">{bank.rating}/5</span>
                   </div>
                 </div>
@@ -222,7 +219,7 @@ export default function BankDetail() {
                   </div>
                   <div className="bank-detail-quick-item">
                     <span className="bank-detail-quick-label">Customer Rating</span>
-                    <span className="bank-detail-quick-value">⭐ {bank.rating}/5</span>
+                    <span className="bank-detail-quick-value">â­ {bank.rating}/5</span>
                   </div>
                 </div>
               </motion.div>

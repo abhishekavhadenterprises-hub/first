@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { FeatureCard } from '@/app/components/ui/feature-card';
 import { Footer } from '@/app/components/Footer';
-import { Navigation } from '@/app/components/Navigation';
 import { GraduationCap, Info, Search, BookOpen, Users, TrendingUp, DollarSign, Calendar, Award, MapPin, Building2, Globe, ChevronDown, Laptop, ArrowRight, Clock } from 'lucide-react';
 import { StandardButton } from '@/app/components/ui/standard-button';
 import { UniversityCTASection } from '@/app/components/UniversityCTASection';
@@ -72,7 +71,7 @@ const universityList = [
     country: "United Kingdom",
     rankBadge: "#2",
     description: "The University of Oxford is a collegiate research university in Oxford, England. There is evidence of teaching as early as 1096, making it the oldest university in the English-speaking world.",
-    tuitionRange: "£9,250 - £28,000/year",
+    tuitionRange: "Â£9,250 - Â£28,000/year",
     acceptance: "17.5%",
     applicationDeadline: "October 15, 2025",
     rankings: "QS #2, THE #1",
@@ -159,7 +158,6 @@ export default function Universities() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
       {/* Hero Section with Asymmetric Grid */}
       <div className="max-w-[1440px] mx-auto px-8 my-20">
         <div className="flex flex-col-reverse lg:flex-row gap-8 justify-between items-center">
@@ -173,18 +171,20 @@ export default function Universities() {
               <p className="uppercase text-xs tracking-wider text-[rgb(255,251,251)] mb-2">
                 Find Your Perfect Match
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+              <h1 className="">
                 Discover Your Dream University
               </h1>
-              <p className="text-base md:text-lg leading-relaxed font-light text-[rgb(255,255,255)] mb-6">
+              <p className="text-sm md:text-base leading-relaxed font-light text-[rgb(255,255,255)] mb-6">
                 Explore thousands of universities worldwide and find the perfect fit for your academic journey with our comprehensive database and expert guidance
               </p>
-              <a
-                href="#"
-                className="inline-flex items-center justify-center px-8 py-3.5 mx-auto lg:mx-0 text-gray-900 bg-white rounded-lg hover:bg-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 font-medium"
+              <button
+                className="group relative inline-flex items-center justify-center px-10 py-4 mx-auto lg:mx-0 bg-white text-[#0F172A] text-[13px] font-black uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-500 shadow-xl shadow-black/5 transform"
               >
-                Learn more
-              </a>
+                <span className="relative z-20 group-hover:text-white transition-colors duration-500">
+                  Learn more
+                </span>
+                <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+              </button>
             </motion.div>
           </div>
 
@@ -339,7 +339,7 @@ export default function Universities() {
                   <span className="text-white text-lg font-bold">{university.rankBadge}</span>
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-gray-900 mb-2">
                     {university.name}
                   </h2>
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -423,7 +423,7 @@ export default function Universities() {
                 <ul className="space-y-2">
                   {university.keyHighlights.map((highlight, highlightIndex) => (
                     <li key={highlightIndex} className="flex items-start gap-2 text-sm text-gray-600">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span>{highlight}</span>
                     </li>
                   ))}
@@ -436,7 +436,7 @@ export default function Universities() {
                   className="px-6"
                   onClick={() => navigate(`/universities/${university.name.toLowerCase().replace(/\s+/g, '-')}`)}
                 >
-                  View University Details →
+                  View University Details â†’
                 </StandardButton>
               </div>
             </div>
@@ -455,10 +455,10 @@ export default function Universities() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-gray-900 mb-4">
               Explore Popular Courses
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 max-w-2xl mx-auto">
               Discover trending programs and courses offered by top universities worldwide
             </p>
           </motion.div>
@@ -630,7 +630,7 @@ export default function Universities() {
         <div className="max-w-6xl mx-auto">
           {/* Section Title */}
           <motion.h2
-            className="text-[40px] font-semibold text-[#0F172A] text-center mb-3 tracking-tight"
+            className="text-[#0F172A] text-center mb-3"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}

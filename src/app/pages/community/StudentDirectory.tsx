@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { 
   Search, 
@@ -111,7 +110,6 @@ export default function StudentDirectory() {
 
   return (
     <>
-      <Navigation />
 
       {/* Search and Filters - Glassmorphic Sticky Bar */}
       <section className="relative py-4 sm:py-6 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-20 z-10 shadow-sm">
@@ -385,7 +383,7 @@ function StudentCard({
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-[#4B6E48]" />
-              <span className="truncate">{student.academicInfo.level} • {student.academicInfo.targetYear}</span>
+              <span className="truncate">{student.academicInfo.level} â€¢ {student.academicInfo.targetYear}</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600">
               <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 text-[#4B6E48]" />

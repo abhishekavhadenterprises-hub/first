@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   FileText,
@@ -60,7 +59,6 @@ export default function StudyResources() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
@@ -200,7 +198,7 @@ export default function StudyResources() {
                   Take full-length mock tests to assess your current level
                 </p>
                 <Link to="/ielts/mock-test" className="text-sm font-medium underline hover:no-underline">
-                  Start Practice Test →
+                  Start Practice Test â†’
                 </Link>
               </div>
               <div>
@@ -209,7 +207,7 @@ export default function StudyResources() {
                   Estimate your band score based on practice results
                 </p>
                 <Link to="/ielts/score-calculator" className="text-sm font-medium underline hover:no-underline">
-                  Calculate Score →
+                  Calculate Score â†’
                 </Link>
               </div>
               <div>
@@ -218,7 +216,7 @@ export default function StudyResources() {
                   Monitor your improvement over time with analytics
                 </p>
                 <Link to="/ielts/progress" className="text-sm font-medium underline hover:no-underline">
-                  View Dashboard →
+                  View Dashboard â†’
                 </Link>
               </div>
             </div>

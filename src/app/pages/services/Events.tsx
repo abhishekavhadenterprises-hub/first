@@ -1,4 +1,3 @@
-import { Navigation } from '@/app/components/Navigation';
 import { ModernBanner } from '@/app/components/ModernBanner';
 import { AvailableServiceProviders } from '@/app/components/AvailableServiceProviders';
 import { HowToGetStartedSection } from '@/app/components/HowToGetStartedSection';
@@ -12,11 +11,10 @@ import { Footer } from '@/app/components/Footer';
 export default function Events() {
   return (
     <div className="relative min-h-screen bg-[#FDFDFC]">
-      <Navigation />
       
       <ModernBanner
         title="Student Engagement & Events"
-        description="Discover your social ecosystem. Join societies, attend welcome rituals, and explore community events across the UK."
+        description="Discover your social network. Join societies, attend welcome events, and explore community events across the UK."
         ctaText="Browse Local Events"
         ctaLink="#providers"
         imageUrl="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80"

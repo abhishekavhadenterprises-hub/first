@@ -48,9 +48,10 @@ export function CountryConciergeSection() {
               onClick={() => {
                 window.location.href = '/countries';
               }}
-              className="concierge-button concierge-button-secondary"
+              className="group relative h-14 px-10 bg-white text-[#0F172A] border-2 border-[#E2E8F0] rounded-xl font-black uppercase tracking-widest text-[11px] overflow-hidden transition-all duration-500 hover:border-[#4EA62F] transform"
             >
-              Compare Countries
+              <span className="relative z-20 group-hover:text-white transition-colors duration-500">Compare Countries</span>
+              <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
             </button>
           </div>
 

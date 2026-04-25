@@ -1,6 +1,5 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { StandardButton } from '@/app/components/ui/standard-button';
 import {
@@ -184,7 +183,7 @@ export default function HelpCenter() {
     {
       question: 'How much does it cost to study abroad?',
       answer:
-        'Costs vary significantly: USA ($20,000-$60,000/year), UK (£10,000-£38,000/year), Canada (CAD 15,000-35,000/year), Australia (AUD 20,000-45,000/year). This includes tuition and living expenses. Explore scholarships and financial aid options to reduce costs.'
+        'Costs vary significantly: USA ($20,000-$60,000/year), UK (Â£10,000-Â£38,000/year), Canada (CAD 15,000-35,000/year), Australia (AUD 20,000-45,000/year). This includes tuition and living expenses. Explore scholarships and financial aid options to reduce costs.'
     },
     {
       question: 'Can I work while studying?',
@@ -233,7 +232,6 @@ export default function HelpCenter() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navigation />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
@@ -387,7 +385,7 @@ export default function HelpCenter() {
                   <h3 className="font-semibold text-gray-900 mb-2">{video.title}</h3>
                   <div className="flex items-center gap-4 text-sm text-gray-600">
                     <span>{video.duration}</span>
-                    <span>•</span>
+                    <span>â€¢</span>
                     <span>{video.views} views</span>
                   </div>
                 </div>

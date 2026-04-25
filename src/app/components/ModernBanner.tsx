@@ -139,7 +139,7 @@ export const ModernBanner = ({
 
         {/* Global Education Ghost Text */}
         <div className="absolute top-[35%] left-0 w-full overflow-hidden opacity-[0.015] select-none">
-          <div className="text-[25vw] font-[1000] tracking-tighter uppercase whitespace-nowrap animate-marquee">
+          <div className="text-[15vw] font-[1000] tracking-tighter uppercase whitespace-nowrap animate-marquee">
             ABSOLUTE CONNECTION ABSOLUTE CONNECTION
           </div>
         </div>
@@ -163,40 +163,51 @@ export const ModernBanner = ({
 
             <h1
               ref={headlineRef}
-              className="banner-headline text-[clamp(2.5rem,8.5vw,8rem)] font-[1000] tracking-[-0.08em] text-[#0F172A] leading-[0.82] uppercase perspective-[2000px]"
+              className="banner-headline text-[clamp(2rem,6vw,5.5rem)] font-[1000] tracking-[-0.08em] text-[#0F172A] leading-[0.82] uppercase perspective-[2000px]"
             >
               {title.split(' ').map((word, i) => (
                 <span key={i} className={cn(i === 2 && "text-[#4EA62F] italic font-light")}>{word} </span>
               ))}
             </h1>
 
-            <p ref={subheadlineRef} className="banner-subheadline max-w-xl text-[20px] md:text-[26px] text-black/40 font-bold leading-tight tracking-tight">
+            <p ref={subheadlineRef} className="banner-subheadline max-w-xl text-[16px] md:text-[20px] text-black/40 font-bold leading-tight tracking-tight">
               {description}
             </p>
 
             <div className="banner-node flex flex-wrap items-center gap-10 pt-8">
-              <div
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 ref={magneticBtnRef}
                 onMouseMove={onMagneticMove}
                 onMouseLeave={onMagneticLeave}
               >
-                <Link to={ctaLink} className="group relative h-26 px-18 bg-black text-white rounded-full overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] flex items-center transition-transform active:scale-95">
-                  <span className="relative z-10 font-[1000] uppercase tracking-[0.6em] text-[13px] flex items-center gap-6">
+                <Link to={ctaLink} className="group relative h-26 px-18 bg-white text-[#0F172A] rounded-full overflow-hidden shadow-[0_40px_80px_rgba(255,255,255,0.05)] flex items-center transition-all duration-500">
+                  <span className="relative z-20 font-[1000] uppercase tracking-[0.6em] text-[13px] flex items-center gap-6 group-hover:text-white transition-colors duration-500">
                     {ctaText} <ArrowRight size={20} className="group-hover:translate-x-3 transition-transform duration-700" />
                   </span>
-                  <div className="absolute inset-0 bg-[#4EA62F] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.16, 1, 0.3, 1]" />
-                </Link>
-              </div>
 
-              <button className="group flex items-center gap-8 py-4">
-                <div className="w-18 h-18 bg-white border border-black/[0.04] rounded-full flex items-center justify-center shadow-2xl group-hover:bg-black group-hover:text-white transition-all duration-700">
-                  <Play size={22} fill="currentColor" />
+                  {/* Background Hover Effect (White to Green) - Left to Right */}
+                  <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+                </Link>
+              </motion.div>
+
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative flex items-center gap-8 py-4 px-6 rounded-full overflow-hidden transition-all duration-500 transform"
+              >
+                <div className="relative z-20 flex items-center gap-8">
+                  <div className="w-18 h-18 bg-white border border-black/[0.04] rounded-full flex items-center justify-center shadow-2xl group-hover:bg-white group-hover:text-[#4EA62F] transition-all duration-700">
+                    <Play size={22} fill="currentColor" />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#4EA62F] group-hover:text-white transition-colors">New Protocol</span>
+                    <span className="text-[13px] font-[1000] uppercase tracking-[0.3em] text-black/30 group-hover:text-white transition-colors">Watch Introduction</span>
+                  </div>
                 </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#4EA62F]">New Protocol</span>
-                  <span className="text-[13px] font-[1000] uppercase tracking-[0.3em] text-black/30 group-hover:text-black transition-colors">Watch Introduction</span>
-                </div>
-              </button>
+                <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+              </motion.button>
             </div>
 
             {/* Technical Node Metrics */}
@@ -209,7 +220,7 @@ export const ModernBanner = ({
                 <div key={metric.label} className="flex flex-col gap-3">
                   <metric.icon size={20} className="text-[#4EA62F]" />
                   <span className="text-[10px] font-[1000] uppercase tracking-[0.4em] text-black/50">{metric.label}</span>
-                  <span className="text-2xl font-[1000] text-black tracking-tighter italic leading-none">{metric.val}</span>
+                  <span className="text-xl font-[1000] text-black tracking-tighter italic leading-none">{metric.val}</span>
                 </div>
               ))}
             </div>
@@ -233,7 +244,7 @@ export const ModernBanner = ({
                   <Cpu size={22} className="text-[#4EA62F]" />
                   <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#4EA62F]">Core System_V5</span>
                 </div>
-                <p className="text-3xl font-[1000] text-[#0F172A] leading-[0.9] tracking-[-0.08em] uppercase italic">
+                <p className="text-xl font-[1000] text-[#0F172A] leading-[0.9] tracking-[-0.08em] uppercase italic">
                   Instant Tech Validation
                 </p>
               </div>

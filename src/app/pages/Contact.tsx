@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { StandardButton } from '@/app/components/ui/standard-button';
 import { 
@@ -234,7 +233,6 @@ export default function Contact() {
 
   return (
     <>
-      <Navigation />
       
       {/* Hero Header - Responsive Fix */}
       <section className="relative overflow-hidden bg-white">
@@ -280,7 +278,7 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 mb-4 sm:mb-5 leading-relaxed max-w-3xl mx-auto"
           >
-            Tell us what you need — we'll reply within 4 hours.
+            Tell us what you need â€” we'll reply within 4 hours.
           </motion.p>
           
           {/* Trust Badge Line - Improved Wrapping & Alignment */}
@@ -294,7 +292,7 @@ export default function Contact() {
               <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#4B6E48] flex-shrink-0" />
               <span className="font-medium">Trusted by 10,000+ students</span>
             </div>
-            <span className="hidden sm:inline text-gray-400">•</span>
+            <span className="hidden sm:inline text-gray-400">â€¢</span>
             <span className="text-center sm:text-left">
               moving to US, UK, Canada & beyond
             </span>
@@ -645,7 +643,7 @@ export default function Contact() {
 
               {/* Response Time Card */}
               <div className="bg-gradient-to-br from-[#4B6E48] to-[#3d5a3a] rounded-2xl p-5 sm:p-6 text-white">
-                <h3 className="text-base sm:text-lg font-semibold mb-2">⚡ Quick Response</h3>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">âš¡ Quick Response</h3>
                 <p className="text-sm text-white/95 mb-4 leading-relaxed">
                   Average response time: <span className="font-bold">Under 4 hours</span>
                 </p>
@@ -722,11 +720,11 @@ export default function Contact() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="/privacy" className="hover:text-[#4B6E48] transition-colors">Privacy Policy</a>
-              <span>•</span>
+              <span>â€¢</span>
               <a href="/terms" className="hover:text-[#4B6E48] transition-colors">Terms of Service</a>
-              <span>•</span>
+              <span>â€¢</span>
               <a href="/cookies" className="hover:text-[#4B6E48] transition-colors">Cookie Policy</a>
-              <span>•</span>
+              <span>â€¢</span>
               <a href="/refund" className="hover:text-[#4B6E48] transition-colors">Refund Policy</a>
             </div>
           </div>

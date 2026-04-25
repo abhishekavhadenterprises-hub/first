@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState, useEffect } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -41,7 +40,7 @@ const samplePassage = {
   wordCount: 847,
   content: `Climate change poses significant challenges to global agriculture, threatening food security and livelihoods worldwide. Rising temperatures, shifting precipitation patterns, and increased frequency of extreme weather events are already affecting crop yields and farming practices across diverse regions.
 
-Research indicates that average global temperatures have increased by approximately 1.1°C since pre-industrial times, with projections suggesting further increases of 1.5°C to 4°C by 2100 depending on greenhouse gas emission scenarios. These temperature changes have profound implications for agricultural productivity.
+Research indicates that average global temperatures have increased by approximately 1.1Â°C since pre-industrial times, with projections suggesting further increases of 1.5Â°C to 4Â°C by 2100 depending on greenhouse gas emission scenarios. These temperature changes have profound implications for agricultural productivity.
 
 In tropical and subtropical regions, even modest temperature increases can reduce yields of staple crops such as rice, maize, and wheat. Studies show that for each degree Celsius increase in temperature, wheat yields decline by approximately 6%, while rice and maize yields decrease by 3-4%. This is particularly concerning given that these three crops provide over 50% of global caloric intake.
 
@@ -57,9 +56,9 @@ const sampleQuestions: Question[] = [
     id: 'q1',
     type: 'MCQ',
     question: 'According to the passage, what is the projected temperature increase by 2100?',
-    options: ['0.5°C to 2°C', '1.5°C to 4°C', '2°C to 5°C', '3°C to 6°C'],
-    correctAnswer: '1.5°C to 4°C',
-    explanation: 'The passage states "projections suggesting further increases of 1.5°C to 4°C by 2100"'
+    options: ['0.5Â°C to 2Â°C', '1.5Â°C to 4Â°C', '2Â°C to 5Â°C', '3Â°C to 6Â°C'],
+    correctAnswer: '1.5Â°C to 4Â°C',
+    explanation: 'The passage states "projections suggesting further increases of 1.5Â°C to 4Â°C by 2100"'
   },
   {
     id: 'q2',
@@ -159,7 +158,6 @@ export default function ReadingPractice() {
 
     return (
       <>
-        <Navigation />
         <AIAssistantNav />
         <div className="min-h-screen bg-gray-50 pt-24 pb-16">
           <div className="max-w-5xl mx-auto px-4">
@@ -303,7 +301,6 @@ export default function ReadingPractice() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
       
       {/* Main Container - Auto Layout Vertical */}

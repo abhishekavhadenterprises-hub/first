@@ -400,50 +400,7 @@ export function CountriesBanner() {
            Reduce spacing below heading by 12-16px
            ============================================ */
         .hero-heading {
-          font-weight: 700;
-          color: white;
           margin: 0 0 6px 0;
-          line-height: 1.25;
-        }
-
-        /* Mobile (≤480px): 24px */
-        @media (max-width: 480px) {
-          .hero-heading {
-            font-size: 24px;
-            line-height: 1.3;
-          }
-        }
-
-        /* Mobile-Large (481-767px): 26px */
-        @media (min-width: 481px) and (max-width: 767px) {
-          .hero-heading {
-            font-size: 26px;
-            line-height: 1.3;
-          }
-        }
-
-        /* Small Tablet (768-900px): 30px */
-        @media (min-width: 768px) and (max-width: 900px) {
-          .hero-heading {
-            font-size: 30px;
-            line-height: 1.25;
-          }
-        }
-
-        /* Large Tablet (901-1199px): 32px */
-        @media (min-width: 901px) and (max-width: 1199px) {
-          .hero-heading {
-            font-size: 32px;
-            line-height: 1.25;
-          }
-        }
-
-        /* Desktop (≥1200px): 40px */
-        @media (min-width: 1200px) {
-          .hero-heading {
-            font-size: 40px;
-            line-height: 1.2;
-          }
         }
 
         /* ============================================

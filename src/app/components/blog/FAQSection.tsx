@@ -91,12 +91,18 @@ export function FAQSection({
                 Our dedicated student success team is available 24/7 to guide you.
               </p>
               
-              <button className="group/btn flex items-center justify-between w-full p-4 bg-[#0F172A] hover:bg-[#4EA62F] text-white rounded-2xl transition-all duration-500 overflow-hidden relative">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] relative z-10 px-4">Contact Specialist</span>
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
-                  <ArrowRight size={16} />
+              <motion.button 
+                whileHover={{ scale: 0.98 }}
+                whileTap={{ scale: 0.95 }}
+                className="group/btn flex items-center justify-between w-full h-16 bg-[#0F172A] text-white rounded-2xl transition-all duration-500 overflow-hidden relative shadow-xl shadow-black/5"
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] relative z-20 px-8 group-hover/btn:text-white transition-colors">Contact Specialist</span>
+                <div className="relative z-20 mr-4 w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover/btn:bg-white group-hover/btn:text-[#0F172A] transition-all duration-500">
+                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                 </div>
-              </button>
+                {/* Premium Background Slide */}
+                <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-700 z-10" />
+              </motion.button>
             </motion.div>
           </div>
 
@@ -117,9 +123,10 @@ export function FAQSection({
                       : "bg-white border-black/[0.04] hover:border-[#4EA62F]/30 hover:shadow-lg"
                   )}
                 >
-                  <button
+                  <motion.button
+                    whileHover={{ x: 4 }}
                     onClick={() => toggleFAQ(index)}
-                    className="w-full p-8 lg:p-10 flex items-center justify-between text-left gap-8"
+                    className="w-full p-8 lg:p-10 flex items-center justify-between text-left gap-8 relative z-10"
                   >
                     <span className={cn(
                       "text-lg lg:text-2xl font-[1000] uppercase tracking-tighter transition-all duration-500 leading-tight",
@@ -127,16 +134,23 @@ export function FAQSection({
                     )}>
                       {faq.question}
                     </span>
-                    <div className={cn(
-                      "w-12 h-12 rounded-full border border-black/5 flex items-center justify-center transition-all duration-700 flex-shrink-0",
-                      openIndex === index ? "bg-[#4EA62F] border-[#4EA62F] rotate-180 shadow-[0_0_30px_rgba(78,166,47,0.3)]" : "bg-gray-50 bg-white/50"
-                    )}>
+                    <motion.div 
+                      animate={{ 
+                        rotate: openIndex === index ? 180 : 0,
+                        backgroundColor: openIndex === index ? "#4EA62F" : "rgba(255, 255, 255, 0.5)",
+                        borderColor: openIndex === index ? "#4EA62F" : "rgba(0, 0, 0, 0.05)"
+                      }}
+                      className={cn(
+                        "w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 flex-shrink-0 shadow-sm",
+                        openIndex === index ? "shadow-[0_0_30px_rgba(78,166,47,0.3)]" : ""
+                      )}
+                    >
                       {openIndex === index 
                         ? <Minus className="w-5 h-5 text-white" /> 
                         : <Plus className="w-5 h-5 text-black/20 group-hover:text-[#4EA62F]" />
                       }
-                    </div>
-                  </button>
+                    </motion.div>
+                  </motion.button>
 
                   <AnimatePresence>
                     {openIndex === index && (

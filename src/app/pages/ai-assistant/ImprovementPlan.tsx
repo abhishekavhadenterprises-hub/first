@@ -1,5 +1,4 @@
-import { useState, useRef, useMemo, useEffect } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState, useRef, useMemo, useEffect } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -484,7 +483,7 @@ function ImprovementPlan() {
       });
     }, 250);
 
-    toast.success(`🎉 Congratulations! Week ${weekNum} completed!`, {
+    toast.success(`ðŸŽ‰ Congratulations! Week ${weekNum} completed!`, {
       duration: 5000,
     });
   };
@@ -783,7 +782,6 @@ function ImprovementPlan() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Navigation />
       <AIAssistantNav />
 
       <div className="min-h-screen bg-gray-50 pt-40 pb-16 overflow-x-hidden">
@@ -808,13 +806,13 @@ function ImprovementPlan() {
                         <status.icon className={`w-5 h-5 max-[600px]:w-4 max-[600px]:h-4 text-${status.color}-600 flex-shrink-0`} />
                         <span className={`font-semibold text-${status.color}-600 text-sm max-[600px]:text-xs whitespace-nowrap`}>{status.status}</span>
                       </div>
-                      <span className="text-gray-400 max-[600px]:hidden">•</span>
+                      <span className="text-gray-400 max-[600px]:hidden">â€¢</span>
                       <span className="text-gray-600 text-sm max-[600px]:text-[11px] whitespace-nowrap">Last updated: Feb 5, 2026</span>
                     </div>
                   </div>
                 </div>
                 
-                {/* Buttons row for mobile (≤400px) */}
+                {/* Buttons row for mobile (â‰¤400px) */}
                 <div className="hidden max-[400px]:flex flex-col gap-2 mt-4 w-full">
                   <StandardButton
                     variant="outline"
@@ -848,7 +846,7 @@ function ImprovementPlan() {
                 </div>
               </div>
               
-              {/* Right side: Action buttons (hidden on ≤400px, icon-only on ≤600px) */}
+              {/* Right side: Action buttons (hidden on â‰¤400px, icon-only on â‰¤600px) */}
               <div className="flex gap-2 max-[400px]:hidden max-[600px]:mt-0">
                 <StandardButton
                   variant="outline"
@@ -991,15 +989,15 @@ function ImprovementPlan() {
                 <div className="font-semibold mb-3">Root Causes</div>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-gray-500">•</span>
+                    <span className="text-gray-500">â€¢</span>
                     <span>Limited exposure to academic linking phrases</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gray-500">•</span>
+                    <span className="text-gray-500">â€¢</span>
                     <span>Time pressure leading to rushed reading</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gray-500">•</span>
+                    <span className="text-gray-500">â€¢</span>
                     <span>Lack of structured speaking practice routine</span>
                   </li>
                 </ul>
@@ -1010,7 +1008,7 @@ function ImprovementPlan() {
                 <ul className="space-y-2 text-sm text-gray-700">
                   {learningGaps.map((gap, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-gray-500">•</span>
+                      <span className="text-gray-500">â€¢</span>
                       <span>{gap}</span>
                     </li>
                   ))}
@@ -1025,7 +1023,7 @@ function ImprovementPlan() {
                   <div className="font-semibold mb-1">Behaviour Issues</div>
                   <ul className="space-y-1 text-sm text-gray-700">
                     {behaviourIssues.map((issue, i) => (
-                      <li key={i}>• {issue}</li>
+                      <li key={i}>â€¢ {issue}</li>
                     ))}
                   </ul>
                 </div>
@@ -1041,7 +1039,7 @@ function ImprovementPlan() {
             className="relative mb-8"
             style={{ scrollMarginTop: '110px' }}
           >
-            {/* Main Container - Two-column layout at ≥900px, single column below */}
+            {/* Main Container - Two-column layout at â‰¥900px, single column below */}
             <div className="bg-gradient-to-br from-gray-50/50 to-white/50 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-sm p-6 max-[520px]:p-4 min-h-0 h-auto">
               <div className="grid lg:grid-cols-[60%_40%] gap-6 max-[899px]:grid-cols-1">
                 {/* Left Panel: Text Content (Current Issues + Action Items) */}
@@ -1072,7 +1070,7 @@ function ImprovementPlan() {
                                 transition={{ delay: 0.3 + j * 0.1, type: "tween" }}
                                 className="text-gray-600 flex items-start gap-2 p-2 bg-white/60 rounded-lg text-sm"
                               >
-                                <span className="mt-0.5 text-sm" style={{ color: section.color }}>•</span>
+                                <span className="mt-0.5 text-sm" style={{ color: section.color }}>â€¢</span>
                                 <span className="text-sm">{issue}</span>
                               </motion.li>
                             ))}
@@ -1111,14 +1109,14 @@ function ImprovementPlan() {
                       className="w-12 h-12 rounded-xl border-2 border-gray-300/50 bg-white/80 backdrop-blur-sm flex items-center justify-center transition-all hover:border-[#4B6E48] hover:bg-white hover:scale-110 active:scale-95 shadow-lg"
                       aria-label="Previous slide"
                     >
-                      <span className="text-gray-700" style={{ paddingRight: '2px' }}>◁</span>
+                      <span className="text-gray-700" style={{ paddingRight: '2px' }}>â—</span>
                     </button>
                     <button
                       onClick={handleNextSlide}
                       className="w-12 h-12 rounded-xl border-2 border-gray-300/50 bg-white/80 backdrop-blur-sm flex items-center justify-center transition-all hover:border-[#4B6E48] hover:bg-white hover:scale-110 active:scale-95 shadow-lg"
                       aria-label="Next slide"
                     >
-                      <span className="text-gray-700" style={{ paddingLeft: '2px' }}>▷</span>
+                      <span className="text-gray-700" style={{ paddingLeft: '2px' }}>â–·</span>
                     </button>
                   </div>
 

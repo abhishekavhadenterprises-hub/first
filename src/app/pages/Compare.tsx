@@ -17,7 +17,6 @@ import {
   Pin
 } from 'lucide-react';
 import { Footer } from '@/app/components/Footer';
-import { Navigation } from '@/app/components/Navigation';
 import { universityComparisonData } from '@/app/data/universityComparisonData';
 import { CompareTabsAndFilters } from '@/app/components/CompareTabsAndFilters';
 import { SelectedCountriesSection } from '@/app/components/SelectedCountriesSection';
@@ -122,7 +121,7 @@ export default function Compare() {
         'Top Universities': 'Harvard, MIT, Stanford, Yale',
         'Popular Cities': 'Boston, NYC, San Francisco, LA',
         'Job Market Strengths': 'Tech, Finance, Healthcare',
-        'Permanent Residency': 'H-1B → Green Card pathway'
+        'Permanent Residency': 'H-1B â†’ Green Card pathway'
       }
     },
     'United Kingdom': {
@@ -133,10 +132,10 @@ export default function Compare() {
         'Safety Rating': '4.5/5'
       },
       'Costs': {
-        'Tuition Range (Annual)': '£15,000 - £40,000',
-        'Living Costs (Annual)': '£12,000 - £15,000',
-        'Total Cost Range': '£27,000 - £55,000',
-        'Health Insurance': 'IHS fee: £470/year'
+        'Tuition Range (Annual)': 'Â£15,000 - Â£40,000',
+        'Living Costs (Annual)': 'Â£12,000 - Â£15,000',
+        'Total Cost Range': 'Â£27,000 - Â£55,000',
+        'Health Insurance': 'IHS fee: Â£470/year'
       },
       'Academic System': {
         'Academic System': 'Module-based, Honours classification',
@@ -229,10 +228,10 @@ export default function Compare() {
         'Safety Rating': '4.5/5'
       },
       'Costs': {
-        'Tuition Range (Annual)': '€0 - €20,000',
-        'Living Costs (Annual)': '€10,000 - €12,000',
-        'Total Cost Range': '€10,000 - €32,000',
-        'Health Insurance': '€110/month (~€1,320/year)'
+        'Tuition Range (Annual)': 'â‚¬0 - â‚¬20,000',
+        'Living Costs (Annual)': 'â‚¬10,000 - â‚¬12,000',
+        'Total Cost Range': 'â‚¬10,000 - â‚¬32,000',
+        'Health Insurance': 'â‚¬110/month (~â‚¬1,320/year)'
       },
       'Academic System': {
         'Academic System': 'ECTS credits, 1.0-5.0 grading',
@@ -282,7 +281,7 @@ export default function Compare() {
         'Top Universities': 'NUS, NTU, SMU',
         'Popular Cities': 'Singapore (City-State)',
         'Job Market Strengths': 'Finance, Tech, Logistics',
-        'Permanent Residency': 'Employment Pass → PR pathway'
+        'Permanent Residency': 'Employment Pass â†’ PR pathway'
       }
     }
   };
@@ -325,7 +324,6 @@ export default function Compare() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
       {/* Header removed - using Navigation component instead */}
 
       <main className="flex-1 bg-[#FAFAFA] px-4 md:px-8 lg:px-12">
@@ -755,28 +753,23 @@ export default function Compare() {
             budget, and preferences. Get matched with the best options for your unique situation.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <motion.button
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.2, delay: 0.1 }}
-              whileHover={{ scale: 1.02, boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)" }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 text-sm font-medium text-white bg-[#4B6E48] rounded-lg hover:bg-[#3d5a3a] transition-colors"
+            <button
+              className="group relative px-8 py-4 bg-[#0F172A] text-white text-[13px] font-black uppercase tracking-widest rounded-xl overflow-hidden shadow-xl shadow-black/10 transition-all duration-500 transform"
             >
-              Talk to Concierge Team
-            </motion.button>
-            <motion.button
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.2, delay: 0.2 }}
-              whileHover={{ scale: 1.02, boxShadow: "0 8px 24px rgba(0, 0, 0, 0.05)" }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 text-sm font-medium text-[#475569] bg-white border border-[#E2E8F0] rounded-lg hover:border-[#CBD5E1] transition-colors"
+              <span className="relative z-20 group-hover:text-white transition-colors duration-500 flex items-center gap-2">
+                 <User size={16} /> Talk to Concierge Team
+              </span>
+              <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+            </button>
+
+            <button
+              className="group relative px-8 py-4 bg-white text-[#0F172A] border-2 border-[#E2E8F0] text-[13px] font-black uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-500 hover:border-[#4EA62F] transform"
             >
-              View All Options
-            </motion.button>
+              <span className="relative z-20 group-hover:text-white transition-colors duration-500 flex items-center gap-2">
+                 <Globe size={16} /> View All Options
+              </span>
+              <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+            </button>
           </div>
         </motion.div>
       </main>

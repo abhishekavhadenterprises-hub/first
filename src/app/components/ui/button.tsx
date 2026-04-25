@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-white text-[#0A0A0B] shadow-xl shadow-white/5",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
@@ -49,9 +49,19 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size, className }),
+        "group relative overflow-hidden transform"
+      )}
       {...props}
-    />
+    >
+      <span className="relative z-20 group-hover:text-white transition-colors duration-500">
+        {props.children}
+      </span>
+      {variant === 'default' && (
+        <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+      )}
+    </Comp>
   );
 }
 

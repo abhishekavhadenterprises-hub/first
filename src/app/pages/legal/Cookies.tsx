@@ -1,5 +1,4 @@
-import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { motion } from 'motion/react';
 import { Footer } from '@/app/components/Footer';
 import { Cookie, Mail, Settings, Shield, Eye, ToggleLeft } from 'lucide-react';
 import { useState } from 'react';
@@ -74,7 +73,6 @@ export default function Cookies() {
 
   return (
     <>
-      <Navigation />
 
       {/* Hero Header */}
       <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-[#4B6E48]/5 to-white">
@@ -212,27 +210,27 @@ export default function Cookies() {
                   <p className="text-gray-700 mb-4">We use cookies for the following purposes:</p>
                   <ul className="space-y-2 text-gray-700 ml-4">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Authentication:</strong> To recognize you when you log in and keep you signed in</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Security:</strong> To protect your account and detect fraudulent activity</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Preferences:</strong> To remember your settings, language, and customizations</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Analytics:</strong> To understand how you use our site and improve our services</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Advertising:</strong> To show you relevant ads and measure campaign effectiveness</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Performance:</strong> To monitor and improve site speed and functionality</span>
                     </li>
                   </ul>
@@ -305,7 +303,7 @@ export default function Cookies() {
                       <h4 className="font-semibold text-gray-900 mb-2">Google Analytics</h4>
                       <p className="text-sm text-gray-700">Tracks website usage and visitor behavior to help us improve our services.</p>
                       <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-[#4B6E48] hover:underline mt-1 inline-block">
-                        View Google's Privacy Policy →
+                        View Google's Privacy Policy â†’
                       </a>
                     </div>
 
@@ -313,7 +311,7 @@ export default function Cookies() {
                       <h4 className="font-semibold text-gray-900 mb-2">Facebook Pixel</h4>
                       <p className="text-sm text-gray-700">Measures ad campaign effectiveness and creates custom audiences.</p>
                       <a href="https://www.facebook.com/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-[#4B6E48] hover:underline mt-1 inline-block">
-                        View Facebook's Privacy Policy →
+                        View Facebook's Privacy Policy â†’
                       </a>
                     </div>
 
@@ -344,19 +342,19 @@ export default function Cookies() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Google Chrome</h4>
-                      <p className="text-sm text-gray-700">Settings → Privacy and security → Cookies and other site data</p>
+                      <p className="text-sm text-gray-700">Settings â†’ Privacy and security â†’ Cookies and other site data</p>
                     </div>
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Mozilla Firefox</h4>
-                      <p className="text-sm text-gray-700">Preferences → Privacy & Security → Cookies and Site Data</p>
+                      <p className="text-sm text-gray-700">Preferences â†’ Privacy & Security â†’ Cookies and Site Data</p>
                     </div>
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Safari</h4>
-                      <p className="text-sm text-gray-700">Preferences → Privacy → Manage Website Data</p>
+                      <p className="text-sm text-gray-700">Preferences â†’ Privacy â†’ Manage Website Data</p>
                     </div>
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Microsoft Edge</h4>
-                      <p className="text-sm text-gray-700">Settings → Privacy, search, and services → Cookies</p>
+                      <p className="text-sm text-gray-700">Settings â†’ Privacy, search, and services â†’ Cookies</p>
                     </div>
                   </div>
 
@@ -377,15 +375,15 @@ export default function Cookies() {
                     </p>
                     <ul className="space-y-2 text-sm text-amber-900">
                       <li className="flex items-start gap-2">
-                        <span className="mt-1">⚠️</span>
+                        <span className="mt-1">âš ï¸</span>
                         <span>You may not be able to log in or use personalized features</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="mt-1">⚠️</span>
+                        <span className="mt-1">âš ï¸</span>
                         <span>Your preferences and settings won't be saved</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="mt-1">⚠️</span>
+                        <span className="mt-1">âš ï¸</span>
                         <span>Some services may not work correctly</span>
                       </li>
                     </ul>

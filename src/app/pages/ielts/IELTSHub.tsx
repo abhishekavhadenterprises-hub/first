@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   Headphones,
@@ -125,7 +124,6 @@ export default function IELTSHub() {
 
   return (
     <>
-      <Navigation />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-[#4B6E48]/5 to-white">
@@ -224,7 +222,7 @@ export default function IELTSHub() {
 
                     <div className="flex items-center gap-2 text-[#4B6E48] font-medium group-hover:gap-3 transition-all">
                       Start Practice
-                      <span className="text-xl">→</span>
+                      <span className="text-xl">â†’</span>
                     </div>
                   </div>
                 </motion.div>
@@ -265,7 +263,7 @@ export default function IELTSHub() {
 
                   <div className="flex items-center gap-2 text-[#4B6E48] font-medium group-hover:gap-3 transition-all">
                     Access Now
-                    <span className="text-xl">→</span>
+                    <span className="text-xl">â†’</span>
                   </div>
                 </motion.div>
               </Link>

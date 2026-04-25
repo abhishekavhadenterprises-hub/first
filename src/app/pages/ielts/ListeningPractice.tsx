@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   Headphones,
@@ -70,7 +69,6 @@ export default function ListeningPractice() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 px-4">
         <div className="max-w-5xl mx-auto">

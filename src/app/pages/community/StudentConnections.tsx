@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { StandardButton } from '@/app/components/ui/standard-button';
 import { showToast, ToastContainer } from '@/app/components/ui/toast';
@@ -303,7 +302,6 @@ export default function StudentConnections() {
 
   return (
     <>
-      <Navigation />
 
       {/* Animated Network Banner Hero */}
       <section ref={heroRef} className="relative pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#4B6E48]/10 via-white to-[#4B6E48]/5">
@@ -847,7 +845,7 @@ function RequestsTab({
                     <span>{request.student.location.flag} {request.student.location.country}</span>
                     {request.student.mutualConnections && request.student.mutualConnections > 0 && (
                       <>
-                        <span>•</span>
+                        <span>â€¢</span>
                         <span>{request.student.mutualConnections} mutual</span>
                       </>
                     )}
@@ -945,7 +943,7 @@ function RequestsTab({
                     <span>{request.student.location.flag} {request.student.location.country}</span>
                     {request.student.mutualConnections && request.student.mutualConnections > 0 && (
                       <>
-                        <span>•</span>
+                        <span>â€¢</span>
                         <span>{request.student.mutualConnections} mutual</span>
                       </>
                     )}

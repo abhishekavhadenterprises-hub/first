@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { ProfileHeader } from '@/app/components/profile/ProfileHeader';
 import { OverviewTab } from '@/app/components/profile/OverviewTab';
@@ -93,7 +92,6 @@ export default function Profile() {
 
   return (
     <>
-      <Navigation />
       
       <div className="min-h-screen bg-gray-50 pt-20">
         {/* Profile Header - Scrolls with page */}

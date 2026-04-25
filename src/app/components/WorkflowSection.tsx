@@ -79,7 +79,13 @@ export function WorkflowSection() {
   const title = "Discover Universities";
   
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 bg-white font-['Outfit',sans-serif] relative overflow-hidden">
+    <section className="py-20 px-6 md:px-12 lg:px-24 bg-white font-['Outfit',sans-serif] relative overflow-hidden">
+      {/* Precision Grid Layer */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+           style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+      
+      {/* Top Transition Mask */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-10" />
       {/* Animated Mesh Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
         <motion.div 

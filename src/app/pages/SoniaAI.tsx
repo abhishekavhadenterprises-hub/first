@@ -1,5 +1,4 @@
-import { Navigation } from '@/app/components/Navigation';
-import { Footer } from '@/app/components/Footer';
+﻿import { Footer } from '@/app/components/Footer';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Send, 
@@ -174,23 +173,23 @@ export default function SoniaAI() {
     }
     
     if (input.includes('visa')) {
-      return "Student visa requirements vary by country, but I can guide you through the process! Here are the general steps:\n\n**Common Requirements:**\n• Valid passport\n• University acceptance letter\n• Proof of financial support\n• English language proficiency\n• Health insurance\n• Visa application fee\n\n**Timeline:**\n• Apply 3-4 months before departure\n• Processing time: 2-8 weeks depending on country\n\nWhich country's visa process would you like detailed information about?";
+      return "Student visa requirements vary by country, but I can guide you through the process! Here are the general steps:\n\n**Common Requirements:**\nâ€¢ Valid passport\nâ€¢ University acceptance letter\nâ€¢ Proof of financial support\nâ€¢ English language proficiency\nâ€¢ Health insurance\nâ€¢ Visa application fee\n\n**Timeline:**\nâ€¢ Apply 3-4 months before departure\nâ€¢ Processing time: 2-8 weeks depending on country\n\nWhich country's visa process would you like detailed information about?";
     }
     
     if (input.includes('scholarship')) {
-      return "Great question! There are many scholarship opportunities for international students. Here are some popular options:\n\n**Merit-Based Scholarships:**\n• Fulbright Program (US)\n• Chevening Scholarships (UK)\n• DAAD Scholarships (Germany)\n• Erasmus+ (Europe)\n\n**University-Specific:**\n• Most universities offer partial to full tuition waivers\n• Research assistantships for graduate students\n\n**Application Tips:**\n✓ Start early (6-12 months before)\n✓ Maintain strong academic records\n✓ Write compelling essays\n✓ Get strong recommendation letters\n\nWould you like me to find scholarships specific to your field and destination?";
+      return "Great question! There are many scholarship opportunities for international students. Here are some popular options:\n\n**Merit-Based Scholarships:**\nâ€¢ Fulbright Program (US)\nâ€¢ Chevening Scholarships (UK)\nâ€¢ DAAD Scholarships (Germany)\nâ€¢ Erasmus+ (Europe)\n\n**University-Specific:**\nâ€¢ Most universities offer partial to full tuition waivers\nâ€¢ Research assistantships for graduate students\n\n**Application Tips:**\nâœ“ Start early (6-12 months before)\nâœ“ Maintain strong academic records\nâœ“ Write compelling essays\nâœ“ Get strong recommendation letters\n\nWould you like me to find scholarships specific to your field and destination?";
     }
     
     if (input.includes('ielts') || input.includes('toefl') || input.includes('english test')) {
-      return "English proficiency tests are crucial for studying abroad! Here's what you need to know:\n\n**IELTS vs TOEFL:**\n• IELTS: More popular in UK, Australia, Canada\n• TOEFL: Preferred in the US\n• Both are accepted by most universities\n\n**Typical Requirements:**\n• Undergraduate: 6.0-6.5 IELTS / 80-90 TOEFL\n• Graduate: 6.5-7.5 IELTS / 90-100 TOEFL\n\n**Preparation Timeline:**\n• 3-6 months for serious preparation\n• Take practice tests first\n• Focus on your weakest section\n\n**Tips:**\n✓ Practice all 4 sections equally\n✓ Take official practice tests\n✓ Consider prep courses if needed\n\nWould you like study resources or practice materials?";
+      return "English proficiency tests are crucial for studying abroad! Here's what you need to know:\n\n**IELTS vs TOEFL:**\nâ€¢ IELTS: More popular in UK, Australia, Canada\nâ€¢ TOEFL: Preferred in the US\nâ€¢ Both are accepted by most universities\n\n**Typical Requirements:**\nâ€¢ Undergraduate: 6.0-6.5 IELTS / 80-90 TOEFL\nâ€¢ Graduate: 6.5-7.5 IELTS / 90-100 TOEFL\n\n**Preparation Timeline:**\nâ€¢ 3-6 months for serious preparation\nâ€¢ Take practice tests first\nâ€¢ Focus on your weakest section\n\n**Tips:**\nâœ“ Practice all 4 sections equally\nâœ“ Take official practice tests\nâœ“ Consider prep courses if needed\n\nWould you like study resources or practice materials?";
     }
     
     if (input.includes('cost') || input.includes('expensive') || input.includes('afford')) {
-      return "Understanding costs is crucial for planning! Here's a breakdown:\n\n**Tuition Fees (per year):**\n• UK: £10,000 - £38,000\n• US: $20,000 - $60,000\n• Canada: CAD 15,000 - 35,000\n• Germany: Free - €3,000 (many public universities are free!)\n• Australia: AUD 20,000 - 45,000\n\n**Living Expenses (per year):**\n• Accommodation: $8,000 - $15,000\n• Food: $3,000 - $5,000\n• Transportation: $1,000 - $2,000\n• Books & supplies: $500 - $1,000\n\n**Ways to Reduce Costs:**\n✓ Apply for scholarships\n✓ Look for countries with lower tuition\n✓ Consider part-time work (if visa allows)\n✓ Choose universities in smaller cities\n\nWhich country would you like detailed cost information for?";
+      return "Understanding costs is crucial for planning! Here's a breakdown:\n\n**Tuition Fees (per year):**\nâ€¢ UK: Â£10,000 - Â£38,000\nâ€¢ US: $20,000 - $60,000\nâ€¢ Canada: CAD 15,000 - 35,000\nâ€¢ Germany: Free - â‚¬3,000 (many public universities are free!)\nâ€¢ Australia: AUD 20,000 - 45,000\n\n**Living Expenses (per year):**\nâ€¢ Accommodation: $8,000 - $15,000\nâ€¢ Food: $3,000 - $5,000\nâ€¢ Transportation: $1,000 - $2,000\nâ€¢ Books & supplies: $500 - $1,000\n\n**Ways to Reduce Costs:**\nâœ“ Apply for scholarships\nâœ“ Look for countries with lower tuition\nâœ“ Consider part-time work (if visa allows)\nâœ“ Choose universities in smaller cities\n\nWhich country would you like detailed cost information for?";
     }
 
     // Default response
-    return "That's a great question! I'm here to help with:\n\n• University and program recommendations\n• Visa and immigration guidance\n• Scholarship and funding opportunities\n• Application requirements and deadlines\n• English test preparation\n• Cost estimation and budgeting\n• Statement of Purpose review\n• Country comparisons\n\nCould you provide more details about what you'd like to know? The more specific you are, the better I can assist you!";
+    return "That's a great question! I'm here to help with:\n\nâ€¢ University and program recommendations\nâ€¢ Visa and immigration guidance\nâ€¢ Scholarship and funding opportunities\nâ€¢ Application requirements and deadlines\nâ€¢ English test preparation\nâ€¢ Cost estimation and budgeting\nâ€¢ Statement of Purpose review\nâ€¢ Country comparisons\n\nCould you provide more details about what you'd like to know? The more specific you are, the better I can assist you!";
   };
 
   const handleQuickAction = (prompt: string) => {
@@ -295,7 +294,6 @@ export default function SoniaAI() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
         <div className="max-w-[1800px] mx-auto px-4 py-8">
@@ -570,7 +568,7 @@ export default function SoniaAI() {
                   </div>
                   
                   <p className="text-xs text-gray-500 mt-2 text-center">
-                    Press Enter to send • Shift + Enter for new line
+                    Press Enter to send â€¢ Shift + Enter for new line
                   </p>
                 </div>
               </div>

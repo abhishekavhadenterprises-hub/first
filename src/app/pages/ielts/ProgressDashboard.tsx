@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   BarChart3,
@@ -55,7 +54,6 @@ export default function ProgressDashboard() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
@@ -262,7 +260,7 @@ export default function ProgressDashboard() {
                   <p className="font-semibold text-purple-900 mb-1">Focus on Writing</p>
                   <p className="text-sm text-purple-800">Your writing score needs the most improvement. Practice Task 2 essays daily.</p>
                   <Link to="/ielts/writing" className="text-sm text-purple-600 hover:underline font-medium mt-2 inline-block">
-                    Start Writing Practice →
+                    Start Writing Practice â†’
                   </Link>
                 </div>
                 <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
@@ -273,7 +271,7 @@ export default function ProgressDashboard() {
                   <p className="font-semibold text-green-900 mb-1">Take a Mock Test</p>
                   <p className="text-sm text-green-800">It's been a week since your last full test. Time for another assessment.</p>
                   <Link to="/ielts/mock-test" className="text-sm text-green-600 hover:underline font-medium mt-2 inline-block">
-                    Start Mock Test →
+                    Start Mock Test â†’
                   </Link>
                 </div>
               </div>

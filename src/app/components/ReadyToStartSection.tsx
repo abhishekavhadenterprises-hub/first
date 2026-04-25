@@ -13,9 +13,9 @@ export function ReadyToStartSection() {
             <span className="text-[10px] font-black tracking-[0.4em] text-[#0F172A] uppercase">Action Center</span>
           </div>
           
-          <h2 className="text-5xl lg:text-[6.5rem] font-[1000] tracking-tighter text-[#0F172A] leading-[0.85] uppercase mb-8">
+          <h2 className="text-[#0F172A] mb-8">
             Ready to <span className="text-[#4EA62F] italic">start</span> <br /> 
-            <span className="text-black/20 text-4xl lg:text-[5rem] block mt-2">planning?</span>
+            <span className="text-black/20 block mt-2">planning?</span>
           </h2>
           
           <p className="text-[#64748B] text-lg md:text-xl max-w-2xl mx-auto font-medium tracking-tight opacity-70 italic">

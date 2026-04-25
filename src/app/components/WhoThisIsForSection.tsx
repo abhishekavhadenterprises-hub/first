@@ -73,7 +73,7 @@ export function WhoThisIsForSection() {
       >
         {/* Kinetic Background Ticker */}
         <div className="absolute inset-x-0 top-[20%] opacity-[0.03] select-none pointer-events-none z-0">
-          <h2 className="text-[25vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap animate-ticker">THE AMBITIOUS • THE AMBITIOUS • THE AMBITIOUS •</h2>
+          <h2 className="text-[15vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap animate-ticker">THE AMBITIOUS • THE AMBITIOUS • THE AMBITIOUS •</h2>
         </div>
 
         {/* Section Header */}
@@ -85,7 +85,7 @@ export function WhoThisIsForSection() {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-[60px] lg:text-[130px] font-black leading-[0.8] tracking-[-0.07em] text-[#0F172A] uppercase"
+            className="text-[48px] lg:text-[90px] font-black leading-[0.8] tracking-[-0.07em] text-[#0F172A] uppercase"
           >
             THE <span className="text-[#4EA62F]">FIT.</span>
           </motion.h2>
@@ -111,7 +111,8 @@ export function WhoThisIsForSection() {
         </div>
       </motion.div>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes ticker {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -119,7 +120,7 @@ export function WhoThisIsForSection() {
         .animate-ticker {
           animation: ticker 60s linear infinite;
         }
-      `}</style>
+      `}} />
     </section>
   );
 }
@@ -142,13 +143,13 @@ function WhoCard({ target, index, total, scrollYProgress }: any) {
           <div className="w-24 h-24 rounded-[2.5rem] bg-[#4EA62F]/5 flex items-center justify-center text-[#4EA62F] group-hover:bg-[#4EA62F] group-hover:text-white transition-all duration-700">
             {target.icon}
           </div>
-          <span className="text-[200px] font-black text-black/[0.04] leading-none select-none absolute top-[-50px] right-[-30px]">0{index + 1}</span>
+          <span className="text-[120px] font-black text-black/[0.04] leading-none select-none absolute top-[-30px] right-[-20px]">0{index + 1}</span>
         </div>
 
         <div className="mb-10">
           <span className="text-[12px] font-black tracking-[0.3em] text-[#4EA62F] uppercase mb-4 block">{target.role}</span>
-          <h3 className="text-[52px] lg:text-[88px] font-black text-[#0F172A] leading-[0.85] tracking-tighter uppercase mb-6">{target.title}</h3>
-          <p className="text-xl lg:text-3xl text-[#0F172A]/70 font-semibold leading-tight max-w-[600px]">{target.description}</p>
+          <h3 className="text-[40px] lg:text-[64px] font-black text-[#0F172A] leading-[0.85] tracking-tighter uppercase mb-6">{target.title}</h3>
+          <p className="text-lg lg:text-2xl text-[#0F172A]/70 font-semibold leading-tight max-w-[600px]">{target.description}</p>
         </div>
 
         <div className="flex flex-wrap gap-4 mt-auto">

@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router';
+﻿import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { ArrowLeft, Award, Star, MapPin, Calendar, BookOpen, Globe, Mail } from 'lucide-react';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -52,7 +51,6 @@ export default function ProfilePublicView() {
 
   return (
     <>
-      <Navigation />
       
       <div className="min-h-screen bg-gray-50 pt-20">
         {/* Back Button */}
@@ -254,7 +252,7 @@ export default function ProfilePublicView() {
                   transition={{ delay: 0.4 + index * 0.1 }}
                   className="px-5 py-2.5 bg-gradient-to-r from-[#4B6E48] to-[#5d8a59] text-white rounded-full text-sm font-medium shadow-lg"
                 >
-                  🏆 {badge}
+                  ðŸ† {badge}
                 </motion.span>
               ))}
             </div>

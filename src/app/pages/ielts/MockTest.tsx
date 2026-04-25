@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   PlayCircle,
@@ -58,7 +57,6 @@ export default function MockTest() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -200,19 +198,19 @@ export default function MockTest() {
               <div>
                 <h4 className="font-semibold mb-3">During the Test:</h4>
                 <ul className="space-y-2 text-sm text-white/90">
-                  <li>• Read instructions carefully</li>
-                  <li>• Manage your time wisely</li>
-                  <li>• Answer all questions</li>
-                  <li>• Check your answers if time permits</li>
+                  <li>â€¢ Read instructions carefully</li>
+                  <li>â€¢ Manage your time wisely</li>
+                  <li>â€¢ Answer all questions</li>
+                  <li>â€¢ Check your answers if time permits</li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-3">After the Test:</h4>
                 <ul className="space-y-2 text-sm text-white/90">
-                  <li>• Review correct answers and explanations</li>
-                  <li>• Identify your weak areas</li>
-                  <li>• Calculate your estimated band score</li>
-                  <li>• Plan focused practice sessions</li>
+                  <li>â€¢ Review correct answers and explanations</li>
+                  <li>â€¢ Identify your weak areas</li>
+                  <li>â€¢ Calculate your estimated band score</li>
+                  <li>â€¢ Plan focused practice sessions</li>
                 </ul>
               </div>
             </div>

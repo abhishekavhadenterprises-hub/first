@@ -99,10 +99,13 @@ export function SelectedCountriesSection({
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, ease: "easeOut", delay: 0.3 }}
             onClick={() => setShowAddCountryDropdown(!showAddCountryDropdown)}
-            className="add-country-button"
+            className="group relative w-full min-h-[140px] flex flex-col items-center justify-center gap-3 bg-white text-[#4EA62F] border-2 border-dashed border-[#CBD5E1] rounded-xl font-black uppercase tracking-widest text-[11px] overflow-hidden transition-all duration-500 hover:border-[#4EA62F] transform"
           >
-            <Plus className="w-5 h-5" />
-            Add Country
+            <span className="relative z-20 flex flex-col items-center gap-3 group-hover:text-white transition-colors duration-500">
+               <Plus className="w-6 h-6" />
+               Add Country
+            </span>
+            <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
           </motion.button>
 
           <AnimatePresence>

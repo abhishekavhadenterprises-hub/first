@@ -1,515 +1,299 @@
+'use client';
+
+import React from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
-import { FileText, Mail, Scale, AlertTriangle, CheckCircle } from 'lucide-react';
+import { 
+  FileText, 
+  ShieldCheck, 
+  Scale, 
+  AlertCircle, 
+  ArrowRight, 
+  ChevronRight, 
+  Globe, 
+  UserCheck, 
+  Lock, 
+  MessageSquare, 
+  Sparkles, 
+  Activity,
+  Cpu
+} from 'lucide-react';
+import { Link } from 'react-router';
+
+const TechnicalBadge = ({ text, className = "" }: { text: string; className?: string }) => (
+   <div className={`inline-flex items-center gap-3 px-5 py-2 bg-white/50 backdrop-blur-xl border border-black/5 rounded-full ${className}`}>
+      <div className="w-1.5 h-1.5 rounded-full bg-[#4EA62F] animate-pulse" />
+      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40 font-mono italic">
+         {text}
+      </span>
+   </div>
+);
 
 export default function Terms() {
-  const lastUpdated = "February 5, 2026";
+  const lastUpdated = "April 24, 2026";
 
   const sections = [
-    { id: 'acceptance', title: 'Acceptance of Terms' },
-    { id: 'services', title: 'Description of Services' },
-    { id: 'eligibility', title: 'Eligibility & Account Registration' },
-    { id: 'user-responsibilities', title: 'User Responsibilities' },
-    { id: 'intellectual-property', title: 'Intellectual Property Rights' },
-    { id: 'payment', title: 'Payment & Fees' },
-    { id: 'prohibited', title: 'Prohibited Conduct' },
-    { id: 'disclaimers', title: 'Disclaimers & Limitations' },
-    { id: 'indemnification', title: 'Indemnification' },
-    { id: 'termination', title: 'Termination' },
-    { id: 'dispute', title: 'Dispute Resolution' },
-    { id: 'general', title: 'General Provisions' }
+    { id: 'acceptance', title: 'Service Acceptance', icon: UserCheck, desc: 'Operational framework initiation.' },
+    { id: 'eligibility', title: 'Eligibility Protocol', icon: ShieldCheck, desc: 'User validation standards.' },
+    { id: 'intellectual', title: 'Intellectual Assets', icon: Scale, desc: 'Proprietary platform protection.' },
+    { id: 'conduct', title: 'Platform Conduct', icon: AlertCircle, desc: 'Ecosystem engagement rules.' },
+    { id: 'ai-usage', title: 'AI Intelligence', icon: MessageSquare, desc: 'Neural guidance operations.' },
+    { id: 'liability', title: 'Liability Framework', icon: Lock, desc: 'Accountability boundaries.' },
   ];
 
   return (
-    <>
-      <Navigation />
+    <div className="min-h-screen bg-[#FDFDFC] selection:bg-[#4EA62F] selection:text-white font-['Outfit',sans-serif] overflow-x-hidden">
+      {/* ── CINEMATIC AMBIENT BACKGROUND ── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#4EA62F]/5 rounded-full blur-[150px] opacity-40" />
+        <div className="absolute bottom-0 right-0 p-12 opacity-[0.02]">
+           <div className="flex flex-col gap-4 items-end">
+              <span className="text-[14px] font-black uppercase tracking-[1em] text-black">LEGAL_PROTOCOL v2.04</span>
+              <div className="w-96 h-px bg-black" />
+           </div>
+        </div>
+      </div>
 
-      {/* Hero Header */}
-      <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-[#4B6E48]/5 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#4B6E48]/10 rounded-full text-[#4B6E48] text-sm font-medium mb-6"
-          >
-            <Scale className="w-4 h-4" />
-            Legal
-          </motion.div>
-
+      {/* ── TITANIC HERO (CENTERED & ONE LINE) ── */}
+      <header className="relative pt-48 pb-24 px-6 z-10 border-b border-black/5">
+        <div className="container mx-auto flex flex-col items-center text-center">
+          <TechnicalBadge text="Legal Framework" className="mb-10" />
+          
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl font-bold mb-4 text-gray-900"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[4rem] md:text-[6.5rem] lg:text-[7.5rem] font-black text-[#0F172A] uppercase tracking-[-0.06em] leading-none mb-12 whitespace-nowrap"
           >
-            Terms & Conditions
+            Terms <span className="text-[#4EA62F] italic font-light lowercase px-2">&</span> Conditions.
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col items-center gap-6"
           >
-            Last updated: {lastUpdated}
-          </motion.p>
+            <p className="max-w-2xl text-xl md:text-2xl text-black/40 font-bold leading-tight tracking-tighter">
+              Defining the operational framework for global student excellence. <br />
+              <span className="text-[#0F172A]">Architecture of engagement.</span>
+            </p>
+            <span className="text-[9px] font-black uppercase tracking-[0.6em] text-black/20">Protocol Updated: {lastUpdated}</span>
+          </motion.div>
         </div>
-      </section>
+      </header>
 
-      {/* Main Content */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Table of Contents - Sticky Sidebar */}
-            <motion.aside
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="lg:col-span-1"
-            >
-              <div className="lg:sticky lg:top-24">
-                <div className="bg-white rounded-2xl p-6 border border-gray-200">
-                  <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide text-gray-500">Contents</h3>
-                  <nav className="space-y-2">
-                    {sections.map((section, index) => (
-                      <a
-                        key={section.id}
-                        href={`#${section.id}`}
-                        className="block text-sm text-gray-600 hover:text-[#4B6E48] transition-colors py-1"
+      {/* ── NARRATIVE GRID ARCHITECTURE ── */}
+      <main className="relative z-10 container mx-auto px-6 py-24 lg:py-40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          
+          {/* LEFT COLUMN: NAVIGATION HUB */}
+          <div className="lg:col-span-12 xl:col-span-4 space-y-8 sticky lg:top-32">
+             <div className="p-10 rounded-[3rem] bg-white border border-black/5 shadow-[0_40px_100px_rgba(0,0,0,0.03)] relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#4EA62F]/5 blur-[60px] rounded-full -translate-y-1/2 translate-x-1/2" />
+                <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-black/30 mb-8 border-b border-black/5 pb-4">Digital Index</h3>
+                <nav className="space-y-1">
+                   {sections.map((s, i) => (
+                      <a 
+                        key={s.id} 
+                        href={`#${s.id}`}
+                        className="group flex flex-col p-4 rounded-2xl hover:bg-[#4EA62F]/5 transition-all duration-300 border border-transparent hover:border-[#4EA62F]/10"
                       >
-                        {index + 1}. {section.title}
+                         <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs font-black uppercase tracking-tight text-[#0F172A] group-hover:text-[#4EA62F] transition-colors">{s.title}</span>
+                            <span className="text-[10px] font-black text-black/10 group-hover:text-[#4EA62F]/40 transition-colors">0{i+1}</span>
+                         </div>
+                         <p className="text-[10px] font-bold text-black/30 group-hover:text-black/50 transition-colors">{s.desc}</p>
                       </a>
-                    ))}
-                  </nav>
+                   ))}
+                </nav>
+             </div>
+
+             <div className="p-8 space-y-6">
+                <div className="flex items-center gap-4">
+                   <div className="h-px flex-1 bg-black/5" />
+                   <span className="text-[8px] font-black uppercase tracking-[1em] text-black/20">Operational Intel</span>
                 </div>
-              </div>
-            </motion.aside>
-
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="lg:col-span-4"
-            >
-              <div className="bg-white rounded-2xl p-8 md:p-12 border border-gray-200 space-y-12">
-                
-                {/* Introduction */}
-                <div className="pb-8 border-b border-gray-200">
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    Welcome to our platform. These Terms and Conditions ("Terms") govern your access to and use of our study abroad services, website, and related applications.
-                  </p>
-                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
-                    <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-sm text-amber-900 font-medium mb-1">Important</p>
-                      <p className="text-sm text-amber-700">
-                        By accessing or using our services, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our services.
-                      </p>
-                    </div>
-                  </div>
+                <div className="grid grid-cols-2 gap-4">
+                   <div className="flex flex-col gap-2 p-5 rounded-3xl bg-gray-50 border border-black/[0.02]">
+                      <Activity size={14} className="text-[#4EA62F]" />
+                      <span className="text-[9px] font-black uppercase tracking-widest text-black/40">Real-time Sync</span>
+                   </div>
+                   <div className="flex flex-col gap-2 p-5 rounded-3xl bg-gray-50 border border-black/[0.02]">
+                      <ShieldCheck size={14} className="text-[#4EA62F]" />
+                      <span className="text-[9px] font-black uppercase tracking-widest text-black/40">Verified Data</span>
+                   </div>
                 </div>
+             </div>
+          </div>
 
-                {/* 1. Acceptance of Terms */}
-                <div id="acceptance" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
-                  <p className="text-gray-700 mb-4">
-                    By creating an account, accessing our website, or using any of our services, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="/privacy" className="text-[#4B6E48] hover:underline">Privacy Policy</a>.
-                  </p>
-                  <p className="text-gray-700">
-                    These Terms constitute a legally binding agreement between you and our company. If you are using our services on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.
-                  </p>
-                </div>
-
-                {/* 2. Description of Services */}
-                <div id="services" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <FileText className="w-6 h-6 text-[#4B6E48]" />
-                    2. Description of Services
-                  </h2>
-                  <p className="text-gray-700 mb-4">We provide the following services:</p>
-                  <ul className="space-y-2 text-gray-700 ml-4">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-[#4B6E48] flex-shrink-0 mt-0.5" />
-                      <span><strong>University Search & Matching:</strong> Tools to discover and compare universities globally</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-[#4B6E48] flex-shrink-0 mt-0.5" />
-                      <span><strong>Application Assistance:</strong> Guidance on application processes, essay reviews, document preparation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-[#4B6E48] flex-shrink-0 mt-0.5" />
-                      <span><strong>Visa Support:</strong> Information and assistance with visa applications (not legal advice)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-[#4B6E48] flex-shrink-0 mt-0.5" />
-                      <span><strong>Concierge Services:</strong> Housing, insurance, banking, SIM cards, travel arrangements</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-[#4B6E48] flex-shrink-0 mt-0.5" />
-                      <span><strong>Financial Services:</strong> Loan referrals, forex services, scholarship information</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-[#4B6E48] flex-shrink-0 mt-0.5" />
-                      <span><strong>AI-Powered Tools:</strong> Virtual assistant, test preparation, personalized recommendations</span>
-                    </li>
-                  </ul>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-6">
-                    <p className="text-sm text-blue-900 font-medium mb-2">Important Disclaimer</p>
-                    <p className="text-sm text-blue-700">
-                      We are <strong>not</strong> immigration lawyers, visa consultants, or education agents. We provide guidance and support services only. Final decisions on admissions, visas, and legal matters rest with relevant authorities.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. Eligibility */}
-                <div id="eligibility" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">3. Eligibility & Account Registration</h2>
-                  
-                  <h3 className="text-lg font-semibold mb-3">Eligibility</h3>
-                  <p className="text-gray-700 mb-4">To use our services, you must:</p>
-                  <ul className="space-y-2 text-gray-700 ml-4 mb-6">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Be at least 16 years of age</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Have the legal capacity to enter into binding agreements</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Not be prohibited from using our services under applicable laws</span>
-                    </li>
-                  </ul>
-
-                  <h3 className="text-lg font-semibold mb-3">Account Registration</h3>
-                  <p className="text-gray-700 mb-4">When creating an account, you agree to:</p>
-                  <ul className="space-y-2 text-gray-700 ml-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Provide accurate, current, and complete information</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Maintain and update your information to keep it accurate</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Keep your password secure and confidential</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Notify us immediately of any unauthorized account access</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Accept responsibility for all activities under your account</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 4. User Responsibilities */}
-                <div id="user-responsibilities" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">4. User Responsibilities</h2>
-                  <p className="text-gray-700 mb-4">As a user, you are responsible for:</p>
-                  <ul className="space-y-2 text-gray-700 ml-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Ensuring all information you provide is truthful and accurate</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Conducting your own due diligence on universities and programs</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Meeting application deadlines and requirements independently</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Verifying all third-party services before using them</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Complying with all applicable laws and regulations</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 5. Intellectual Property */}
-                <div id="intellectual-property" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">5. Intellectual Property Rights</h2>
-                  <p className="text-gray-700 mb-4">
-                    All content, features, and functionality of our platform, including but not limited to text, graphics, logos, icons, images, audio clips, data compilations, and software, are owned by us or our licensors and are protected by copyright, trademark, and other intellectual property laws.
-                  </p>
-                  <p className="text-gray-700 mb-4">You may not:</p>
-                  <ul className="space-y-2 text-gray-700 ml-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Copy, modify, distribute, or create derivative works</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Reverse engineer or decompile any software</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Remove or alter any copyright, trademark, or proprietary notices</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Use our content for commercial purposes without permission</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 6. Payment & Fees */}
-                <div id="payment" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">6. Payment & Fees</h2>
-                  <p className="text-gray-700 mb-4">
-                    Certain services require payment. By purchasing services, you agree to:
-                  </p>
-                  <ul className="space-y-2 text-gray-700 ml-4 mb-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Pay all fees and charges at the prices then in effect</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Provide accurate and complete billing information</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Authorize us to charge your payment method</span>
-                    </li>
-                  </ul>
-                  <p className="text-gray-700">
-                    For refund and cancellation policies, please see our <a href="/refund" className="text-[#4B6E48] hover:underline">Refund Policy</a>.
-                  </p>
-                </div>
-
-                {/* 7. Prohibited Conduct */}
-                <div id="prohibited" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <AlertTriangle className="w-6 h-6 text-red-600" />
-                    7. Prohibited Conduct
-                  </h2>
-                  <p className="text-gray-700 mb-4">You may not:</p>
-                  <ul className="space-y-2 text-gray-700 ml-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Provide false or misleading information</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Impersonate any person or entity</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Use the service for illegal or unauthorized purposes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Upload viruses, malware, or harmful code</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Attempt to gain unauthorized access to our systems</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Scrape, harvest, or collect user information</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Interfere with or disrupt the service</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-600 mt-1">✕</span>
-                      <span>Create multiple accounts to abuse promotions</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 8. Disclaimers */}
-                <div id="disclaimers" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">8. Disclaimers & Limitations of Liability</h2>
-                  
-                  <div className="bg-gray-50 rounded-xl p-6 mb-4">
-                    <p className="text-sm text-gray-900 font-semibold mb-2 uppercase">No Guarantees</p>
-                    <p className="text-sm text-gray-700">
-                      We do not guarantee university admissions, visa approvals, scholarship awards, or any specific outcomes. Results depend on individual qualifications and decisions by third parties.
-                    </p>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-xl p-6 mb-4">
-                    <p className="text-sm text-gray-900 font-semibold mb-2 uppercase">Service Availability</p>
-                    <p className="text-sm text-gray-700">
-                      Our services are provided "AS IS" and "AS AVAILABLE" without warranties of any kind. We do not guarantee uninterrupted, secure, or error-free service.
-                    </p>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-xl p-6 mb-4">
-                    <p className="text-sm text-gray-900 font-semibold mb-2 uppercase">Third-Party Services</p>
-                    <p className="text-sm text-gray-700">
-                      We are not responsible for third-party services, websites, or content linked from our platform. Use of third-party services is at your own risk.
-                    </p>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-xl p-6">
-                    <p className="text-sm text-gray-900 font-semibold mb-2 uppercase">Limitation of Liability</p>
-                    <p className="text-sm text-gray-700">
-                      To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 9. Indemnification */}
-                <div id="indemnification" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">9. Indemnification</h2>
-                  <p className="text-gray-700">
-                    You agree to indemnify, defend, and hold harmless our company, its officers, directors, employees, and agents from any claims, liabilities, damages, losses, costs, or expenses (including legal fees) arising from your use of our services, violation of these Terms, or infringement of any rights of another party.
-                  </p>
-                </div>
-
-                {/* 10. Termination */}
-                <div id="termination" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">10. Termination</h2>
-                  <p className="text-gray-700 mb-4">
-                    We reserve the right to suspend or terminate your account and access to our services at any time, without notice, for:
-                  </p>
-                  <ul className="space-y-2 text-gray-700 ml-4 mb-4">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Violation of these Terms</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Fraudulent, abusive, or illegal activity</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Extended period of inactivity</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
-                      <span>Request from law enforcement or government agencies</span>
-                    </li>
-                  </ul>
-                  <p className="text-gray-700">
-                    You may also terminate your account at any time through your account settings or by contacting us.
-                  </p>
-                </div>
-
-                {/* 11. Dispute Resolution */}
-                <div id="dispute" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">11. Dispute Resolution</h2>
-                  
-                  <h3 className="text-lg font-semibold mb-3">Governing Law</h3>
-                  <p className="text-gray-700 mb-6">
-                    These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.
-                  </p>
-
-                  <h3 className="text-lg font-semibold mb-3">Dispute Resolution Process</h3>
-                  <ol className="space-y-3 text-gray-700 ml-4">
-                    <li className="flex items-start gap-3">
-                      <span className="font-semibold text-[#4B6E48] flex-shrink-0">1.</span>
-                      <div>
-                        <strong>Informal Resolution:</strong> Contact us first at <a href="mailto:legal@example.com" className="text-[#4B6E48] hover:underline">legal@example.com</a> to attempt resolution
+          {/* RIGHT COLUMN: HIGH-DENSITY CONTENT */}
+          <div className="lg:col-span-12 xl:col-span-8 space-y-32">
+             
+             {/* Acceptance */}
+             <motion.section 
+               id="acceptance"
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true, margin: "-10%" }}
+               transition={{ duration: 0.8 }}
+               className="group scroll-mt-32"
+             >
+                <div className="flex gap-8 lg:gap-12 pb-16 border-b border-black/5">
+                   <div className="flex-shrink-0 w-20 h-20 rounded-[2.5rem] bg-white border border-black/5 shadow-xl flex items-center justify-center text-[#4EA62F] group-hover:bg-[#4EA62F] group-hover:text-white transition-all duration-700">
+                      <UserCheck size={32} />
+                   </div>
+                   <div className="space-y-6 pt-4">
+                      <h2 className="text-4xl font-black tracking-tighter text-[#0F172A] uppercase leading-none">01. Service Acceptance</h2>
+                      <div className="prose prose-slate max-w-none text-xl text-black/40 font-bold leading-[1.3] font-['Outfit',sans-serif]">
+                         <p className="mb-4">By engaging with the EDUPATH platform, you enter into a binding digital covenant. This framework governs all interactions, data processing, and student success protocols.</p>
+                         <p>If you do not align with our operational protocols, immediate session termination is required.</p>
                       </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="font-semibold text-[#4B6E48] flex-shrink-0">2.</span>
-                      <div>
-                        <strong>Mediation:</strong> If informal resolution fails, parties agree to mediation
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="font-semibold text-[#4B6E48] flex-shrink-0">3.</span>
-                      <div>
-                        <strong>Arbitration:</strong> Final disputes shall be resolved through binding arbitration in Mumbai, India
-                      </div>
-                    </li>
-                  </ol>
+                   </div>
                 </div>
+             </motion.section>
 
-                {/* 12. General Provisions */}
-                <div id="general" className="scroll-mt-24">
-                  <h2 className="text-2xl font-bold mb-4">12. General Provisions</h2>
-                  
-                  <div className="space-y-4 text-gray-700">
-                    <div>
-                      <h4 className="font-semibold mb-2">Amendments</h4>
-                      <p className="text-sm">We may modify these Terms at any time. Continued use after changes constitutes acceptance.</p>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold mb-2">Severability</h4>
-                      <p className="text-sm">If any provision is found unenforceable, the remaining provisions remain in effect.</p>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold mb-2">Entire Agreement</h4>
-                      <p className="text-sm">These Terms constitute the entire agreement between you and us regarding our services.</p>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold mb-2">Waiver</h4>
-                      <p className="text-sm">Failure to enforce any provision does not constitute a waiver of that provision.</p>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold mb-2">Assignment</h4>
-                      <p className="text-sm">You may not transfer your rights under these Terms. We may assign our rights without restriction.</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact */}
-                <div className="pt-8 border-t border-gray-200">
-                  <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <Mail className="w-6 h-6 text-[#4B6E48]" />
-                    Questions About These Terms?
-                  </h2>
-                  <p className="text-gray-700 mb-4">If you have questions about these Terms, please contact us:</p>
-                  
-                  <div className="bg-[#4B6E48]/5 rounded-xl p-6 border border-[#4B6E48]/20">
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <Mail className="w-5 h-5 text-[#4B6E48] mt-0.5" />
-                        <div>
-                          <p className="text-sm text-gray-600">Email</p>
-                          <a href="mailto:legal@example.com" className="font-medium text-[#4B6E48] hover:underline">
-                            legal@example.com
-                          </a>
-                        </div>
+             {/* Eligibility */}
+             <motion.section 
+               id="eligibility"
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true, margin: "-10%" }}
+               transition={{ duration: 0.8, delay: 0.1 }}
+               className="group scroll-mt-32"
+             >
+                <div className="flex gap-8 lg:gap-12 pb-16 border-b border-black/5">
+                   <div className="flex-shrink-0 w-20 h-20 rounded-[2.5rem] bg-white border border-black/5 shadow-xl flex items-center justify-center text-[#4EA62F] group-hover:bg-[#4EA62F] group-hover:text-white transition-all duration-700">
+                      <ShieldCheck size={32} />
+                   </div>
+                   <div className="space-y-8 pt-4 w-full">
+                      <h2 className="text-4xl font-black tracking-tighter text-[#0F172A] uppercase leading-none">02. Eligibility Protocol</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                         <div className="p-8 rounded-[2.5rem] bg-gray-50 border border-black/5 hover:border-[#4EA62F]/30 transition-colors">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#4EA62F] mb-4">Age Threshold</h4>
+                            <p className="text-sm font-bold text-[#0F172A]/60 leading-relaxed">Users must be at least 16 years of age to initiate an account protocol. Minor accounts require secondary validation from guardians.</p>
+                         </div>
+                         <div className="p-8 rounded-[2.5rem] bg-gray-50 border border-black/5 hover:border-[#4EA62F]/30 transition-colors">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#4EA62F] mb-4">Verification</h4>
+                            <p className="text-sm font-bold text-[#0F172A]/60 leading-relaxed">EDUPATH reserves the right to request identification validation to maintain ecosystem integrity.</p>
+                         </div>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <FileText className="w-5 h-5 text-[#4B6E48] mt-0.5" />
-                        <div>
-                          <p className="text-sm text-gray-600">Mailing Address</p>
-                          <p className="text-sm text-gray-900">
-                            Legal Department<br />
-                            123 Education Street<br />
-                            Mumbai, Maharashtra 400001<br />
-                            India
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                   </div>
                 </div>
+             </motion.section>
 
-              </div>
-            </motion.div>
+             {/* Intellectual Assets */}
+             <motion.section 
+               id="intellectual"
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true, margin: "-10%" }}
+               transition={{ duration: 0.8, delay: 0.2 }}
+               className="group scroll-mt-32"
+             >
+                <div className="flex gap-8 lg:gap-12 pb-16 border-b border-black/5">
+                   <div className="flex-shrink-0 w-20 h-20 rounded-[2.5rem] bg-white border border-black/5 shadow-xl flex items-center justify-center text-[#4EA62F] group-hover:bg-[#4EA62F] group-hover:text-white transition-all duration-700">
+                      <Scale size={32} />
+                   </div>
+                   <div className="space-y-6 pt-4">
+                      <h2 className="text-4xl font-black tracking-tighter text-[#0F172A] uppercase leading-none">03. Intellectual Assets</h2>
+                      <p className="text-xl text-black/40 font-bold leading-[1.3] font-['Outfit',sans-serif]">The EDUPATH ecosystem—including proprietary algorithms and interfaces—constitutes high-value intellectual property.</p>
+                      <div className="grid grid-cols-1 gap-3 pt-4">
+                        {[
+                          "Zero extraction of platform source code.",
+                          "No unauthorized utilization of branding.",
+                          "Strict prohibition of automated scraping."
+                        ].map((item, i) => (
+                          <div key={i} className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-black/5 shadow-sm group/item hover:border-[#4EA62F]/20 transition-all">
+                            <Sparkles size={14} className="text-[#4EA62F]" />
+                            <span className="text-sm text-[#0F172A] font-black uppercase tracking-tight">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                   </div>
+                </div>
+             </motion.section>
+
+             {/* AI Intelligence */}
+             <motion.section 
+               id="ai-usage"
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true, margin: "-10%" }}
+               transition={{ duration: 0.8 }}
+               className="group scroll-mt-32"
+             >
+                <div className="flex gap-8 lg:gap-12 pb-16 border-b border-black/5">
+                   <div className="flex-shrink-0 w-20 h-20 rounded-[2.5rem] bg-white border border-black/5 shadow-xl flex items-center justify-center text-[#4EA62F] group-hover:bg-[#4EA62F] group-hover:text-white transition-all duration-700">
+                      <MessageSquare size={32} />
+                   </div>
+                   <div className="space-y-8 pt-4 w-full">
+                      <h2 className="text-4xl font-black tracking-tighter text-[#0F172A] uppercase leading-none">04. AI Intelligence</h2>
+                      <div className="p-10 rounded-[3rem] bg-[#0F172A] text-white relative overflow-hidden shadow-2xl">
+                         <div className="absolute top-0 right-0 p-12 opacity-[0.05]">
+                            <Cpu size={140} className="text-[#4EA62F]" />
+                         </div>
+                         <p className="text-xl font-bold text-white/60 mb-10 relative z-10 leading-tight">Sonia AI provides student relocation guidance subject to strict protocol.</p>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+                            <div className="space-y-2">
+                               <span className="text-[10px] font-black tracking-[0.4em] text-[#4EA62F]">Protocol_01</span>
+                               <p className="text-xs font-bold text-white/40 leading-relaxed uppercase">AI generated guidance is assistive and does not constitute legal or immigration advice.</p>
+                            </div>
+                            <div className="space-y-2">
+                               <span className="text-[10px] font-black tracking-[0.4em] text-[#4EA62F]">Protocol_02</span>
+                               <p className="text-xs font-bold text-white/40 leading-relaxed uppercase">Anonymized interactions may be utilized for ecosystem intelligence refinement.</p>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </motion.section>
+
+             {/* Liability */}
+             <motion.section 
+               id="liability"
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true, margin: "-10%" }}
+               transition={{ duration: 0.8 }}
+               className="group scroll-mt-32 pb-40"
+             >
+                <div className="flex gap-8 lg:gap-12">
+                   <div className="flex-shrink-0 w-20 h-20 rounded-[2.5rem] bg-white border border-black/5 shadow-xl flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all duration-700">
+                      <Lock size={32} />
+                   </div>
+                   <div className="space-y-6 pt-4">
+                      <h2 className="text-4xl font-black tracking-tighter text-[#0F172A] uppercase leading-none">05. Liability Framework</h2>
+                      <div className="bg-red-50/50 border border-red-100 rounded-[3rem] p-10 md:p-16">
+                         <p className="text-lg md:text-xl font-black text-red-900/60 leading-[1.2] uppercase italic">
+                           TO THE MAXIMUM EXTENT PERMITTED BY LAW, EDUPATH SHALL NOT BE LIABLE FOR ANY ADMISSION REJECTIONS, VISA FAILURES, OR FINANCIAL LOSSES. THE STUDENT RETAINS FINAL ACCOUNTABILITY FOR ALL DECISIONS.
+                         </p>
+                      </div>
+                   </div>
+                </div>
+             </motion.section>
+
           </div>
         </div>
+      </main>
+
+      {/* ── FINAL ACTION SECTION ── */}
+      <section className="relative z-10 py-32 bg-[#0F172A] text-white overflow-hidden">
+         <div className="absolute inset-0 bg-gradient-to-br from-[#4EA62F]/20 to-transparent pointer-events-none" />
+         <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="space-y-6 text-center md:text-left">
+               <TechnicalBadge text="Deployment Phase" className="bg-white/10 border-white/5" />
+               <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+                  READY TO <span className="text-[#4EA62F] italic font-light lowercase">redefine</span> ACCESS?
+               </h2>
+            </div>
+            <Link to="/contact" className="w-24 h-24 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#4EA62F] hover:border-[#4EA62F] transition-all duration-700 shadow-2xl group">
+               <ArrowRight size={32} className="group-hover:translate-x-2 transition-transform" />
+            </Link>
+         </div>
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 }

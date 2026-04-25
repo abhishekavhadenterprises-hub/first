@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState, useEffect } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -119,7 +118,6 @@ export default function WritingPractice() {
 
     return (
       <>
-        <Navigation />
         <AIAssistantNav />
         <div className="min-h-screen bg-gray-50 pt-40 pb-16">
           <div className="max-w-5xl mx-auto px-4">
@@ -252,15 +250,15 @@ export default function WritingPractice() {
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center justify-between p-2 bg-blue-50 rounded">
                       <span className="text-gray-600">"very important"</span>
-                      <span className="text-blue-700 font-medium">→ "paramount"</span>
+                      <span className="text-blue-700 font-medium">â†’ "paramount"</span>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-blue-50 rounded">
                       <span className="text-gray-600">"a lot of"</span>
-                      <span className="text-blue-700 font-medium">→ "numerous"</span>
+                      <span className="text-blue-700 font-medium">â†’ "numerous"</span>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-blue-50 rounded">
                       <span className="text-gray-600">"get better"</span>
-                      <span className="text-blue-700 font-medium">→ "enhance"</span>
+                      <span className="text-blue-700 font-medium">â†’ "enhance"</span>
                     </div>
                   </div>
                 </div>
@@ -313,7 +311,6 @@ export default function WritingPractice() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
       <div className="writing-practice-container">
         <div className="writing-practice-wrapper">
@@ -440,10 +437,10 @@ export default function WritingPractice() {
                   <span className="writing-criteria-title">Band Criteria</span>
                 </div>
                 <ul className="writing-criteria-list">
-                  <li>• Task Response</li>
-                  <li>• Coherence & Cohesion</li>
-                  <li>• Lexical Resource</li>
-                  <li>• Grammatical Range</li>
+                  <li>â€¢ Task Response</li>
+                  <li>â€¢ Coherence & Cohesion</li>
+                  <li>â€¢ Lexical Resource</li>
+                  <li>â€¢ Grammatical Range</li>
                 </ul>
               </div>
 

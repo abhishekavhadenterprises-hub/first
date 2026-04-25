@@ -1,6 +1,5 @@
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   PenTool,
@@ -43,7 +42,6 @@ export default function WritingPractice() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
@@ -96,7 +94,7 @@ export default function WritingPractice() {
                 >
                   Task {taskNum}
                   <span className="block text-sm font-normal opacity-90">
-                    {taskNum === 1 ? '150 words min' : '250 words min'} • {taskNum === 1 ? '20' : '40'} minutes
+                    {taskNum === 1 ? '150 words min' : '250 words min'} â€¢ {taskNum === 1 ? '20' : '40'} minutes
                   </span>
                 </button>
               ))}
@@ -264,7 +262,7 @@ export default function WritingPractice() {
                     {currentTask.sampleAnswer}...
                   </p>
                   <button className="mt-4 text-sm text-purple-600 hover:underline font-medium">
-                    View Full Sample →
+                    View Full Sample â†’
                   </button>
                 </div>
               )}

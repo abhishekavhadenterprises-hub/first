@@ -1,5 +1,4 @@
-import { Navigation } from '@/app/components/Navigation';
-import { ModernBanner } from '@/app/components/ModernBanner';
+﻿import { ModernBanner } from '@/app/components/ModernBanner';
 import { AvailableServiceProviders } from '@/app/components/AvailableServiceProviders';
 import { HowToGetStartedSection } from '@/app/components/HowToGetStartedSection';
 import { ServiceComparisonSection } from '@/app/components/ServiceComparisonSection';
@@ -17,7 +16,6 @@ export default function Housing() {
 
   return (
     <div className="relative min-h-screen bg-[#FDFDFC]">
-      <Navigation />
       
       <ModernBanner
         title="Student Housing Solutions"

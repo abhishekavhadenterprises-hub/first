@@ -50,7 +50,7 @@ export function WhenYouNeedThisSection({
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="max-w-7xl mx-auto px-6 py-16 pb-4">
+    <div ref={containerRef} className="max-w-7xl mx-auto px-6 py-8 pb-4">
       <motion.div 
         whileHover={{ y: -5 }}
         className="relative overflow-hidden bg-gradient-to-br from-[#FDFDFC] to-[#F1F5F0] rounded-[2.5rem] p-10 md:p-14 shadow-[0_30px_60px_rgba(0,0,0,0.03)] border border-black/[0.03] group"

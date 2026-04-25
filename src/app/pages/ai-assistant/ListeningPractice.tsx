@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -191,7 +190,6 @@ Student: Perfect. Thank you so much for your help!`;
 
     return (
       <>
-        <Navigation />
         <AIAssistantNav />
         <div className="min-h-screen bg-gray-50 pt-40 pb-16">
           <div className="max-w-5xl mx-auto px-4">
@@ -382,7 +380,6 @@ Student: Perfect. Thank you so much for your help!`;
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
       
       {/* Main Container */}

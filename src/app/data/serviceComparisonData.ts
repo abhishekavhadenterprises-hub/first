@@ -22,10 +22,10 @@ export const serviceComparisonData: Record<string, ServiceComparisonData> = {
     title: "Network Comparison",
     subtitle: "Compare the leading UK spectrum holders based on student-critical metrics.",
     providers: [
-      { id: 'ee', name: 'EE', logo: '/ee_logo.png', highlight: true },
-      { id: 'o2', name: 'O2', logo: '/o2_logo.png' },
-      { id: 'three', name: 'Three', logo: '/three_logo.png' },
-      { id: 'vodafone', name: 'Vodafone', logo: '/vodafone_logo.png' }
+      { id: 'ee', name: 'EE', logo: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=100&h=100&fit=crop', highlight: true },
+      { id: 'o2', name: 'O2', logo: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=100&h=100&fit=crop' },
+      { id: 'three', name: 'Three', logo: 'https://images.unsplash.com/photo-1614064642639-e3989009df0a?w=100&h=100&fit=crop' },
+      { id: 'vodafone', name: 'Vodafone', logo: 'https://images.unsplash.com/photo-1614064548237-096f735f344f?w=100&h=100&fit=crop' }
     ],
     metrics: [
       {

@@ -1,4 +1,3 @@
-import { Navigation } from '@/app/components/Navigation';
 import { ModernBanner } from '@/app/components/ModernBanner';
 import { AvailableServiceProviders } from '@/app/components/AvailableServiceProviders';
 import { HowToGetStartedSection } from '@/app/components/HowToGetStartedSection';
@@ -15,7 +14,6 @@ export default function SimCards() {
 
   return (
     <div className="relative min-h-screen bg-[#FDFDFC]">
-      <Navigation />
 
       <ModernBanner
         title="SIM Cards for Students"
@@ -30,15 +28,14 @@ export default function SimCards() {
       <HowToGetStartedSection serviceId="sim-cards" />
       <ServiceComparisonSection serviceId="sim-cards" />
       <TotalSavingsSection serviceId="sim-cards" />
-      <FAQSection 
-        faqs={faq.items} 
-        title={faq.title} 
-        subtitle={faq.subtitle} 
+      <FAQSection
+        faqs={faq.items}
+        title={faq.title}
+        subtitle={faq.subtitle}
         category="CONNECTIVITY HUD"
       />
-      <WhenYouNeedThisSection serviceId="sim-cards" />
       <ServiceOverviewCompare />
-      
+
       <Footer />
     </div>
   );

@@ -1,10 +1,9 @@
-import { ArrowRight } from 'lucide-react';
+﻿import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
@@ -102,7 +101,7 @@ function AfterStudiesCarousel() {
   const cardsData = [
     {
       id: 0,
-      icon: '🎓',
+      icon: 'ðŸŽ“',
       title: 'Post-Graduation Work',
       description: 'OPT allows F-1 students to work (off-campus) after graduation, providing them to gain experience and potentially secure long-term employment.',
       items: [
@@ -114,7 +113,7 @@ function AfterStudiesCarousel() {
     },
     {
       id: 1,
-      icon: '🏠',
+      icon: 'ðŸ ',
       title: 'Long-term Immigration Options',
       description: 'While most students are temporarily visiting, options exist for those seeking to remain in the US Long-term:',
       sections: [
@@ -646,7 +645,6 @@ export default function CountryDetail() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navigation />
       
       {/* Hero Banner Section */}
       <section className="relative w-full min-h-[600px] bg-gradient-to-br from-[#F5F1E8] via-[#FDFCFA] to-white overflow-hidden pt-20">
@@ -755,7 +753,7 @@ export default function CountryDetail() {
             flex-direction: column;
           }
 
-          /* Mobile (≤767px): 18px padding */
+          /* Mobile (â‰¤767px): 18px padding */
           @media (max-width: 767px) {
             .overview-container {
               padding: 48px 18px;
@@ -782,7 +780,7 @@ export default function CountryDetail() {
             }
           }
 
-          /* Desktop (≥1200px): max-width 1200px centered */
+          /* Desktop (â‰¥1200px): max-width 1200px centered */
           @media (min-width: 1200px) {
             .overview-container {
               max-width: 1200px;
@@ -1734,7 +1732,7 @@ export default function CountryDetail() {
               <div className="card-back"></div>
               <div className="grid-card" style={{ '--img': 'url(https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=1200&q=80)' } as React.CSSProperties}>
                 <h2>Study Abroad Experience</h2>
-                <span className="card-heart" data-ico="💕"></span>
+                <span className="card-heart" data-ico="ðŸ’•"></span>
                 <div className="card-tags">
                   <span className="card-tag">international</span>
                   <span className="card-tag">culture</span>
@@ -1743,7 +1741,7 @@ export default function CountryDetail() {
             </div>
 
             {/* Button 1 - Map */}
-            <button className="grid-button grid-button-1" data-ico="📍"></button>
+            <button className="grid-button grid-button-1" data-ico="ðŸ“"></button>
 
             {/* Button 2 - Aurora */}
             <button className="grid-button grid-button-2">explore</button>
@@ -2489,7 +2487,7 @@ export default function CountryDetail() {
           }
 
           .managing-cost-item::before {
-            content: '•';
+            content: 'â€¢';
             position: absolute;
             left: 0;
             font-size: 18px;
@@ -2914,7 +2912,7 @@ export default function CountryDetail() {
           }
 
           .work-requirements-list li::before {
-            content: '•';
+            content: 'â€¢';
             position: absolute;
             left: 0;
             color: #4B6E48;
@@ -3115,7 +3113,7 @@ export default function CountryDetail() {
           }
 
           .critical-notes-list li::before {
-            content: '•';
+            content: 'â€¢';
             position: absolute;
             left: 0;
             font-weight: 700;
@@ -3685,7 +3683,7 @@ export default function CountryDetail() {
           }
 
           .requirements-list li:before {
-            content: "•";
+            content: "â€¢";
             position: absolute;
             left: 0;
             color: #4B6E48;
@@ -4032,7 +4030,7 @@ export default function CountryDetail() {
           }
 
           .student-life-card-list li::before {
-            content: "•";
+            content: "â€¢";
             position: absolute;
             left: 0;
             color: #4B6E48;

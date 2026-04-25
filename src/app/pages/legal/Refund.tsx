@@ -1,5 +1,4 @@
-import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { motion } from 'motion/react';
 import { Footer } from '@/app/components/Footer';
 import { RefreshCw, Mail, Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
@@ -59,7 +58,6 @@ export default function Refund() {
 
   return (
     <>
-      <Navigation />
 
       {/* Hero Header */}
       <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-[#4B6E48]/5 to-white">
@@ -322,19 +320,19 @@ export default function Refund() {
                   </p>
                   <ul className="space-y-2 text-gray-700 ml-4">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Credit/Debit Card:</strong> 5-10 business days</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Net Banking:</strong> 3-7 business days</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>UPI/Wallets:</strong> 2-5 business days</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#4B6E48] mt-1">•</span>
+                      <span className="text-[#4B6E48] mt-1">â€¢</span>
                       <span><strong>Bank Transfer:</strong> 7-14 business days</span>
                     </li>
                   </ul>

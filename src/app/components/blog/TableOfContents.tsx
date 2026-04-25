@@ -60,26 +60,33 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   };
 
   return (
-    <div className={`${isSticky ? 'sticky top-24' : ''} transition-all duration-300`}>
-      <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
-        <div className="flex items-center gap-2 mb-4 pb-4 border-b border-gray-200">
-          <List className="w-5 h-5 text-[#4B6E48]" />
-          <h3 className="font-bold text-gray-900">Table of Contents</h3>
+    <div className={`${isSticky ? 'sticky top-32' : ''} transition-all duration-300`}>
+      <div className="bg-white border border-black/5 rounded-[2rem] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.02)]">
+        <div className="flex items-center gap-3 mb-6 pb-6 border-b border-black/5">
+          <div className="w-8 h-8 rounded-full bg-[#4EA62F]/10 flex items-center justify-center">
+             <List className="w-4 h-4 text-[#4EA62F]" />
+          </div>
+          <h3 className="font-black text-lg text-[#0F172A] tracking-tight uppercase font-['Outfit',sans-serif]">Index</h3>
         </div>
 
         <nav>
-          <ul className="space-y-2">
+          <ul className="space-y-1 relative">
+            {/* Custom active line tracking */}
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-black/5" />
+            
             {items.map((item) => (
-              <li key={item.id} style={{ paddingLeft: `${(item.level - 2) * 12}px` }}>
+              <li key={item.id} style={{ paddingLeft: `${Math.max(0, (item.level - 2) * 12)}px` }} className="relative z-10">
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left w-full py-2 px-3 rounded-lg text-sm transition-all ${
+                  className={`text-left w-full py-2.5 px-4 rounded-xl text-sm font-medium transition-all group border-l-2 ${
                     activeId === item.id
-                      ? 'bg-[#4B6E48] text-white font-medium'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                      ? 'border-[#4EA62F] bg-[#4EA62F]/5 text-[#0F172A]'
+                      : 'border-transparent text-black/40 hover:bg-black/5 hover:text-[#0F172A]'
                   }`}
                 >
-                  {item.title}
+                  <span className={`block truncate ${activeId === item.id ? 'font-bold' : ''}`}>
+                    {item.title}
+                  </span>
                 </button>
               </li>
             ))}
@@ -87,15 +94,15 @@ export function TableOfContents({ items }: TableOfContentsProps) {
         </nav>
       </div>
 
-      {/* Quick Actions */}
-      <div className="mt-4 bg-gradient-to-br from-[#4B6E48]/5 to-transparent border border-[#4B6E48]/20 rounded-xl p-4">
-        <p className="text-sm text-gray-600 mb-3">Was this article helpful?</p>
-        <div className="flex gap-2">
-          <button className="flex-1 py-2 px-4 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-900 hover:border-[#4B6E48] hover:text-[#4B6E48] transition-colors">
-            👍 Yes
+      {/* Quick Actions (Feedback) */}
+      <div className="mt-6 bg-[#F8FAFC] border border-black/5 rounded-[1.5rem] p-6 text-center">
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0F172A] mb-4">Did you find this helpful?</p>
+        <div className="flex items-center justify-center gap-3">
+          <button className="w-12 h-12 rounded-full bg-white border border-black/5 flex items-center justify-center text-xl hover:scale-110 hover:border-[#4EA62F] hover:text-[#4EA62F] transition-all shadow-sm">
+            👍
           </button>
-          <button className="flex-1 py-2 px-4 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-900 hover:border-gray-400 transition-colors">
-            👎 No
+          <button className="w-12 h-12 rounded-full bg-white border border-black/5 flex items-center justify-center text-xl hover:scale-110 hover:border-red-400 hover:text-red-400 transition-all shadow-sm">
+            👎
           </button>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import { useParams, useNavigate, Link } from 'react-router';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { courses } from '@/app/components/CoursesSection';
 import { 
@@ -31,7 +30,6 @@ export default function CourseDetail() {
   if (!course) {
     return (
       <div className="min-h-screen flex flex-col bg-white">
-        <Navigation />
         <main className="flex-1 flex items-center justify-center py-20">
           <div className="text-center">
             <h1 className="text-3xl font-semibold text-gray-900 mb-4">Course Not Found</h1>
@@ -73,7 +71,6 @@ export default function CourseDetail() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navigation />
 
       <main className="flex-1 pt-20">
         {/* Breadcrumbs */}
@@ -122,7 +119,7 @@ export default function CourseDetail() {
                   <GraduationCap className="w-5 h-5" />
                   {course.university}
                 </span>
-                <span className="text-gray-300">•</span>
+                <span className="text-gray-300">â€¢</span>
                 <span className="flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
                   {course.location}
@@ -333,8 +330,11 @@ export default function CourseDetail() {
                   <p className="text-sm text-white/90 mb-6">
                     Start your application today and take the first step toward your educational goals.
                   </p>
-                  <button className="w-full bg-white text-[#4B6E48] font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors mb-3">
-                    Apply Now
+                  <button className="group relative w-full h-14 bg-[#0F172A] text-white text-[10px] font-black uppercase tracking-[0.4em] rounded-xl flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden shadow-xl shadow-black/10 transform">
+                    <span className="relative z-20 transition-colors duration-500 group-hover:text-white">
+                      Apply Now
+                    </span>
+                    <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
                   </button>
                   <div className="flex gap-3">
                     <button className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium py-2.5 px-4 rounded-lg hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
@@ -398,7 +398,7 @@ export default function CourseDetail() {
                       <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
                         <Clock className="w-4 h-4" />
                         {relatedCourse.duration}
-                        <span className="text-gray-300">•</span>
+                        <span className="text-gray-300">â€¢</span>
                         {relatedCourse.level}
                       </div>
                       <div className="flex items-center justify-between">

@@ -16,10 +16,10 @@ const fallbackData = {
   title: "Network Comparison",
   subtitle: "Compare the leading UK spectrum holders based on student-critical metrics.",
   providers: [
-    { id: 'ee', name: 'EE', logo: '/ee_logo.png', highlight: true },
-    { id: 'o2', name: 'O2', logo: '/o2_logo.png' },
-    { id: 'three', name: 'Three', logo: '/three_logo.png' },
-    { id: 'vodafone', name: 'Vodafone', logo: '/vodafone_logo.png' }
+    { id: 'ee', name: 'EE', logo: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=100&h=100&fit=crop', highlight: true },
+    { id: 'o2', name: 'O2', logo: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=100&h=100&fit=crop' },
+    { id: 'three', name: 'Three', logo: 'https://images.unsplash.com/photo-1614064642639-e3989009df0a?w=100&h=100&fit=crop' },
+    { id: 'vodafone', name: 'Vodafone', logo: 'https://images.unsplash.com/photo-1614064548237-096f735f344f?w=100&h=100&fit=crop' }
   ],
   metrics: [
     { label: "5G Coverage", values: { ee: "99% Cities", o2: "92% Cities", three: "95% Cities", vodafone: "98% Cities" } },
@@ -75,7 +75,7 @@ export function ServiceComparisonSection({ serviceId }: { serviceId?: string }) 
   return (
     <section 
       ref={containerRef} 
-      className="relative w-full bg-[#fcfcfc] py-32 lg:py-48 overflow-hidden"
+      className="relative w-full bg-[#fcfcfc] py-16 lg:py-24 overflow-hidden min-h-[90vh] lg:min-h-screen flex items-center"
     >
       {/* Cinematic Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -86,21 +86,21 @@ export function ServiceComparisonSection({ serviceId }: { serviceId?: string }) 
         </div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 relative z-10 w-full">
         
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-16 mb-24 lg:mb-40">
+        <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12 lg:mb-16">
           <div className="reveal-premium max-w-4xl">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-12 h-px bg-[#4EA62F]" />
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#4EA62F]">Comparison intelligence</span>
             </div>
-            <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-[1000] text-[#0F172A] leading-[0.85] tracking-[-0.05em] uppercase">
+            <h2 className="text-[clamp(2rem,5vw,4rem)] font-[1000] text-[#0F172A] leading-[0.85] tracking-[-0.05em] uppercase">
               {data.title}
             </h2>
           </div>
-          <div className="reveal-premium lg:max-w-md pb-4">
-             <p className="text-xl text-black/40 font-bold leading-relaxed tracking-tight">
+          <div className="reveal-premium lg:max-w-md">
+             <p className="text-lg text-black/40 font-bold leading-relaxed tracking-tight">
                {data.subtitle}
              </p>
           </div>
@@ -111,27 +111,27 @@ export function ServiceComparisonSection({ serviceId }: { serviceId?: string }) 
           <div className="min-w-[1100px] lg:min-w-full">
             
             {/* Providers Row */}
-            <div className="grid grid-cols-[320px_repeat(4,1fr)] gap-6 mb-12 px-4">
-              <div className="flex flex-col justify-end pb-8">
-                 <Trophy className="w-8 h-8 text-[#4EA62F] mb-4 opacity-20" />
-                 <span className="text-[9px] font-black uppercase tracking-[0.4em] text-black/20">Metric Parameter</span>
+            <div className="grid grid-cols-[280px_repeat(4,1fr)] gap-4 mb-8 px-4">
+              <div className="flex flex-col justify-end pb-4">
+                 <Trophy className="w-6 h-6 text-[#4EA62F] mb-3 opacity-20" />
+                 <span className="text-[8px] font-black uppercase tracking-[0.4em] text-black/20">Metric Parameter</span>
               </div>
               {data.providers.map((p) => (
                 <div 
                   key={p.id} 
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
-                  className={`provider-card-premium relative p-10 rounded-[3rem] transition-all duration-700 flex flex-col items-center gap-6 ${p.highlight ? 'bg-[#0F172A] text-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] z-50 scale-105' : 'bg-white border border-black/5'}`}
+                  className={`provider-card-premium relative p-6 lg:p-8 rounded-[2.5rem] transition-all duration-700 flex flex-col items-center gap-4 ${p.highlight ? 'bg-[#0F172A] text-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] z-50 scale-105' : 'bg-white border border-black/5'}`}
                 >
                   {p.highlight && (
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 py-2 bg-[#4EA62F] rounded-full text-[9px] font-black uppercase tracking_widest flex items-center gap-2 border-4 border-[#fcfcfc] shadow-xl">
                        <Sparkles className="w-3 h-3" /> Recommended
                     </div>
                   )}
-                  <div className="w-20 h-20 rounded-2xl bg-white border border-black/5 p-4 shadow-inner">
+                  <div className="w-14 h-14 rounded-xl bg-white border border-black/5 p-3 shadow-inner">
                     <img src={p.logo} alt={p.name} className="w-full h-full object-contain" />
                   </div>
-                  <h4 className="text-xl font-black uppercase tracking-tighter">{p.name}</h4>
+                  <h4 className="text-lg font-black uppercase tracking-tighter">{p.name}</h4>
                 </div>
               ))}
             </div>
@@ -141,7 +141,7 @@ export function ServiceComparisonSection({ serviceId }: { serviceId?: string }) 
               {data.metrics.map((m, i) => (
                 <div 
                   key={i} 
-                  className="group grid grid-cols-[320px_repeat(4,1fr)] gap-6 items-center p-8 bg-white border border-black/[0.03] rounded-[2.5rem] hover:bg-[#F8FAFC] hover:border-[#4EA62F]/10 transition-all duration-500 hover:shadow-xl"
+                  className="group grid grid-cols-[280px_repeat(4,1fr)] gap-4 items-center p-4 lg:p-6 bg-white border border-black/[0.03] rounded-[2rem] hover:bg-[#F8FAFC] hover:border-[#4EA62F]/10 transition-all duration-500 hover:shadow-xl"
                 >
                   <div className="flex items-center gap-5">
                     <div className="w-10 h-10 rounded-2xl bg-black/5 flex items-center justify-center group-hover:bg-[#4EA62F]/10 transition-all">
@@ -162,14 +162,14 @@ export function ServiceComparisonSection({ serviceId }: { serviceId?: string }) 
             </div>
 
             {/* Action Buttons Row */}
-            <div className="grid grid-cols-[320px_repeat(4,1fr)] gap-6 mt-16 px-4">
+            <div className="grid grid-cols-[280px_repeat(4,1fr)] gap-4 mt-6 px-4">
                <div />
                {data.providers.map((p) => (
                  <div key={p.id} className="flex justify-center px-4">
                    <motion.button 
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}
-                     className={`group w-full py-6 rounded-3xl font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-4 transition-all duration-700 shadow-xl ${p.highlight ? 'bg-[#4EA62F] text-white shadow-[#4EA62F]/30' : 'bg-[#0F172A] text-white hover:bg-[#4EA62F]'}`}
+                     className={`group w-full py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-4 transition-all duration-700 shadow-xl ${p.highlight ? 'bg-[#4EA62F] text-white shadow-[#4EA62F]/30' : 'bg-[#0F172A] text-white hover:bg-[#4EA62F]'}`}
                    >
                      Initialize <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                    </motion.button>
@@ -181,7 +181,7 @@ export function ServiceComparisonSection({ serviceId }: { serviceId?: string }) 
         </div>
 
         {/* Professional Footer Layer */}
-        <div className="mt-32 pt-12 border-t border-black/5 flex flex-col lg:flex-row justify-between items-center gap-12 opacity-30 hover:opacity-100 transition-opacity duration-700">
+        <div className="mt-16 pt-8 border-t border-black/5 flex flex-col lg:flex-row justify-between items-center gap-8 opacity-30 hover:opacity-100 transition-opacity duration-700">
            <div className="flex items-center gap-10">
               <div className="flex flex-col">
                  <span className="text-[8px] font-black uppercase tracking-widest text-black/40">Market Integrity</span>

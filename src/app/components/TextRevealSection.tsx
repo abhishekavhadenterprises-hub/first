@@ -33,7 +33,7 @@ export function TextRevealSection() {
       highlight: "Visa outcomes"
     },
     {
-      text: "Your role is central; all final decisions remain with you.",
+      text: "Your role is central; all final decisions Elite advisory designed to replace uncertainty with",
       highlight: "Your role"
     }
   ];
@@ -52,7 +52,7 @@ export function TextRevealSection() {
       ease: "power3.out",
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%",
+        start: "top 85%",
       }
     });
 
@@ -69,38 +69,40 @@ export function TextRevealSection() {
     });
 
     cards.forEach((card: any, i) => {
+      // Set initial state - First card starts more visible
+      gsap.set(card, { 
+        opacity: i === 0 ? 0.3 : 0, 
+        z: -500, 
+        scale: 0.8, 
+        pointerEvents: 'none' 
+      });
+
       // In from the back
-      tl.fromTo(card, 
+      tl.to(card, 
         { 
-          opacity: 0, 
-          scale: 0.8,
-          z: -500,
-          y: 50,
-          rotationX: -15
-        },
-        {
           opacity: 1, 
           scale: 1,
           z: 0,
           y: 0,
           rotationX: 0,
+          pointerEvents: 'auto',
           duration: 1,
-          ease: "power2.inOut"
+          ease: "power2.out"
         },
-        i * 1.5
+        i * 1.2
       )
       // Out to the front
       .to(card, 
         { 
           opacity: 0, 
-          scale: 1.2,
+          scale: 1.1,
           z: 500,
-          y: -50,
-          rotationX: 15,
+          y: -20,
+          pointerEvents: 'none',
           duration: 1,
-          ease: "power2.inOut"
+          ease: "power2.in"
         },
-        (i + 1) * 1.5
+        (i + 0.8) * 1.2
       );
     });
 
@@ -140,7 +142,7 @@ export function TextRevealSection() {
                {sentences.map((item, idx) => (
                  <div 
                    key={idx}
-                   className="perspective-card absolute inset-0 flex flex-col items-center justify-center bg-white/40 backdrop-blur-3xl rounded-[3rem] border border-black/5 shadow-[0_40px_100px_rgba(0,0,0,0.04)] p-8 lg:p-20"
+                   className="perspective-card absolute inset-0 flex flex-col items-center justify-center bg-white rounded-[4rem] border border-black/5 shadow-[0_60px_150px_rgba(0,0,0,0.1)] p-8 lg:p-20"
                  >
                     <div className="mb-10 flex items-center gap-4">
                        <span className="w-12 h-[1px] bg-[#4EA62F]" />

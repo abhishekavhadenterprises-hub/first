@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { StandardButton } from '@/app/components/ui/standard-button';
 import { 
@@ -50,7 +49,6 @@ export default function ContactSuccess() {
 
   return (
     <>
-      <Navigation />
       
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto">
@@ -127,7 +125,7 @@ export default function ContactSuccess() {
                   <div className="w-0.5 h-full bg-gray-200 mt-2"></div>
                 </div>
                 <div className="pb-6">
-                  <h3 className="font-semibold mb-1">Message Received ✓</h3>
+                  <h3 className="font-semibold mb-1">Message Received âœ“</h3>
                   <p className="text-sm text-gray-600">
                     Your enquiry has been logged and assigned a reference ID
                   </p>
@@ -183,7 +181,7 @@ export default function ContactSuccess() {
             className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-12 text-center"
           >
             <p className="text-sm text-blue-900">
-              <strong>📧 Confirmation email sent!</strong> Check your inbox (and spam folder) for a copy of your submission.
+              <strong>ðŸ“§ Confirmation email sent!</strong> Check your inbox (and spam folder) for a copy of your submission.
             </p>
           </motion.div>
 

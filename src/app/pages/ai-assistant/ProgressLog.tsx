@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState } from 'react';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
 import { motion } from 'motion/react';
@@ -98,7 +97,6 @@ export default function ProgressLog() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
 
       <div className="min-h-screen bg-gray-50 pt-40 pb-16 relative">
@@ -328,7 +326,7 @@ export default function ProgressLog() {
                         {entry.link && (
                           <div className="mt-3">
                             <a href={entry.link} className="text-[#4B6E48] hover:underline text-sm font-medium transition-colors">
-                              View Details →
+                              View Details â†’
                             </a>
                           </div>
                         )}
@@ -485,19 +483,19 @@ export default function ProgressLog() {
               </div>
               <ul className="space-y-2 text-sm text-[#64748B]">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#4B6E48] font-bold">•</span>
+                  <span className="text-[#4B6E48] font-bold">â€¢</span>
                   <span>You practice most effectively between 7-9 PM</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#4B6E48] font-bold">•</span>
+                  <span className="text-[#4B6E48] font-bold">â€¢</span>
                   <span>Consider adding Sunday sessions to maintain 7-day streak</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#4B6E48] font-bold">•</span>
+                  <span className="text-[#4B6E48] font-bold">â€¢</span>
                   <span>Your focus duration is above average - great concentration!</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#4B6E48] font-bold">•</span>
+                  <span className="text-[#4B6E48] font-bold">â€¢</span>
                   <span>Reading practice shows highest consistency (95%)</span>
                 </li>
               </ul>

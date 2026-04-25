@@ -2,15 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   Calculator, CheckSquare, DollarSign, Clock,
-  Globe, FileText, ArrowRight, ArrowUpRight, ExternalLink
+  Globe, FileText, ArrowRight, ArrowUpRight
 } from 'lucide-react';
 import { HowItWorksSection } from '@/app/components/HowItWorksSection';
 
-/* ── Tool definitions ───────────────────────────────────────────── */
+/* ── Tool definitions ────────────────────────────────────────────────────────── */
 
 const tools = [
   {
@@ -77,7 +76,7 @@ const tools = [
 
 const tags = ['All', 'Finance', 'Planning', 'Utility', 'Immigration', 'Career'];
 
-/* ── Budget Calculator ──────────────────────────────────────────── */
+/* ── Budget Calculator ───────────────────────────────────────────────────────── */
 
 const cities: Record<string, { rent: number; food: number; transport: number; misc: number }> = {
   London:      { rent: 1200, food: 280, transport: 160, misc: 120 },
@@ -159,7 +158,7 @@ function BudgetTool() {
   );
 }
 
-/* ── Checklist Tool ─────────────────────────────────────────────── */
+/* ── Checklist Tool ─────────────────────────────────────────────────────────── */
 
 const checklistItems = [
   { phase: 'Documents', items: ['Valid passport (6+ months)', 'CAS letter from university', 'Financial proof (bank statement)', 'Accommodation letter', 'Travel insurance docs'] },
@@ -234,7 +233,7 @@ function ChecklistTool() {
   );
 }
 
-/* ── Timezone Tool ──────────────────────────────────────────────── */
+/* ── Timezone Tool ──────────────────────────────────────────────────────────── */
 
 const timezones: Record<string, { offset: number; label: string }> = {
   India:      { offset: 5.5,  label: 'IST' },
@@ -309,7 +308,7 @@ function TimezoneTool() {
   );
 }
 
-/* ── Coming Soon Tool placeholder ───────────────────────────────── */
+/* ── Coming Soon Tool placeholder ───────────────────────────────────────────── */
 
 function ComingSoonTool({ title }: { title: string }) {
   return (
@@ -334,7 +333,7 @@ const liveTools: Record<string, JSX.Element> = {
   timezone: <TimezoneTool />,
 };
 
-/* ── Main Page ──────────────────────────────────────────────────── */
+/* ── Main Page ───────────────────────────────────────────────────────────────── */
 
 export default function ToolsPage() {
   const [activeTag, setActiveTag] = useState('All');
@@ -345,11 +344,10 @@ export default function ToolsPage() {
 
   return (
     <>
-      <Navigation />
       <div className="min-h-screen bg-[#FDFDFC] font-['Outfit',sans-serif]">
 
         {/* ── Hero ── */}
-        <section className="relative pt-48 pb-28 overflow-hidden border-b border-black/5">
+        <section className="relative pt-48 pb-10 overflow-hidden border-b border-black/5">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[#4EA62F]/5 rounded-full blur-[150px]" />
             <div className="absolute bottom-[-10%] left-[-5%] text-[20vw] font-[1000] text-black/[0.015] select-none uppercase tracking-tighter italic">
@@ -370,7 +368,7 @@ export default function ToolsPage() {
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Student Utilities</span>
             </motion.div>
 
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -390,13 +388,19 @@ export default function ToolsPage() {
                 Calculators, checklists, and utilities built specifically for international students in the UK.
               </motion.p>
             </div>
+          </div>
+        </section>
 
-            {/* Tag filters */}
+        {/* ── Tools Grid ── */}
+        <section className="py-24 lg:py-32">
+          <div className="max-w-[1320px] mx-auto px-6 lg:px-12">
+            
+            {/* Tag filters (Moved here to be just above the tools) */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap items-center gap-3 mt-14"
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-3 mb-16"
             >
               {tags.map((tag) => (
                 <button
@@ -412,12 +416,6 @@ export default function ToolsPage() {
                 </button>
               ))}
             </motion.div>
-          </div>
-        </section>
-
-        {/* ── Tools Grid ── */}
-        <section className="py-24 lg:py-40">
-          <div className="max-w-[1320px] mx-auto px-6 lg:px-12">
 
             {/* Active tool panel */}
             {openTool && (
@@ -459,19 +457,19 @@ export default function ToolsPage() {
                   >
                     {/* Top row */}
                     <div className="flex items-center justify-between mb-8">
-                      <span className="text-[10px] font-black tabular-nums tracking-widest text-black/15">{tool.index}</span>
-                      <div className="flex items-center gap-2">
-                        {tool.status === 'soon' ? (
-                          <span className="px-3 py-1 rounded-full bg-black/[0.04] text-[8px] font-black uppercase tracking-widest text-black/30">
-                            Soon
-                          </span>
-                        ) : (
-                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4EA62F]/10 text-[8px] font-black uppercase tracking-widest text-[#4EA62F]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#4EA62F] animate-pulse" />
-                            Live
-                          </span>
-                        )}
-                      </div>
+                       <span className="text-[10px] font-black tabular-nums tracking-widest text-black/15">{tool.index}</span>
+                       <div className="flex items-center gap-2">
+                         {tool.status === 'soon' ? (
+                           <span className="px-3 py-1 rounded-full bg-black/[0.04] text-[8px] font-black uppercase tracking-widest text-black/30">
+                             Soon
+                           </span>
+                         ) : (
+                           <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4EA62F]/10 text-[8px] font-black uppercase tracking-widest text-[#4EA62F]">
+                             <span className="w-1.5 h-1.5 rounded-full bg-[#4EA62F] animate-pulse" />
+                             Live
+                           </span>
+                         )}
+                       </div>
                     </div>
 
                     {/* Icon */}
@@ -502,7 +500,9 @@ export default function ToolsPage() {
               })}
             </div>
 
-            <HowItWorksSection />
+            <div className="mt-40">
+              <HowItWorksSection />
+            </div>
 
             {/* Bottom CTA */}
             <motion.div

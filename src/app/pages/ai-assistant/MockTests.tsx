@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -76,7 +75,6 @@ export default function MockTests() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
 
       <div className="mock-tests-root">
@@ -148,7 +146,7 @@ export default function MockTests() {
                   
                   {/* Row 2: Date as single unbroken line */}
                   <div className="mock-tests-score-row-2">
-                    <div className="mock-tests-score-date">IELTS Academic • February 3, 2026</div>
+                    <div className="mock-tests-score-date">IELTS Academic â€¢ February 3, 2026</div>
                   </div>
                   
                   {/* Mobile stats row - only visible on mobile */}
@@ -446,11 +444,11 @@ export default function MockTests() {
                       <div>
                         <div className="font-semibold text-amber-900 mb-2">Test Instructions</div>
                         <ul className="text-sm text-amber-800 space-y-1">
-                          <li>• Complete all sections in order</li>
-                          <li>• You cannot navigate back to previous sections once submitted</li>
-                          <li>• Your progress is auto-saved every 2 minutes</li>
-                          <li>• Ensure stable internet connection throughout</li>
-                          <li>• Find a quiet environment without distractions</li>
+                          <li>â€¢ Complete all sections in order</li>
+                          <li>â€¢ You cannot navigate back to previous sections once submitted</li>
+                          <li>â€¢ Your progress is auto-saved every 2 minutes</li>
+                          <li>â€¢ Ensure stable internet connection throughout</li>
+                          <li>â€¢ Find a quiet environment without distractions</li>
                         </ul>
                       </div>
                     </div>

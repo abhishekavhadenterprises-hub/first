@@ -1,6 +1,16 @@
+'use client';
+
+import React, { useRef } from 'react';
 import { motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
-import { Compass, GraduationCap, Map, Sparkles, BookOpen, Rocket } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Map, BookOpen, Rocket } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface StepCardProps {
   phase: string;
@@ -9,57 +19,25 @@ interface StepCardProps {
   description?: string;
   pills: string[];
   index: number;
-  gradientColors: string[];
   icon: React.ReactNode;
   isLast?: boolean;
 }
 
-function StepCard({ phase, title, subtitle, description, pills, index, gradientColors, icon, isLast }: StepCardProps) {
+function StepCard({ phase, title, subtitle, description, pills, index, icon, isLast }: StepCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setMousePosition({ x, y });
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotX = ((e.clientY - rect.top - centerY) / centerY) * -4;
-    const rotY = ((e.clientX - rect.left - centerX) / centerX) * 4;
-    
-    if (cardRef.current) {
-      cardRef.current.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
-    }
-  };
-
-  const onMouseLeave = () => {
-    setIsHovered(false);
-    if (cardRef.current) {
-      cardRef.current.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    }
-  };
 
   return (
     <div
-      className={`sticky top-[12vh] h-[70vh] w-full ${isLast ? "mb-0" : "mb-[25vh]"}`}
+      ref={cardRef}
+      className={cn(
+        "step-card-wrapper sticky top-[12vh] w-full flex items-center justify-center",
+        isLast ? "mb-0" : "mb-[25vh]"
+      )}
       style={{ zIndex: index + 1 }}
     >
-      <motion.div
-        ref={cardRef}
-        onMouseMove={onMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={onMouseLeave}
-        initial={{ opacity: 0, y: 50, scale: 0.95 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full h-full rounded-[4rem] overflow-hidden flex items-center px-12 lg:px-20 bg-[#C7EABB] border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] transition-all duration-700 ease-out"
+      <div
+        className="card-content relative w-full h-[70vh] rounded-[4rem] overflow-hidden flex items-center px-12 lg:px-20 border border-black/5 transition-all duration-500 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)]"
         style={{
-          transformStyle: 'preserve-3d',
           background: 'linear-gradient(135deg, #C7EABB 0%, #D8F2D0 100%)'
         }}
       >
@@ -68,25 +46,15 @@ function StepCard({ phase, title, subtitle, description, pills, index, gradientC
           {icon}
         </div>
 
-        {/* Cursor Glow */}
-        {isHovered && (
-          <div
-            className="absolute inset-0 pointer-events-none opacity-100"
-            style={{
-              background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.4), transparent 40%)`,
-            }}
-          />
-        )}
-
         {/* Content */}
         <div className="relative z-10 max-w-[800px] pointer-events-none">
           <span className="block text-[#4EA62F] text-[11px] tracking-[6px] mb-8 uppercase font-[900] opacity-80 decoration-[#4EA62F]/30 decoration-2 underline-offset-8">
             {phase}
           </span>
-          <h3 className="text-[clamp(3rem,10vw,6rem)] font-[1000] text-[#0F172A] mb-4 leading-[0.85] uppercase tracking-tighter">
+          <h3 className="text-[clamp(2rem,6vw,4rem)] font-[1000] text-[#0F172A] mb-4 leading-[0.85] uppercase tracking-tighter">
             {title}
           </h3>
-          <p className="text-[22px] lg:text-[28px] text-[#0F172A] mb-8 font-bold leading-tight tracking-tight">
+          <p className="text-[18px] lg:text-[22px] text-[#0F172A] mb-8 font-bold leading-tight tracking-tight">
             {subtitle}
           </p>
           {description && (
@@ -106,25 +74,50 @@ function StepCard({ phase, title, subtitle, description, pills, index, gradientC
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
 
 export function HowItWorksSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
 
-  // High-performance Scroll Dynamics removed manual listener
+  useGSAP(() => {
+    if (!containerRef.current) return;
 
-  const steps: Omit<StepCardProps, 'index'>[] = [
+    const cards = gsap.utils.toArray<HTMLElement>('.step-card-wrapper');
+    
+    // Create the overlapping animation
+    // Each card scales down and fades slightly as the next one comes up
+    cards.forEach((card, i) => {
+      if (i === cards.length - 1) return; // Don't animate the last card
+
+      const content = card.querySelector('.card-content');
+      if (!content) return;
+
+      gsap.to(content, {
+        scale: 0.94,
+        opacity: 0.6,
+        filter: "blur(2px)",
+        scrollTrigger: {
+          trigger: cards[i + 1], // Trigger when the NEXT card starts coming in
+          start: "top 85%",
+          end: "top 15%",
+          scrub: true,
+          invalidateOnRefresh: true
+        }
+      });
+    });
+
+  }, { scope: containerRef });
+
+  const steps = [
     {
       phase: 'Phase 01',
       title: 'Explore',
       subtitle: 'Discover universities worldwide',
       description: 'Browse thousands of courses, compare universities, and find the perfect match for your academic goals.',
       pills: ['Search', 'Compare', 'Shortlist'],
-      gradientColors: ['#ECF6E8', '#C7EABB'], // Light Mint Gradient
       icon: <Map className="w-[500px] h-[500px]" />
     },
     {
@@ -133,7 +126,6 @@ export function HowItWorksSection() {
       subtitle: 'Global Readiness',
       description: 'Access guides, checklists, and resources to prepare a winning application and secure your spot.',
       pills: ['Documents', 'Tests', 'Funding'],
-      gradientColors: ['#F2F7EF', '#D8F2D0'], // Very Light Green Gradient
       icon: <BookOpen className="w-[500px] h-[500px]" />
     },
     {
@@ -142,7 +134,6 @@ export function HowItWorksSection() {
       subtitle: 'Arrival & Beyond',
       description: 'Connect with peers, access support services, and thrive in your new academic environment.',
       pills: ['Community', 'Support', 'Resources'],
-      gradientColors: ['#FFFFFF', '#E8F5E1'], // White to Mint Gradient
       icon: <Rocket className="w-[500px] h-[500px]" />
     },
   ];
@@ -150,11 +141,24 @@ export function HowItWorksSection() {
   return (
     <section
       ref={containerRef}
-      className="py-[100px] lg:py-20 md:py-16 max-md:py-14 px-8 lg:px-8 md:px-6 max-md:px-4 bg-white"
+      className="py-24 lg:py-40 bg-white overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto">
-        {/* Stacking Cards */}
-        <div ref={cardsRef} className="pb-[4vh]">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-12">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-24 gap-6">
+           <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.5em] text-[#4EA62F]">
+              <div className="w-2 h-2 rounded-full bg-[#4EA62F] animate-pulse" />
+              Relocation Journey
+           </div>
+           <h2 className="text-3xl lg:text-5xl font-[1000] text-[#0F172A] tracking-tighter uppercase whitespace-nowrap">
+              Explore. Prepare. <span className="text-[#4EA62F] italic font-light lowercase">Succeed.</span>
+           </h2>
+           <p className="text-black/40 text-lg lg:text-xl font-bold tracking-tight leading-tight max-w-xl">
+             A comprehensive framework designed to maximize your international academic potential, from first search to final arrival.
+           </p>
+        </div>
+
+        {/* Stacking Cards Container */}
+        <div className="relative">
           {steps.map((step, index) => (
             <StepCard 
               key={index} 

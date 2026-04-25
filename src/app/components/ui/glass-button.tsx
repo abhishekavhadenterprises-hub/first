@@ -41,7 +41,7 @@ const glassButtonTextVariants = cva(
 
 export interface GlassButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof glassButtonVariants> {
+  VariantProps<typeof glassButtonVariants> {
   contentClassName?: string;
 }
 
@@ -50,23 +50,27 @@ const GlassButton = React.forwardRef<HTMLButtonElement, GlassButtonProps>(
     return (
       <div
         className={cn(
-          "glass-button-wrap cursor-pointer rounded-xl",
+          "glass-button-wrap cursor-pointer rounded-xl group relative overflow-hidden",
           className
         )}
       >
         <button
-          className={cn("glass-button", glassButtonVariants({ size }))}
+          className={cn("glass-button relative z-10", glassButtonVariants({ size }))}
           ref={ref}
           {...props}
         >
           <span
             className={cn(
+              "relative z-20",
               glassButtonTextVariants({ size }),
               contentClassName
             )}
           >
             {children}
           </span>
+          
+          {/* Background Hover Effect (Black to Green) - Left to Right */}
+          <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-0" />
         </button>
         <div className="glass-button-shadow rounded-xl"></div>
       </div>

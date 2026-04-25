@@ -9,16 +9,17 @@ import {
   Send, 
   User, 
   Mail, 
-  Globe, 
   GraduationCap, 
-  Calendar, 
   Target, 
   Sparkles,
   ChevronRight,
+  ChevronLeft,
   ShieldCheck,
-  Cpu
+  Cpu,
+  CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -34,6 +35,16 @@ export const PremiumConciergeForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const [formData, setFormData] = useState({
+    education: 'Undergraduate',
+    intake: 'Fall 2026',
+    universities: '',
+    budget: '',
+    requirements: '',
+    name: '',
+    email: ''
+  });
 
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -63,19 +74,57 @@ export const PremiumConciergeForm = () => {
 
   }, { scope: containerRef });
 
-  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
+  const validateStep = (step: number) => {
+    if (step === 1) return true; // Universities is optional
+    if (step === 2) {
+      if (!formData.budget) {
+        toast.error("Please select a budget range");
+        return false;
+      }
+      if (!formData.requirements.trim()) {
+        toast.error("Please describe your requirements");
+        return false;
+      }
+      return true;
+    }
+    if (step === 3) {
+      if (!formData.name.trim()) {
+        toast.error("Name is required");
+        return false;
+      }
+      if (!formData.email.trim() || !formData.email.includes('@')) {
+        toast.error("Valid email is required");
+        return false;
+      }
+      return true;
+    }
+    return true;
+  };
+
+  const nextStep = () => {
+    if (validateStep(currentStep)) {
+      setCurrentStep(prev => Math.min(prev + 1, 3));
+    }
+  };
+
   const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    if (validateStep(3)) {
+      setIsSubmitted(true);
+    }
+  };
+
+  const updateField = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   return (
     <section 
       ref={containerRef}
-      id="request-concierge-form"
-      className="relative py-24 lg:py-40 bg-[#FDFDFC] overflow-hidden"
+      id="concierge-form"
+      className="relative py-8 lg:py-12 bg-[#FDFDFC] overflow-hidden"
     >
       {/* Decorative HUD Elements */}
       <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none hidden lg:block">
@@ -89,18 +138,17 @@ export const PremiumConciergeForm = () => {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="form-header mb-16 lg:mb-24 text-center lg:text-left">
+        <div className="form-header mb-12 text-center mx-auto max-w-4xl">
            <div className="inline-flex items-center gap-3 px-5 py-2 bg-white shadow-sm border border-black/5 rounded-full mb-8">
               <ShieldCheck className="w-4 h-4 text-[#4EA62F]" />
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Secure Submission Protocol</span>
            </div>
            
-           <h2 className="text-5xl lg:text-8xl font-[1000] text-[#0F172A] leading-[0.85] tracking-tighter uppercase mb-10 font-['Outfit',sans-serif]">
-             Request <br />
-             <span className="text-[#4EA62F] italic font-light lowercase">Concierge</span>
+           <h2 className="text-5xl lg:text-7xl font-[1000] text-[#0F172A] leading-tight tracking-tighter uppercase mb-6 font-['Outfit',sans-serif]">
+             Request <span className="text-[#4EA62F] italic font-light lowercase ml-2">Concierge</span>
            </h2>
 
-           <p className="max-w-xl text-xl font-bold text-black/40 leading-tight tracking-tight font-['Outfit',sans-serif]">
+           <p className="max-w-xl mx-auto text-xl font-bold text-black/40 leading-tight tracking-tight font-['Outfit',sans-serif]">
               Initiate your premium strategy track. Our advisors require the following metrics to evaluate compatibility.
            </p>
         </div>
@@ -129,7 +177,7 @@ export const PremiumConciergeForm = () => {
                            "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-700",
                            currentStep === step.id ? "bg-[#4EA62F] text-white shadow-lg shadow-[#4EA62F]/20" : "bg-white text-black/20 border border-black/5"
                          )}>
-                            <step.icon size={18} />
+                            {currentStep > step.id ? <CheckCircle2 size={18} /> : <step.icon size={18} />}
                          </div>
                          <div className="flex flex-col">
                             <span className="text-[10px] font-black uppercase tracking-widest text-[#4EA62F]/60">Step 0{step.id}</span>
@@ -168,7 +216,11 @@ export const PremiumConciergeForm = () => {
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                  <div className="space-y-4">
                                     <label className="text-[11px] font-black uppercase tracking-widest text-black/30">Current Education Level</label>
-                                    <select className="w-full bg-gray-50 border-none rounded-2xl p-5 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all appearance-none cursor-pointer">
+                                    <select 
+                                      value={formData.education}
+                                      onChange={(e) => updateField('education', e.target.value)}
+                                      className="w-full bg-gray-50 border-none rounded-2xl p-5 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all appearance-none cursor-pointer"
+                                    >
                                        <option>High School</option>
                                        <option>Undergraduate</option>
                                        <option>Graduate</option>
@@ -177,7 +229,11 @@ export const PremiumConciergeForm = () => {
                                  </div>
                                  <div className="space-y-4">
                                     <label className="text-[11px] font-black uppercase tracking-widest text-black/30">Intended Intake Period</label>
-                                    <select className="w-full bg-gray-50 border-none rounded-2xl p-5 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all appearance-none cursor-pointer">
+                                    <select 
+                                      value={formData.intake}
+                                      onChange={(e) => updateField('intake', e.target.value)}
+                                      className="w-full bg-gray-50 border-none rounded-2xl p-5 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all appearance-none cursor-pointer"
+                                    >
                                        <option>Spring 2026</option>
                                        <option>Fall 2026</option>
                                        <option>Spring 2027</option>
@@ -190,6 +246,8 @@ export const PremiumConciergeForm = () => {
                                  <label className="text-[11px] font-black uppercase tracking-widest text-black/30">Target Universities (Optional)</label>
                                  <input 
                                    type="text" 
+                                   value={formData.universities}
+                                   onChange={(e) => updateField('universities', e.target.value)}
                                    placeholder="e.g. Oxford, Stanford, NUS..."
                                    className="w-full bg-gray-50 border-none rounded-2xl p-6 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all placeholder:text-black/10"
                                  />
@@ -205,7 +263,17 @@ export const PremiumConciergeForm = () => {
                                  <label className="text-[11px] font-black uppercase tracking-widest text-black/30">Estimated Budget Range</label>
                                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {['$10k-$30k', '$30k-$60k', '$60k-$100k', '$100k+'].map((range) => (
-                                      <button type="button" key={range} className="p-4 bg-gray-50 hover:bg-[#4EA62F] hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+                                      <button 
+                                        type="button" 
+                                        key={range} 
+                                        onClick={() => updateField('budget', range)}
+                                        className={cn(
+                                          "p-6 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all border cursor-pointer relative z-10",
+                                          formData.budget === range 
+                                            ? "bg-[#4EA62F] text-white border-[#4EA62F] shadow-xl" 
+                                            : "bg-[#FAFBFC] text-[#0F172A] border-black/10 hover:border-[#4EA62F]/30"
+                                        )}
+                                      >
                                          {range}
                                       </button>
                                     ))}
@@ -216,6 +284,8 @@ export const PremiumConciergeForm = () => {
                                  <label className="text-[11px] font-black uppercase tracking-widest text-black/30">Primary Support Requirements</label>
                                  <textarea 
                                    rows={4}
+                                   value={formData.requirements}
+                                   onChange={(e) => updateField('requirements', e.target.value)}
                                    placeholder="Describe your goals and where you need elite guidance..."
                                    className="w-full bg-gray-50 border-none rounded-2xl p-6 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all placeholder:text-black/10 resize-none"
                                  />
@@ -234,6 +304,8 @@ export const PremiumConciergeForm = () => {
                                        <User size={16} className="absolute left-6 top-6 text-black/20" />
                                        <input 
                                          type="text" 
+                                         value={formData.name}
+                                         onChange={(e) => updateField('name', e.target.value)}
                                          className="w-full bg-gray-50 border-none rounded-2xl py-6 pl-14 pr-6 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all"
                                        />
                                     </div>
@@ -244,6 +316,8 @@ export const PremiumConciergeForm = () => {
                                        <Mail size={16} className="absolute left-6 top-6 text-black/20" />
                                        <input 
                                          type="email" 
+                                         value={formData.email}
+                                         onChange={(e) => updateField('email', e.target.value)}
                                          className="w-full bg-gray-50 border-none rounded-2xl py-6 pl-14 pr-6 text-sm font-bold text-[#0F172A] focus:ring-2 focus:ring-[#4EA62F]/20 outline-none transition-all"
                                        />
                                     </div>
@@ -267,9 +341,12 @@ export const PremiumConciergeForm = () => {
                               <button 
                                 type="button" 
                                 onClick={prevStep}
-                                className="text-[11px] font-black uppercase tracking-widest text-black/40 hover:text-black transition-colors"
+                                className="group flex items-center gap-4 px-8 py-5 rounded-2xl text-[11px] font-black uppercase tracking-widest text-black/40 hover:text-black transition-all border border-black/5 hover:border-black/10 hover:bg-white shadow-sm"
                               >
-                                Back
+                                <div className="w-6 h-6 rounded-full border border-black/10 flex items-center justify-center group-hover:border-black/30 transition-all">
+                                   <ChevronLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
+                                </div>
+                                Previous Phase
                               </button>
                             )}
                             <div className="flex-1" />
@@ -277,10 +354,12 @@ export const PremiumConciergeForm = () => {
                               <button 
                                 type="button" 
                                 onClick={nextStep}
-                                className="group flex items-center gap-4 bg-[#0F172A] text-white px-8 py-5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-[#4EA62F] transition-all duration-700 active:scale-95"
+                                className="group flex items-center gap-4 bg-[#0F172A] text-white px-8 py-5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-[#4EA62F] transition-all duration-700 active:scale-95 shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
                               >
                                 Next Phase
-                                <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                <div className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-[#4EA62F] transition-all duration-500">
+                                   <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                                </div>
                               </button>
                             ) : (
                               <button 

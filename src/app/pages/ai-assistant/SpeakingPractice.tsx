@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState, useEffect } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -34,7 +33,7 @@ const speakingQuestions = {
     "Would you like to live there in the future?"
   ],
   part2: [
-    "Describe a memorable trip you have taken. You should say:\n• Where you went\n• Who you went with\n• What you did there\nAnd explain why it was memorable."
+    "Describe a memorable trip you have taken. You should say:\nâ€¢ Where you went\nâ€¢ Who you went with\nâ€¢ What you did there\nAnd explain why it was memorable."
   ],
   part3: [
     "How has tourism changed in your country over the past decade?",
@@ -134,7 +133,6 @@ export default function SpeakingPractice() {
 
     return (
       <>
-        <Navigation />
         <AIAssistantNav />
         <div className="min-h-screen bg-gray-50 pt-40 pb-16">
           <div className="max-w-5xl mx-auto px-4">
@@ -347,7 +345,6 @@ export default function SpeakingPractice() {
   if (!sessionStarted) {
     return (
       <>
-        <Navigation />
         <AIAssistantNav />
         <div className="speaking-setup-container">
           <div className="speaking-setup-wrapper">
@@ -470,7 +467,7 @@ export default function SpeakingPractice() {
                 >
                   <div className="flex items-center gap-2">
                     <Mic className="w-4 h-4" />
-                    <span>{micTested ? 'Test Complete ✓' : 'Test Microphone'}</span>
+                    <span>{micTested ? 'Test Complete âœ“' : 'Test Microphone'}</span>
                   </div>
                 </StandardButton>
               </div>
@@ -999,7 +996,6 @@ export default function SpeakingPractice() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
       <div className="min-h-screen bg-gray-50 pt-40 pb-16">
         <div className="max-w-4xl mx-auto px-4">

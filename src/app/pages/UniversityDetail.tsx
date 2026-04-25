@@ -9,7 +9,6 @@ import { CampusLifeSection } from '@/app/components/CampusLifeSection';
 import { CoursesSection } from '@/app/components/CoursesSection';
 import { EnhancedCoursesSection } from '@/app/components/EnhancedCoursesSection';
 import { AdmissionScrollPanel } from '@/app/components/AdmissionScrollPanel';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { CreditCardHero } from '@/app/components/ui/credit-card-hero';
 
@@ -49,7 +48,6 @@ export default function UniversityDetail() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navigation />
       
       {/* Hero Banner Section - Inspired by Bakery Design */}
       <section className="relative w-full min-h-[600px] bg-gradient-to-br from-[#F5F1E8] via-[#FDFCFA] to-white overflow-hidden pt-20">
@@ -71,7 +69,7 @@ export default function UniversityDetail() {
             <div className="hidden lg:block lg:col-span-3 relative">
               <div className="absolute inset-0 flex items-center justify-center">
                 <h2 
-                  className="text-[80px] font-bold tracking-wider origin-center"
+                  className="text-[60px] font-bold tracking-wider origin-center"
                   style={{
                     writingMode: 'vertical-rl',
                     textOrientation: 'mixed',
@@ -89,14 +87,14 @@ export default function UniversityDetail() {
             {/* Right Side - Content */}
             <div className="lg:col-span-5 space-y-6 relative z-10">
               {/* Main Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+              <h1 className="">
                 <span className="text-[#0F172A]">Your Gateway to </span>
                 <span className="text-[#4B6E48]">Global</span>
                 <span className="text-[#0F172A]"> Education</span>
               </h1>
 
               {/* Description */}
-              <p className="text-base md:text-lg text-[#6B7280] leading-relaxed max-w-xl">
+              <p className="text-sm md:text-base text-[#6B7280] leading-relaxed max-w-xl">
                 Explore world-class universities and find your perfect match. We guide you through every step of your educational journey abroad.
               </p>
 
@@ -104,20 +102,18 @@ export default function UniversityDetail() {
               <div className="pt-4">
                 <button
                   onClick={() => navigate('/universities')}
-                  className="group relative inline-flex items-center justify-center"
+                  className="group relative w-36 h-36 rounded-full bg-[#0F172A] flex items-center justify-center transition-all duration-700 shadow-2xl overflow-hidden transform"
                 >
-                  {/* Circular Background */}
-                  <div className="w-36 h-36 rounded-full bg-[#4B6E48] flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xl">
-                    <div className="text-center">
-                      <span className="block text-white font-semibold text-base mb-1.5">
-                        Start Your
-                      </span>
-                      <span className="block text-white font-semibold text-base">
-                        Journey
-                      </span>
-                      <ArrowRight className="w-5 h-5 text-white mx-auto mt-2 transition-transform duration-300 group-hover:translate-x-1" />
-                    </div>
+                  <div className="relative z-20 text-center">
+                    <span className="block text-white font-black uppercase tracking-widest text-[10px] mb-1.5 transition-colors duration-500">
+                      Start Your
+                    </span>
+                    <span className="block text-white font-black uppercase tracking-widest text-[10px] transition-colors duration-500">
+                      Journey
+                    </span>
+                    <ArrowRight className="w-5 h-5 text-white mx-auto mt-2 transition-transform duration-500 group-hover:translate-x-2" />
                   </div>
+                  <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
                 </button>
               </div>
             </div>
@@ -136,7 +132,7 @@ export default function UniversityDetail() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
             {/* Overview Heading */}
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#0F172A] mb-6">
+            <h2 className="text-[#0F172A] mb-6">
               Overview
             </h2>
 
@@ -168,7 +164,7 @@ export default function UniversityDetail() {
 
             {/* Rankings Section */}
             <div className="mb-8">
-              <h3 className="text-2xl font-semibold text-[#0F172A] mb-6">
+              <h3 className="text-lg font-semibold text-[#0F172A] mb-6">
                 Rankings
               </h3>
 
@@ -182,7 +178,7 @@ export default function UniversityDetail() {
                     </div>
                     <div className="flex-1">
                       <p className="text-sm text-[#6B7280] mb-2">Global Ranking</p>
-                      <p className="text-2xl md:text-3xl font-semibold text-[#4B6E48]">
+                      <p className="text-xl md:text-2xl font-semibold text-[#4B6E48]">
                         Top 5 worldwide
                       </p>
                     </div>
@@ -197,7 +193,7 @@ export default function UniversityDetail() {
                     </div>
                     <div className="flex-1">
                       <p className="text-sm text-[#6B7280] mb-2">National Ranking</p>
-                      <p className="text-2xl md:text-3xl font-semibold text-[#4B6E48]">
+                      <p className="text-xl md:text-2xl font-semibold text-[#4B6E48]">
                         #3 in United States
                       </p>
                     </div>
@@ -257,7 +253,7 @@ export default function UniversityDetail() {
           <div className="max-w-7xl mx-auto px-4">
             {/* Section Heading */}
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0F172A] mb-3">
+              <h2 className="text-[#0F172A] mb-3">
                 Academic Programs
               </h2>
               <p className="text-base text-[#6B7280]">
@@ -275,7 +271,7 @@ export default function UniversityDetail() {
                     <GraduationCap className="w-8 h-8 text-[#0F172A]" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-[#0F172A] mb-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-[#0F172A] mb-2">
                       Undergraduate Programs
                     </h3>
                     <p className="text-sm text-[#6B7280]">
@@ -343,7 +339,7 @@ export default function UniversityDetail() {
                     <FileText className="w-8 h-8 text-[#0F172A]" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-[#0F172A] mb-2">
+                    <h3 className="text-lg md:text-xl font-semibold text-[#0F172A] mb-2">
                       Graduate Programs
                     </h3>
                     <p className="text-sm text-[#6B7280]">
@@ -457,7 +453,7 @@ export default function UniversityDetail() {
                 <div className="h-40 bg-gray-200"></div>
                 
                 <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-[#0F172A] mb-6">
+                  <h3 className="text-xl font-semibold text-[#0F172A] mb-6">
                     Undergraduate Admission
                   </h3>
 
@@ -533,7 +529,7 @@ export default function UniversityDetail() {
                 </div>
                 
                 <div className="p-8">
-                  <h3 className="text-2xl font-semibold text-[#0F172A] mb-6">
+                  <h3 className="text-xl font-semibold text-[#0F172A] mb-6">
                     Graduate Admission
                   </h3>
 
@@ -628,7 +624,7 @@ export default function UniversityDetail() {
         <section className="py-16 bg-[#FDFCFA]">
           <div className="max-w-7xl mx-auto px-4">
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0F172A] mb-3">
+              <h2 className="text-[#0F172A] mb-3">
                 Cost & Financial Aid
               </h2>
               <p className="text-base text-[#6B7280]">
@@ -638,7 +634,7 @@ export default function UniversityDetail() {
 
             {/* Cost Breakdown Card */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm mb-6">
-              <h3 className="text-xl md:text-2xl font-semibold text-[#0F172A] mb-6">
+              <h3 className="text-lg md:text-xl font-semibold text-[#0F172A] mb-6">
                 Estimated Cost of Attendance (2024-25)
               </h3>
 
@@ -759,7 +755,7 @@ export default function UniversityDetail() {
 
             {/* Financial Aid Highlights */}
             <div className="bg-gradient-to-br from-[#4B6E48] to-[#5F8A4E] rounded-xl p-6 md:p-8 text-white">
-              <h3 className="text-xl md:text-2xl font-semibold mb-4">
+              <h3 className="text-lg md:text-xl font-semibold mb-4">
                 Financial Aid Highlights
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -791,7 +787,7 @@ export default function UniversityDetail() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#0F172A] mb-3">
+              <h2 className="text-[#0F172A] mb-3">
                 Career Outcomes
               </h2>
               <p className="text-base text-[#6B7280]">

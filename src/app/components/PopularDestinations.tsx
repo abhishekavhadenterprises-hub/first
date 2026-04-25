@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight, Globe, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const destinations = [
   {
@@ -61,8 +61,13 @@ const destinations = [
 
 export function PopularDestinations() {
   return (
-    <section className="py-32 px-6 lg:px-20 bg-white overflow-hidden selection:bg-[#4EA62F] selection:text-white font-['Outfit',sans-serif]">
-      <div className="max-w-[1400px] mx-auto">
+    <section className="py-24 px-6 lg:px-20 bg-white relative overflow-hidden selection:bg-[#4EA62F] selection:text-white font-['Outfit',sans-serif]">
+      {/* Editorial Identity Layer */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] bg-[#4EA62F]/5 rounded-full blur-[150px] pointer-events-none" />
+      
+      <div className="max-w-[1400px] mx-auto relative z-10">
         {/* BENTO HEADER */}
         <div className="flex flex-col items-center text-center mb-24">
           <motion.div 
@@ -77,7 +82,7 @@ export function PopularDestinations() {
             initial={{ opacity: 0, y: 40, rotateX: -20 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[44px] lg:text-[88px] font-black leading-[0.9] tracking-[-0.06em] text-black uppercase"
+            className="text-black uppercase"
           >
             Explore <span className="text-black/20">Hubs.</span>
           </motion.h2>
@@ -143,7 +148,7 @@ function BentoCard({ dest, index }: { dest: any, index: number }) {
            </div>
 
            <div>
-              <h3 className="text-white text-3xl lg:text-5xl font-black leading-none tracking-tighter uppercase mb-4 group-hover:tracking-normal transition-all duration-700">
+              <h3 className="text-white uppercase mb-4 group-hover:tracking-normal transition-all duration-700">
                 {dest.location}
               </h3>
               <div className="flex items-center gap-4 overflow-hidden mb-2">

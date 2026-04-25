@@ -45,7 +45,7 @@ export function ServiceOverviewCompare() {
   return (
     <section 
       ref={containerRef} 
-      className="relative w-full bg-[#fdfdfc] py-32 lg:py-56 overflow-hidden border-t border-black/5"
+      className="relative w-full bg-[#fdfdfc] py-6 lg:py-8 overflow-hidden min-h-screen flex items-center"
     >
       {/* Premium Background Elements */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#4EA62F]/20 to-transparent" />
@@ -54,37 +54,36 @@ export function ServiceOverviewCompare() {
       <div className="max-w-[1800px] mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="max-w-5xl mb-24 lg:mb-40 reveal-overview">
-          <div className="flex items-center gap-4 mb-10">
+        <div className="max-w-5xl mx-auto mb-8 lg:mb-10 reveal-overview text-center">
+          <div className="flex items-center justify-center gap-4 mb-5">
             <div className="flex items-center gap-2 px-4 py-1.5 bg-white border border-black/[0.04] rounded-full shadow-sm">
                 <Activity className="w-3.5 h-3.5 text-[#4EA62F]" />
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Ecosystem Architecture</span>
             </div>
           </div>
-          <h2 className="text-[clamp(3.5rem,8vw,8rem)] font-[1000] text-[#0F172A] leading-[0.85] tracking-[-0.04em] uppercase perspective-[1000px]">
-            Master Your <br/> 
-            <span className="inline-block relative">
-                Academic <span className="text-[#4EA62F]">Ecosystem.</span>
+          <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-[1000] text-[#0F172A] leading-[0.85] tracking-[-0.04em] uppercase perspective-[1000px] text-center">
+            Master Your Academic <span className="text-[#4EA62F] relative inline-block">
+                Ecosystem.
                 <motion.div 
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     transition={{ duration: 1.5, delay: 0.5, ease: "circOut" }}
-                    className="absolute -bottom-4 left-0 w-full h-2 bg-[#4EA62F] origin-left"
+                    className="absolute -bottom-2 left-0 w-full h-1.5 bg-[#4EA62F] origin-left"
                 />
             </span>
           </h2>
         </div>
 
         {/* Comparison Interactive Deck */}
-        <div className="reveal-overview flex flex-col lg:flex-row w-full h-[700px] lg:h-[900px] border border-black/[0.06] rounded-[4.5rem] overflow-hidden bg-white shadow-[0_50px_100px_-30px_rgba(0,0,0,0.08)]">
+        <div className="reveal-overview flex flex-col lg:flex-row w-full h-[450px] lg:h-[580px] border border-black/[0.06] rounded-[3.5rem] overflow-hidden bg-white shadow-[0_50px_100px_-30px_rgba(0,0,0,0.08)]">
           {(serviceOverviewData || []).map((service, idx) => (
             <div
               key={service.id || idx}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative flex-1 group flex flex-col p-12 lg:p-20 border-r last:border-r-0 border-black/[0.04] overflow-hidden transition-all duration-[800ms] cubic-bezier(0.16, 1, 0.3, 1)"
+              className="relative flex-1 group flex flex-col p-6 lg:p-10 border-r last:border-r-0 border-black/[0.04] overflow-hidden transition-all duration-[1000ms] cubic-bezier(0.2, 1, 0.2, 1)"
               style={{
-                flex: hoveredIndex === idx ? 3.5 : 1,
+                flex: hoveredIndex === idx ? 4 : 1,
               }}
             >
               {/* [NEW] Background Imagery & Overlays */}
@@ -137,8 +136,8 @@ export function ServiceOverviewCompare() {
                 <h3 className={cn(
                     "font-[1000] uppercase tracking-[-0.04em] leading-[0.9] transition-all duration-[900ms] ease-out",
                     hoveredIndex === idx 
-                        ? "text-white text-5xl lg:text-8xl scale-100" 
-                        : "text-[#0F172A] text-2xl lg:text-4xl scale-95 origin-left"
+                        ? "text-white text-4xl lg:text-7xl scale-100" 
+                        : "text-[#0F172A] text-xl lg:text-3xl scale-95 origin-left"
                 )}>
                   {service.name.split(' ')[0]} <br/> 
                   <span className={hoveredIndex === idx ? "text-[#4EA62F]" : ""}>
@@ -178,12 +177,12 @@ export function ServiceOverviewCompare() {
                         to={service.ctaLink}
                         className="inline-flex items-center gap-8 group/btn"
                     >
-                        <div className="h-[1px] w-12 bg-[#4EA62F] group-hover/btn:w-20 transition-all duration-500" />
-                        <span className="text-[12px] font-black uppercase tracking-[0.4em] text-white group-hover/btn:text-[#4EA62F] transition-colors">
+                        <div className="h-[1px] w-8 bg-[#4EA62F] group-hover/btn:w-16 transition-all duration-500" />
+                        <span className="text-[11px] font-black uppercase tracking-[0.4em] text-white group-hover/btn:text-[#4EA62F] transition-colors">
                            Access Protocol
                         </span>
-                        <div className="w-16 h-16 rounded-full bg-white text-[#0F172A] flex items-center justify-center group-hover/btn:bg-[#4EA62F] group-hover/btn:scale-110 transition-all duration-500 shadow-2xl">
-                           <ArrowRight className="w-7 h-7" />
+                        <div className="w-12 h-12 rounded-full bg-white text-[#0F172A] flex items-center justify-center group-hover/btn:bg-[#4EA62F] group-hover/btn:scale-110 transition-all duration-500 shadow-2xl">
+                           <ArrowRight className="w-5 h-5" />
                         </div>
                     </Link>
                  </div>
@@ -199,7 +198,7 @@ export function ServiceOverviewCompare() {
         </div>
 
         {/* Global Stats/Footer for Section */}
-        <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-10 reveal-overview px-10">
+        <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-10 reveal-overview px-10">
              <div className="flex items-center gap-12">
                  <div className="flex flex-col">
                     <span className="text-4xl font-[1000] text-[#0F172A]">98%</span>

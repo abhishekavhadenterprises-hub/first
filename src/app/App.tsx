@@ -86,12 +86,16 @@ import ProgressLog from '@/app/pages/ai-assistant/ProgressLog';
 import ComingSoon from '@/app/pages/ComingSoon';
 import GuideTool from '@/app/pages/GuideTool';
 import ToolsPage from '@/app/pages/ToolsPage';
+import GetStarted from '@/app/pages/GetStarted';
+import NotFound from '@/app/pages/NotFound';
+import Navigation from './components/Navigation';
 
 export default function App() {
   return (
     <BrowserRouter>
       <NavigationProvider>
         <Toaster richColors />
+        <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/countries" element={<Countries />} />
@@ -120,6 +124,8 @@ export default function App() {
           <Route path="/coming-soon" element={<ComingSoon />} />
           <Route path="/guide" element={<GuideTool />} />
           <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/get-started" element={<GetStarted />} />
+          <Route path="/getstarted" element={<GetStarted />} />
 
           {/* Individual Service Routes */}
           <Route path="/services/sim-cards" element={<SimCards />} />
@@ -190,6 +196,9 @@ export default function App() {
           <Route path="/ai-assistant/results-analytics" element={<ResultsAnalytics />} />
           <Route path="/ai-assistant/improvement-plan" element={<ImprovementPlan />} />
           <Route path="/ai-assistant/progress-log" element={<ProgressLog />} />
+          
+          {/* Catch-all 404 Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </NavigationProvider>
     </BrowserRouter>

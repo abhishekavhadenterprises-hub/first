@@ -1,12 +1,12 @@
-import { ModernNavigation } from '@/app/components/ModernNavigation';
+import { Navigation } from '@/app/components/Navigation';
 import { ModernBanner } from '@/app/components/ModernBanner';
 import { Footer } from '@/app/components/Footer';
 
 export default function ModernBannerDemo() {
   return (
     <div className="min-h-screen bg-[#0A0A0F]">
-      <ModernNavigation brandName="Biometic" />
-      
+      <Navigation />
+
       <main className="w-full">
         <ModernBanner
           title="Experience Study Abroad Like Never Before"

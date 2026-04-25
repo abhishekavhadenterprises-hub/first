@@ -1,154 +1,123 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import {
   Smartphone, Building2, Shield, UtensilsCrossed,
   Plane, Calendar, Briefcase, Receipt, CreditCard,
   TrendingUp, Home, GraduationCap, DollarSign,
-  ArrowRight, CheckCircle2, Globe, Cpu, Zap
+  ArrowRight, CheckCircle2, Cpu, Zap
 } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
 import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const toolkitItems = [
-  { id: '01', title: 'SIM Cards', icon: Smartphone, color: '#4EA62F', desc: 'Pre-activated global data plans.', side: 'left', image: 'https://images.unsplash.com/photo-1556656793-062ff987b50c?w=1200' },
+  { id: '01', title: 'SIM & eSIM', icon: Smartphone, color: '#4EA62F', desc: 'Pre-activated global data with eSIM.', side: 'left', image: 'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?w=1200&q=80' },
   { id: '02', title: 'Banking', icon: Building2, color: '#3b82f6', desc: 'Zero-fee international accounts.', side: 'left', image: 'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=1200' },
   { id: '03', title: 'Insurance', icon: Shield, color: '#6366f1', desc: 'Comprehensive health coverage.', side: 'left', image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200' },
-  { id: '04', title: 'Dining', icon: UtensilsCrossed, color: '#ec4899', desc: 'Curated student meal plans.', side: 'left', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200' },
-  { id: '05', title: 'Visas', icon: Plane, color: '#8b5cf6', desc: 'Expert immigration assistance.', side: 'left', image: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1200' },
-  { id: '06', title: 'Events', icon: Calendar, color: '#f59e0b', desc: 'Networking & community mixers.', side: 'left', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200' },
-  { id: '07', title: 'Career', icon: Briefcase, color: '#10b981', desc: 'Job placement & coaching.', side: 'right', image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200' },
-  { id: '08', title: 'Taxes', icon: Receipt, color: '#f43f5e', desc: 'Simplified financial compliance.', side: 'right', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200' },
-  { id: '09', title: 'Loans', icon: CreditCard, color: '#06b6d4', desc: 'Low-interest student financing.', side: 'right', image: 'https://images.unsplash.com/photo-1579621970795-87fca3f66057?w=1200' },
-  { id: '10', title: 'Credit', icon: TrendingUp, color: '#4EA62F', desc: 'Build your financial score.', side: 'right', image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200' },
-  { id: '11', title: 'Housing', icon: Home, color: '#3b82f6', desc: 'Verified luxury student stays.', side: 'right', image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200' },
-  { id: '12', title: 'Courses', icon: GraduationCap, color: '#6366f1', desc: 'Global university preparation.', side: 'right', image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200' },
-  { id: '13', title: 'Forex', icon: DollarSign, color: '#8b5cf6', desc: 'Real-time currency exchange.', side: 'right', image: 'https://images.unsplash.com/photo-1611974714851-48206139b7ea?w=1200' },
+  { id: '04', title: 'Visas', icon: Plane, color: '#8b5cf6', desc: 'Expert immigration assistance.', side: 'left', image: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1200' },
+  { id: '05', title: 'Housing', icon: Home, color: '#10b981', desc: 'Verified luxury student stays.', side: 'right', image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200' },
+  { id: '06', title: 'Forex', icon: DollarSign, color: '#f43f5e', desc: 'Real-time currency exchange.', side: 'right', image: 'https://images.unsplash.com/photo-1624996379697-f01d168b1a52?w=1200' },
+  { id: '07', title: 'Taxes', icon: Receipt, color: '#06b6d4', desc: 'Simplified financial compliance.', side: 'right', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200' },
+  { id: '08', title: 'Credit', icon: TrendingUp, color: '#f59e0b', desc: 'Build your financial score.', side: 'right', image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200' },
 ];
 
 export function StudentToolkitShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const laptopRef = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState(toolkitItems[0]);
+  const [isHovered, setIsHovered] = useState(false);
+  const isInView = useInView(sectionRef, { once: true, margin: "-10%" });
 
-  useGSAP(() => {
-    if (!sectionRef.current || !laptopRef.current) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top top',
-        end: '+=120%',
-        pin: true,
-        scrub: 1.5,
-        anticipatePin: 1
-      }
-    });
-
-    // 1. Initial State (Tighter & Cleaner)
-    gsap.set('.toolkit-pill-l', { x: -60, opacity: 0, scale: 0.9, filter: 'blur(10px)' });
-    gsap.set('.toolkit-pill-r', { x: 60, opacity: 0, scale: 0.9, filter: 'blur(10px)' });
-    gsap.set(laptopRef.current, { scale: 1.3, y: 150, rotateX: 10, opacity: 0 });
-
-    // 2. The Reveal sequence
-    tl.to(laptopRef.current, {
-      scale: 1,
-      y: 0,
-      rotateX: 0,
-      opacity: 1,
-      duration: 1.5,
-      ease: 'expo.out'
-    })
-      .to('.toolkit-pill-l', {
-        x: 0,
-        opacity: 1,
-        scale: 1,
-        filter: 'blur(0px)',
-        stagger: 0.05,
-        duration: 1,
-        ease: 'back.out(1.2)'
-      }, '-=1.2')
-      .to('.toolkit-pill-r', {
-        x: 0,
-        opacity: 1,
-        scale: 1,
-        filter: 'blur(0px)',
-        stagger: 0.05,
-        duration: 1,
-        ease: 'back.out(1.2)'
-      }, '-=1.4');
-
-    // 3. Floating 3D Micro-movement
-    const handleMouseMove = (e: MouseEvent) => {
-      const xRot = (e.clientX / window.innerWidth - 0.5) * 10;
-      const yRot = (e.clientY / window.innerHeight - 0.5) * 6;
-      gsap.to(laptopRef.current, {
-        rotateY: xRot,
-        rotateX: -yRot,
-        duration: 0.8,
-        ease: 'power2.out'
+  // Auto-Cycle Effect perfectly aligned with performance
+  useEffect(() => {
+    if (isHovered || !isInView) return;
+    const interval = setInterval(() => {
+      setActiveItem((prev) => {
+        const currentIndex = toolkitItems.findIndex(i => i.id === prev.id);
+        const nextIndex = (currentIndex + 1) % toolkitItems.length;
+        return toolkitItems[nextIndex];
       });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-
-  }, { scope: sectionRef });
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [isHovered, isInView]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-[#F8FAFC] overflow-hidden flex flex-col items-center justify-center pt-32 pb-20"
+      className="relative w-full py-24 bg-white overflow-hidden flex flex-col items-center justify-center z-30"
     >
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] bg-[#4EA62F]/5 rounded-full blur-[160px]" />
         <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] bg-indigo-500/5 rounded-full blur-[140px]" />
       </div>
 
-      <div className="text-center mb-12 px-6 relative z-10 w-full">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/5 bg-white shadow-sm mb-4">
+      <div className="text-center mb-16 px-6 relative z-10 w-full">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#4EA62F]/10 bg-[#4EA62F]/5 mb-6">
           <Zap size={12} className="text-[#4EA62F]" />
-          <span className="text-[10px] font-[1000] tracking-[0.5em] text-[#0F172A] uppercase">The Full Ecosystem</span>
+          <span className="text-[10px] font-black tracking-[0.5em] text-[#4EA62F] uppercase">Student Service Hub</span>
         </div>
-        <h2 className="text-5xl lg:text-[6.5rem] font-[1000] tracking-tighter text-[#0F172A] leading-[0.85] uppercase">
-          START YOUR LIFE ABROAD
-PROPERLY. <br />
-          <span className="text-[#4EA62F] italic"></span>
+        <h2 className="text-3xl lg:text-[4rem] font-[1000] tracking-tighter text-[#0F172A] leading-[1.1] uppercase max-w-5xl mx-auto">
+          Start Your Life <span className="text-[#4EA62F] italic font-light">Abroad.</span><br /> Properly.
         </h2>
+        <p className="mt-8 text-lg lg:text-xl text-[#0F172A]/60 font-medium max-w-2xl mx-auto tracking-tight">
+          Everything you need to get set up, sorted, and functioning from day one.
+        </p>
       </div>
 
       <div className="relative w-full max-w-[1700px] flex justify-center items-center z-20 px-10">
 
         {/* Left Wings */}
-        <div className="hidden lg:flex flex-col gap-3 flex-1 items-end pr-10">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, staggerChildren: 0.1 }}
+          className="hidden lg:flex flex-col gap-3 flex-1 items-end pr-10"
+        >
           {toolkitItems.filter(i => i.side === 'left').map((item) => (
-            <Pill key={item.id} item={item} isActive={activeItem.id === item.id} onHover={() => setActiveItem(item)} side="left" />
+            <Pill 
+              key={item.id} 
+              item={item} 
+              isActive={activeItem.id === item.id} 
+              onMouseEnter={() => {
+                setActiveItem(item);
+                setIsHovered(true);
+              }} 
+              onMouseLeave={() => setIsHovered(false)}
+              side="left" 
+            />
           ))}
-        </div>
+        </motion.div>
 
-        {/* Central Dashboard Mirror */}
-        <div ref={laptopRef} style={{ perspective: 1500, transformStyle: 'preserve-3d' }} className="relative shrink-0">
-          <div className="w-[850px] aspect-[16/10] bg-[#1a1a1b] rounded-[3rem] p-4 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-white/5 relative group">
+        {/* Central Dashboard Mirror (Laptop) */}
+        <motion.div
+          ref={laptopRef}
+          initial={{ opacity: 0, y: 100, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+          className="relative shrink-0 flex flex-col items-center group"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Lid (Screen) */}
+          <div className="w-[850px] aspect-[16/10] bg-[#1a1a1b] rounded-t-[2.5rem] p-3 pb-4 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-white/10 relative hover:shadow-[0_80px_120px_-30px_rgba(78,166,47,0.15)] transition-shadow duration-1000 z-10 border-b-black/40">
+            {/* Camera Bezel */}
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white/20 rounded-full z-50 shadow-[0_0_2px_rgba(0,0,0,1)]"></div>
 
             {/* Internal Screen */}
-            <div className="w-full h-full bg-[#121214] rounded-[2.5rem] overflow-hidden relative border border-white/10">
+            <div className="w-full h-full bg-[#121214] rounded-t-[2rem] rounded-b-sm overflow-hidden relative border border-white/5">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeItem.id}
                   initial={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
                   animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
-                  transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                  transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
                   className="absolute inset-0"
                 >
-                  <img src={activeItem.image} className="w-full h-full object-cover opacity-60 grayscale-[0.2]" alt={activeItem.title} />
+                  <img src={activeItem.image} className="w-full h-full object-cover opacity-90" alt={activeItem.title} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-[#121214]/40 to-transparent" />
 
                   {/* Telemetry Layer */}
@@ -158,16 +127,23 @@ PROPERLY. <br />
                         <activeItem.icon size={32} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-black text-[#4EA62F] tracking-[0.5em] uppercase">Module {activeItem.id}</span>
-                        <h3 className="text-5xl font-black text-white uppercase">{activeItem.title}</h3>
+                        <span className="text-[10px] font-black text-[#4EA62F] tracking-[0.5em] uppercase">Service {activeItem.id}</span>
+                        <h3 className="text-3xl font-black text-white uppercase">{activeItem.title}</h3>
                       </div>
                     </div>
-                    <p className="text-white/50 text-xl font-medium max-w-md leading-relaxed">{activeItem.desc}</p>
+                    <p className="text-white/50 text-lg font-medium max-w-md leading-relaxed">{activeItem.desc}</p>
 
                     <div className="flex items-center gap-4 pt-4">
-                      <button className="h-12 px-8 rounded-full bg-white text-[#0A0A0B] text-xs font-black uppercase tracking-widest hover:bg-[#4EA62F] transition-all flex items-center gap-3 group/btn">
-                        Configure Module <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group relative h-12 px-8 rounded-full bg-white text-[#0A0A0B] text-xs font-black uppercase tracking-widest transition-all flex items-center gap-3 overflow-hidden transform"
+                      >
+                        <span className="relative z-20 flex items-center gap-3 group-hover:text-white transition-colors duration-500">
+                          Explore Service <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </span>
+                        <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
+                      </motion.button>
                       <div className="px-6 h-12 rounded-full border border-white/10 flex items-center gap-2 text-[10px] font-black text-white/40 tracking-widest uppercase bg-white/5 backdrop-blur-xl">
                         <CheckCircle2 size={12} className="text-[#4EA62F]" /> Verified Status
                       </div>
@@ -176,37 +152,54 @@ PROPERLY. <br />
                 </motion.div>
               </AnimatePresence>
 
-              {/* Corner Decoration */}
-              <div className="absolute top-8 right-8 flex items-center gap-6">
-                <div className="flex flex-col items-end">
-                  <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.3em]">Latency</span>
-                  <span className="text-xs font-black text-[#4EA62F] tracking-widest">0.04 MS</span>
-                </div>
-                <div className="w-px h-6 bg-white/10" />
-                <Cpu size={20} className="text-white/10" />
-              </div>
+
             </div>
 
             {/* Reflection Highlight */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent skew-x-[-15deg] pointer-events-none translate-x-[10%] group-hover:translate-x-[-50%] transition-transform duration-[2s] ease-in-out" />
           </div>
-        </div>
+
+          {/* Laptop Base */}
+          <div className="w-[105%] h-5 bg-gradient-to-b from-[#2a2a2b] to-[#121214] rounded-b-[2rem] rounded-t-sm shadow-2xl relative flex items-start justify-center border border-white/5 z-20">
+            <div className="w-32 h-1 bg-[#0f0f11] rounded-b-lg shadow-inner"></div>
+          </div>
+
+          {/* Laptop Shadow underneath */}
+          <div className="w-[90%] h-4 bg-black/40 blur-xl rounded-[100%] mt-2"></div>
+        </motion.div>
 
         {/* Right Wings */}
-        <div className="hidden lg:flex flex-col gap-3 flex-1 items-start pl-10">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, staggerChildren: 0.1 }}
+          className="hidden lg:flex flex-col gap-3 flex-1 items-start pl-10"
+        >
           {toolkitItems.filter(i => i.side === 'right').map((item) => (
-            <Pill key={item.id} item={item} isActive={activeItem.id === item.id} onHover={() => setActiveItem(item)} side="right" />
+            <Pill 
+              key={item.id} 
+              item={item} 
+              isActive={activeItem.id === item.id} 
+              onMouseEnter={() => {
+                setActiveItem(item);
+                setIsHovered(true);
+              }} 
+              onMouseLeave={() => setIsHovered(false)}
+              side="right" 
+            />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-function Pill({ item, isActive, onHover, side }: { item: any, isActive: boolean, onHover: () => void, side: 'left' | 'right' }) {
+function Pill({ item, isActive, onMouseEnter, onMouseLeave, side }: { item: any, isActive: boolean, onMouseEnter: () => void, onMouseLeave: () => void, side: 'left' | 'right' }) {
   return (
     <div
-      onMouseEnter={onHover}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={cn(
         "toolkit-pill group flex items-center gap-5 px-8 py-5 rounded-[2rem] border transition-all duration-700 cursor-pointer overflow-hidden",
         side === 'left' ? "toolkit-pill-l flex-row" : "toolkit-pill-r flex-row-reverse",
@@ -222,8 +215,8 @@ function Pill({ item, isActive, onHover, side }: { item: any, isActive: boolean,
         <item.icon size={22} />
       </div>
       <div className={cn("flex flex-col", side === 'right' && "items-end")}>
-        <span className={cn("text-[9px] font-black tracking-widest uppercase", isActive ? "text-[#4EA62F]" : "text-black/20")}>SYS. {item.id}</span>
-        <span className={cn("text-xl font-black uppercase tracking-tighter", isActive ? "text-[#0F172A]" : "text-[#0F172A]/40")}>{item.title}</span>
+        <span className={cn("text-[9px] font-black tracking-widest uppercase", isActive ? "text-[#4EA62F]" : "text-black/20")}>Service {item.id}</span>
+        <span className={cn("text-lg font-black uppercase tracking-tighter", isActive ? "text-[#0F172A]" : "text-[#0F172A]/40")}>{item.title}</span>
       </div>
     </div>
   );

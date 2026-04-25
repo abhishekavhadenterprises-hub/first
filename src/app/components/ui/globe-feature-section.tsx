@@ -210,9 +210,14 @@ export function GlobeFeatureSection() {
                     <MapPin className="w-4 h-4 text-black/80" />
                     <span className="text-[11px] font-black text-black/80 uppercase tracking-widest">ID: {activeRegion.id.toUpperCase()}</span>
                   </div>
-                  <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center shadow-xl hover:scale-110 hover:bg-[#4EA62F] transition-all cursor-pointer group/btn">
-                    <ArrowUpRight className="w-6 h-6 text-[#C7EABB] group-hover/btn:text-white transition-colors" />
-                  </div>
+                  <motion.div 
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-14 h-14 rounded-full bg-black flex items-center justify-center shadow-xl hover:bg-[#4EA62F] transition-all cursor-pointer group/btn overflow-hidden relative isolate"
+                  >
+                    <ArrowUpRight className="w-6 h-6 text-[#C7EABB] group-hover/btn:text-white transition-colors relative z-20" />
+                    <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-500 z-10" />
+                  </motion.div>
                 </motion.div>
               </div>
             </div>

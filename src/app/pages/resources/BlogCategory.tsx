@@ -1,6 +1,5 @@
 import { useParams, Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { ArrowLeft, Clock, User, ChevronRight, Search } from 'lucide-react';
 import { getCategoryBySlug, getBlogPostsByCategory, blogCategories } from '@/app/data/blogData';
@@ -9,7 +8,7 @@ import { useState } from 'react';
 export default function BlogCategory() {
   const { categorySlug } = useParams<{ categorySlug: string }>();
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   const category = getCategoryBySlug(categorySlug || '');
   const posts = getBlogPostsByCategory(categorySlug || '');
 
@@ -22,12 +21,11 @@ export default function BlogCategory() {
   if (!category) {
     return (
       <>
-        <Navigation />
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Category Not Found</h1>
             <Link to="/resources/blog" className="text-[#4B6E48] hover:underline">
-              ← Back to Blog
+              â† Back to Blog
             </Link>
           </div>
         </div>
@@ -47,7 +45,6 @@ export default function BlogCategory() {
 
   return (
     <>
-      <Navigation />
 
       {/* Breadcrumb */}
       <section className="pt-32 pb-8 px-4 bg-white">
@@ -95,11 +92,11 @@ export default function BlogCategory() {
       <section className="pb-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            
+
             {/* Sidebar */}
             <aside className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
-                
+
                 {/* Search */}
                 <div>
                   <h3 className="font-semibold mb-3 text-sm uppercase tracking-wide text-gray-500">Search</h3>
@@ -127,11 +124,10 @@ export default function BlogCategory() {
                         <Link
                           key={cat.slug}
                           to={`/resources/blog/category/${cat.slug}`}
-                          className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
-                            isActive
+                          className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isActive
                               ? 'bg-[#4B6E48] text-white'
                               : 'hover:bg-gray-100'
-                          }`}
+                            }`}
                         >
                           <span className="text-2xl">{cat.icon}</span>
                           <div className="flex-1 min-w-0">

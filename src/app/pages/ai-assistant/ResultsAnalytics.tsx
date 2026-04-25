@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -56,7 +55,6 @@ export default function ResultsAnalytics() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
 
       <div className="min-h-screen bg-gray-50 pt-40 pb-16">

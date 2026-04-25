@@ -153,9 +153,9 @@ const HorizontalCard = ({ project, index }: { project: typeof projects[0], index
           </div>
 
           {/* Action Gateway */}
-          <button className="absolute bottom-16 right-16 w-24 h-24 rounded-[3.5rem] bg-white text-black flex items-center justify-center hover:bg-[#4EA62F] hover:text-white transition-all duration-700 shadow-2xl group/btn overflow-hidden">
-             <ArrowUpRight size={28} className="relative z-10 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-             <div className="absolute inset-0 bg-black translate-y-full group-hover/btn:translate-y-0 transition-transform duration-700" />
+          <button className="absolute bottom-16 right-16 w-24 h-24 rounded-[3.5rem] bg-white text-black flex items-center justify-center transition-all duration-700 shadow-2xl group/btn overflow-hidden transform">
+             <ArrowUpRight size={28} className="relative z-20 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform group-hover/btn:text-white" />
+             <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-700 z-10" />
           </button>
         </div>
       </div>

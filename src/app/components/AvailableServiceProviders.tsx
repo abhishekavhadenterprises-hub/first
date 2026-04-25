@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Copy, Check, ShoppingBag, ArrowRight, ExternalLink, Wifi, Building, Shield, Zap } from 'lucide-react';
+import { Copy, Check, ShoppingBag, ArrowRight, ExternalLink, Wifi, Building, Shield, Zap, Smartphone } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface Provider {
@@ -27,7 +27,7 @@ const providers: Provider[] = [
   {
     id: '1',
     name: 'Giffgaff UK',
-    Icon: Wifi,
+    Icon: Smartphone,
     accentColor: BRAND_GREEN,
     type: 'referral',
     category: 'Connectivity',
@@ -101,12 +101,11 @@ export function AvailableServiceProviders() {
 
   return (
     <section
-      className="relative w-full bg-[#fcfcfc] py-24 lg:py-48 overflow-hidden border-t border-black/5"
+      className="relative w-full bg-[#fcfcfc] py-12 lg:py-20 overflow-hidden border-t border-black/5 flex items-center min-h-[85vh] lg:min-h-screen"
     >
       {/* Ambient glow + ghost watermark */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[#4EA62F]/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-[-20%] left-[-5%] text-[22vw] font-[1000] text-black/[0.015] select-none uppercase tracking-tighter italic">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[#4EA62F]/5 rounded-full blur-[150px]" />        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[25vw] font-[1000] text-black/[0.025] select-none uppercase tracking-tighter italic leading-none">
           Providers
         </div>
       </div>
@@ -114,14 +113,14 @@ export function AvailableServiceProviders() {
       <div className="max-w-[1440px] mx-auto px-6 relative z-10">
 
         {/* ── Section Header ── */}
-        <div className="flex flex-col lg:flex-row items-end justify-between gap-16 mb-24 lg:mb-40">
+        <div className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-12 lg:mb-16">
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-3 mb-8 px-5 py-2 bg-white shadow-sm border border-black/5 rounded-full w-fit"
+              className="flex items-center gap-3 mb-4 lg:mb-6 px-5 py-2 bg-white shadow-sm border border-black/5 rounded-full w-fit"
             >
               <Zap className="w-4 h-4 text-[#4EA62F]" />
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">
@@ -134,7 +133,7 @@ export function AvailableServiceProviders() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl lg:text-7xl font-[1000] text-[#0F172A] uppercase tracking-tighter leading-[0.85]"
+              className="text-4xl lg:text-6xl font-[1000] text-[#0F172A] uppercase tracking-tighter leading-[0.85]"
             >
               Available <br />
               <span className="text-[#4EA62F]">Service</span> Providers
@@ -146,10 +145,9 @@ export function AvailableServiceProviders() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:max-w-md text-xl text-black/40 font-bold leading-relaxed tracking-tight pb-4"
+            className="lg:max-w-md text-lg text-black/40 font-bold leading-relaxed tracking-tight pb-2"
           >
-            Seamlessly access global services through our direct integrations and exclusive
-            student-only protocols.
+            Seamlessly access global services through our direct integrations and exclusive student-only protocols.
           </motion.p>
         </div>
 
@@ -164,7 +162,7 @@ export function AvailableServiceProviders() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.05 }}
                 transition={{ duration: 0.8, delay: i * 0.13, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative bg-white border border-black/[0.04] rounded-[3.5rem] p-12 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] hover:border-[#4EA62F]/20 transition-all duration-700 overflow-hidden flex flex-col"
+                className="group relative bg-white border border-black/[0.04] rounded-[2.5rem] p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] hover:border-[#4EA62F]/20 transition-all duration-700 overflow-hidden flex flex-col"
               >
                 {/* Watermark icon */}
                 <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-15 group-hover:scale-110 transition-all duration-700">
@@ -174,7 +172,7 @@ export function AvailableServiceProviders() {
                 <div className="relative z-10 flex flex-col flex-1">
 
                   {/* Category + Badge */}
-                  <div className="flex items-center justify-between mb-10">
+                  <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-2 px-4 py-1.5 bg-black/[0.03] rounded-full">
                       <span
                         className="w-1.5 h-1.5 rounded-full"
@@ -211,16 +209,16 @@ export function AvailableServiceProviders() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-black/40 font-bold text-base leading-relaxed mb-10 flex-grow">
+                  <p className="text-black/40 font-bold text-[15px] leading-relaxed mb-6 flex-grow">
                     {provider.description}
                   </p>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-10">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
                     {provider.stats.map((stat) => (
                       <div key={stat.label} className="flex flex-col gap-1">
                         <span
-                          className="text-2xl font-[1000] tracking-tighter leading-none"
+                          className="text-xl font-[1000] tracking-tighter leading-none"
                           style={{ color: provider.accentColor }}
                         >
                           {stat.value}
@@ -233,7 +231,7 @@ export function AvailableServiceProviders() {
                   </div>
 
                   {/* Progress bar */}
-                  <div className="h-px w-full bg-black/[0.04] mb-10 overflow-hidden">
+                  <div className="h-px w-full bg-black/[0.04] mb-6 overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: '100%' }}
@@ -317,7 +315,7 @@ export function AvailableServiceProviders() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-6 mt-20 pt-12 border-t border-black/5 opacity-50 hover:opacity-100 transition-opacity duration-700"
+          className="flex flex-col sm:flex-row items-center justify-between gap-6 mt-12 pt-8 border-t border-black/5 opacity-50 hover:opacity-100 transition-opacity duration-700"
         >
           <div className="flex items-center gap-3">
             <span className="flex h-2 w-2 relative">

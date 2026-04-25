@@ -1,10 +1,8 @@
-import { Navigation } from '@/app/components/Navigation';
-import { Footer } from '@/app/components/Footer';
+﻿import { Footer } from '@/app/components/Footer';
 
 export default function Newsletter() {
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
       
       <main className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-center">

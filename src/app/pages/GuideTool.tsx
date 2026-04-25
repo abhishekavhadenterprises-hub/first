@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { PopularDestinations } from '@/app/components/PopularDestinations';
 import { WorkflowSection } from '@/app/components/WorkflowSection';
@@ -12,6 +11,7 @@ import {
   DollarSign, Briefcase, GraduationCap, CreditCard,
   ArrowUpRight
 } from 'lucide-react';
+import { CompareOptionsSection } from '@/app/components/CompareOptionsSection';
 
 const steps = [
   {
@@ -179,14 +179,13 @@ export default function GuideTool() {
 
   return (
     <>
-      <Navigation />
       <div className="min-h-screen bg-[#FDFDFC] font-['Outfit',sans-serif]">
 
         {/* ── Hero ── */}
-        <section className="relative pt-48 pb-28 overflow-hidden border-b border-black/5">
+        <section className="relative pt-48 pb-40 overflow-hidden border-b border-black/5">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[#4EA62F]/5 rounded-full blur-[150px]" />
-            <div className="absolute bottom-[-10%] left-[-5%] text-[20vw] font-[1000] text-black/[0.015] select-none uppercase tracking-tighter italic">
+            <div className="absolute bottom-[-10%] left-[-5%] text-[20vw] font-[1000] text-black/[0.04] select-none uppercase tracking-tighter italic">
               Roadmap
             </div>
           </div>
@@ -226,37 +225,25 @@ export default function GuideTool() {
                 A structured, phase-by-phase roadmap covering every critical step — from visa to settlement.
               </motion.p>
             </div>
-
-            {/* Phase filters */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap items-center gap-3 mt-14"
-            >
-              {phases.map((phase) => (
-                <button
-                  key={phase}
-                  onClick={() => setActivePhase(phase)}
-                  className={`px-6 py-3 rounded-full font-black uppercase tracking-widest text-[9px] transition-all duration-500 ${
-                    activePhase === phase
-                      ? 'bg-[#0F172A] text-white shadow-[0_20px_40px_rgba(0,0,0,0.15)]'
-                      : 'bg-white border border-black/[0.06] text-black/40 hover:border-[#4EA62F]/30 hover:text-[#4EA62F]'
-                  }`}
-                >
-                  {phase}
-                </button>
-              ))}
-            </motion.div>
           </div>
         </section>
 
-        {/* ── Popular Destinations ── */}
-        <PopularDestinations />
-
-        {/* ── Steps Accordion ── */}
-        <section className="py-24 lg:py-40">
+        {/* ── Steps Accordion (2nd Section) ── */}
+        <section className="py-24 lg:py-40 border-b border-black/5">
           <div className="max-w-[1320px] mx-auto px-6 lg:px-12">
+            <div className="max-w-4xl mx-auto text-center mb-20">
+              <div className="inline-flex items-center gap-3 px-5 py-2 bg-white shadow-sm border border-black/5 rounded-full mb-6">
+                <div className="w-2 h-2 rounded-full bg-[#4EA62F]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Execution Protocol</span>
+              </div>
+              <h2 className="text-5xl lg:text-7xl font-[1000] text-[#0F172A] uppercase tracking-tighter leading-[0.9] whitespace-nowrap">
+                Tactical <span className="text-[#4EA62F] italic font-light lowercase px-2">Navigation.</span>
+              </h2>
+              <p className="mt-6 text-xl font-bold text-black/40 leading-relaxed max-w-xl mx-auto">
+                Our proprietary framework for international relocation, organized into nine high-impact modules.
+              </p>
+            </div>
+
             <div className="flex flex-col divide-y divide-black/[0.06]">
               <AnimatePresence initial={false}>
                 {filtered.map((step, i) => {
@@ -362,8 +349,12 @@ export default function GuideTool() {
           </div>
         </section>
 
-        {/* ── Workflow / Institutional Directory ── */}
+        {/* ── Workflow & Compare Sections ── */}
         <WorkflowSection />
+        <CompareOptionsSection />
+
+        {/* ── Popular Destinations (Explore Hubs) ── */}
+        <PopularDestinations />
 
         {/* ── Bottom CTA ── */}
         <section className="pb-32">

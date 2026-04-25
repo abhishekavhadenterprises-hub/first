@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Navigation } from '@/app/components/Navigation';
+﻿import { useState } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { AIAssistantNav } from '@/app/components/AIAssistantNav';
 import { StandardButton } from '@/app/components/ui/standard-button';
@@ -68,7 +67,6 @@ export default function AIAssistantDashboard() {
 
   return (
     <>
-      <Navigation />
       <AIAssistantNav />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-40 pb-16">
@@ -118,9 +116,9 @@ export default function AIAssistantDashboard() {
           <style>{`
             /* ============================================
                1. LAYOUT & CONTAINER
-               Desktop (≥1280px): Max-width 1200px, Center aligned
-               Tablet (768px–1279px): 100% width, 24px side padding
-               Mobile (≤767px): 100% width, 16px side padding
+               Desktop (â‰¥1280px): Max-width 1200px, Center aligned
+               Tablet (768pxâ€“1279px): 100% width, 24px side padding
+               Mobile (â‰¤767px): 100% width, 16px side padding
                Remove large outer white margins
                Make layout fluid instead of fixed
                ============================================ */
@@ -129,7 +127,7 @@ export default function AIAssistantDashboard() {
               margin: 0 auto;
             }
 
-            /* Mobile (≤480px): 16px padding */
+            /* Mobile (â‰¤480px): 16px padding */
             @media (max-width: 480px) {
               .dashboard-container {
                 max-width: 100%;
@@ -153,7 +151,7 @@ export default function AIAssistantDashboard() {
               }
             }
 
-            /* Desktop (≥1280px): 1200px max-width, centered */
+            /* Desktop (â‰¥1280px): 1200px max-width, centered */
             @media (min-width: 1280px) {
               .dashboard-container {
                 max-width: 1200px;
@@ -347,7 +345,7 @@ export default function AIAssistantDashboard() {
             /* ============================================
                4. SUBTITLE
                Max-width: 600px desktop, 100% on mobile
-               Font size: Desktop 18px, Mobile 15–16px
+               Font size: Desktop 18px, Mobile 15â€“16px
                Line-height: 1.5
                Avoid awkward wrapping
                ============================================ */
@@ -422,7 +420,7 @@ export default function AIAssistantDashboard() {
                6. CTA BUTTONS
                Desktop: Horizontal layout, 16px gap
                Tablet: Keep horizontal if space allows
-               Mobile: Stack vertically, Full width buttons, 12–16px vertical spacing
+               Mobile: Stack vertically, Full width buttons, 12â€“16px vertical spacing
                Reduce internal padding slightly on small screens
                ============================================ */
             .dashboard-hero-ctas {
@@ -682,7 +680,7 @@ export default function AIAssistantDashboard() {
             /* ============================================
                4. GOAL SETUP CARD (Form Section)
                Layout: Desktop fields in single row, Tablet wrap into 2 rows, Mobile stack vertically
-               Field Behavior: Target Exam, Target Score, Target Date → full width on mobile
+               Field Behavior: Target Exam, Target Score, Target Date â†’ full width on mobile
                Focus Area icons wrap properly
                Maintain equal spacing between fields
                Card Styling: Desktop padding 24-32px, Mobile padding 16px, Border radius 16px
@@ -695,7 +693,7 @@ export default function AIAssistantDashboard() {
               box-sizing: border-box;
             }
 
-            /* Mobile (≤480px): 16px padding, 32px bottom margin */
+            /* Mobile (â‰¤480px): 16px padding, 32px bottom margin */
             @media (max-width: 480px) {
               .goal-setup-card {
                 padding: 16px;
@@ -719,7 +717,7 @@ export default function AIAssistantDashboard() {
               }
             }
 
-            /* Desktop (≥1280px): 28px padding (within 24-32px) */
+            /* Desktop (â‰¥1280px): 28px padding (within 24-32px) */
             @media (min-width: 1280px) {
               .goal-setup-card {
                 padding: 28px;
@@ -728,7 +726,7 @@ export default function AIAssistantDashboard() {
             }
 
             /* ============================================
-               5. SECTION TITLE — "Your Goal Setup"
+               5. SECTION TITLE â€” "Your Goal Setup"
                Desktop: 22-24px, Tablet: 20px, Mobile: 18px
                Line height: 1.3
                Keep icon aligned with text
@@ -818,7 +816,7 @@ export default function AIAssistantDashboard() {
               width: 100%;
             }
 
-            /* Mobile (≤767px): 1 column, 16px gap */
+            /* Mobile (â‰¤767px): 1 column, 16px gap */
             @media (max-width: 767px) {
               .goal-setup-grid {
                 grid-template-columns: 1fr;
@@ -834,7 +832,7 @@ export default function AIAssistantDashboard() {
               }
             }
 
-            /* Desktop (≥1280px): 4 columns, 16px gap */
+            /* Desktop (â‰¥1280px): 4 columns, 16px gap */
             @media (min-width: 1280px) {
               .goal-setup-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -844,7 +842,7 @@ export default function AIAssistantDashboard() {
 
             /* ============================================
                GOAL SETUP FIELDS
-               Target Exam, Target Score, Target Date → full width on mobile
+               Target Exam, Target Score, Target Date â†’ full width on mobile
                Maintain equal spacing between fields
                ============================================ */
             .goal-setup-field {
@@ -971,16 +969,16 @@ export default function AIAssistantDashboard() {
             /* ============================================
                6. SKILL CARDS GRID (Reading / Writing / Speaking / Listening)
                Grid Behavior:
-               Desktop (≥1280px): 4 columns
+               Desktop (â‰¥1280px): 4 columns
                Tablet (768-1279px): 2 columns
-               Mobile (≤767px): 1 column
+               Mobile (â‰¤767px): 1 column
                ============================================ */
             .skill-cards-grid {
               display: grid;
               width: 100%;
             }
 
-            /* Mobile (≤767px): 1 column, 20px gap, 32px bottom margin */
+            /* Mobile (â‰¤767px): 1 column, 20px gap, 32px bottom margin */
             @media (max-width: 767px) {
               .skill-cards-grid {
                 grid-template-columns: 1fr;
@@ -998,7 +996,7 @@ export default function AIAssistantDashboard() {
               }
             }
 
-            /* Desktop (≥1280px): 4 columns, 24px gap, 32px bottom margin */
+            /* Desktop (â‰¥1280px): 4 columns, 24px gap, 32px bottom margin */
             @media (min-width: 1280px) {
               .skill-cards-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -1194,7 +1192,7 @@ export default function AIAssistantDashboard() {
 
             /* ============================================
                10. OVERALL BEHAVIOR
-               Smooth scaling from desktop → tablet → mobile
+               Smooth scaling from desktop â†’ tablet â†’ mobile
                No overflow or broken layout
                No overlapping components
                Maintain premium clean UI
@@ -1486,7 +1484,7 @@ export default function AIAssistantDashboard() {
                     >
                       <div className="font-semibold text-sm text-gray-900 mb-1">{day.day}</div>
                       <div className="text-xs text-gray-600">
-                        {day.tasks.join(' • ')}
+                        {day.tasks.join(' â€¢ ')}
                       </div>
                     </button>
                   ))}
@@ -1529,7 +1527,7 @@ export default function AIAssistantDashboard() {
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900">{session.type}</div>
-                        <div className="text-sm text-gray-500">{session.date} • {session.duration} min</div>
+                        <div className="text-sm text-gray-500">{session.date} â€¢ {session.duration} min</div>
                       </div>
                     </div>
                     <div className="text-right">

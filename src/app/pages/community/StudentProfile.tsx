@@ -1,6 +1,5 @@
-import { useParams, Link, useNavigate } from 'react-router';
+﻿import { useParams, Link, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import { 
   ArrowLeft,
@@ -37,12 +36,11 @@ export default function StudentProfile() {
   if (!student) {
     return (
       <>
-        <Navigation />
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Student Not Found</h1>
             <Link to="/community/students" className="text-[#4B6E48] hover:underline">
-              ← Back to Directory
+              â† Back to Directory
             </Link>
           </div>
         </div>
@@ -74,7 +72,6 @@ export default function StudentProfile() {
 
   return (
     <>
-      <Navigation />
 
       {/* Cover and Profile Header */}
       <section className="pt-20">

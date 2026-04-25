@@ -29,10 +29,11 @@ export function UniversityCTASection() {
           </StandardButton>
           
           <button
-            className="secondary-cta-button"
+            className="group relative inline-flex items-center justify-center px-12 py-6 bg-white text-[#0F172A] border-2 border-[#0F172A] rounded-xl font-black uppercase tracking-widest text-[13px] overflow-hidden transition-all duration-500 hover:border-[#4EA62F] transform"
             onClick={() => window.location.href = '/countries'}
           >
-            Explore Countries
+            <span className="relative z-20 group-hover:text-white transition-colors duration-500">Explore Countries</span>
+            <div className="absolute inset-0 bg-[#4EA62F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 z-10" />
           </button>
         </div>
 
@@ -171,7 +172,7 @@ export function UniversityCTASection() {
         /* Tablet (768-1199px): 24-26px */
         @media (min-width: 768px) and (max-width: 1199px) {
           .university-cta-heading {
-            font-size: 25px;
+            font-size: 21px;
             line-height: 1.25;
             margin-bottom: 20px;
           }
@@ -180,7 +181,7 @@ export function UniversityCTASection() {
         /* Desktop (≥1200px): 28-32px */
         @media (min-width: 1200px) {
           .university-cta-heading {
-            font-size: 30px;
+            font-size: 24px;
             line-height: 1.2;
             margin-bottom: 24px;
           }

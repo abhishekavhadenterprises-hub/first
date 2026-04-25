@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Navigation } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/Footer';
 import {
   TrendingUp,
@@ -195,7 +194,6 @@ export default function Services() {
 
   return (
     <>
-      <Navigation />
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 pt-20">
         {/* Hero Section */}
@@ -206,7 +204,6 @@ export default function Services() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-5xl font-bold mb-6"
             >
               Our Services
             </motion.h1>
@@ -214,7 +211,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-white/90 max-w-3xl mx-auto mb-8"
+              className="text-lg text-white/90 max-w-3xl mx-auto mb-8"
             >
               Comprehensive support for your study abroad journey, from university selection to arrival
             </motion.p>
@@ -356,8 +353,8 @@ export default function Services() {
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-2h-2c-2.2 0-4-1.8-4-4v-2h2v-2h-2v-2h2v-2h-2v-2h2v-2h-2v-2h2v-2h-2v-2h-4v4h-2v2h-2v2h-2v2h-1v2h2v2h2v2h2v2h2v2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }}></div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <h2 className="text-2xl font-bold mb-4">Need Help Choosing?</h2>
+              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
                 Our counselors are here to help you select the right services for your journey
               </p>
               <StandardButton

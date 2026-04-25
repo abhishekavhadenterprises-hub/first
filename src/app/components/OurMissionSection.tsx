@@ -1,172 +1,169 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion } from 'motion/react';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Target, Sparkles, ShieldCheck, Zap, ArrowRight, Quote } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { Target, Sparkles, ShieldCheck, Quote, Activity, Zap, ArrowRight } from 'lucide-react';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const TechnicalBadge = ({ text, className = "" }: { text: string; className?: string }) => (
+   <div className={`about-hero-item inline-flex items-center gap-3 px-5 py-2 bg-white/50 backdrop-blur-xl border border-black/5 rounded-full ${className}`}>
+      <div className="w-1.5 h-1.5 rounded-full bg-[#4EA62F] animate-pulse" />
+      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40 font-mono italic">
+         {text}
+      </span>
+   </div>
+);
 
-export function OurMissionSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+export const OurMissionSection = () => {
+   const containerRef = useRef<HTMLDivElement>(null);
+   const { scrollYProgress } = useScroll({
+      target: containerRef,
+      offset: ["start end", "end start"]
+   });
 
-  useGSAP(() => {
-    if (!containerRef.current) return;
+   const headerY = useTransform(scrollYProgress, [0, 0.5], [100, 0]);
+   const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
-    // Left title reveal
-    gsap.from(".mission-title-line", {
-      opacity: 0,
-      x: -50,
-      stagger: 0.2,
-      duration: 1.2,
-      ease: "expo.out",
-      scrollTrigger: {
-        trigger: ".mission-title-line",
-        start: "top 90%",
-      }
-    });
-
-    // Right narrative reveal
-    gsap.from(".mission-narrative-block > *", {
-      opacity: 0,
-      y: 30,
-      stagger: 0.1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".mission-narrative-block",
-        start: "top 85%",
-      }
-    });
-
-    // Metric nodes reveal
-    gsap.from(".mission-metric-node", {
-      opacity: 0,
-      scale: 0.8,
-      stagger: 0.1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".mission-metric-node",
-        start: "top 90%",
-      }
-    });
-
-  }, { scope: containerRef });
-
-  return (
-    <section 
-      ref={containerRef}
-      className="relative py-24 lg:py-48 bg-[#FDFDFC] overflow-hidden"
-    >
-      {/* Background HUD Decor */}
-      <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none hidden lg:block">
-         <div className="flex flex-col gap-4 items-end">
-            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-black">Mission Node v1.2</span>
-            <div className="w-48 h-px bg-black" />
-            <Target size={24} className="text-black" />
+   return (
+      <section
+         ref={containerRef}
+         className="relative pt-4 pb-24 lg:pt-8 lg:pb-32 bg-[#FDFDFC] overflow-hidden selection:bg-[#4EA62F]/20"
+      >
+         {/* Cinematic Background Elements */}
+         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#4EA62F]/3 rounded-full blur-[150px]" />
+            <div className="absolute bottom-0 right-0 p-12 opacity-[0.02]">
+               <div className="flex flex-col gap-4 items-end">
+                  <span className="text-[14px] font-black uppercase tracking-[1em] text-black">MISSION_LOG v2.04</span>
+                  <div className="w-96 h-px bg-black" />
+                  <Activity size={48} className="text-black" />
+               </div>
+            </div>
          </div>
-      </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-32">
-           
-           {/* Left Column: Heading Branding */}
-           <div className="w-full lg:w-2/5 sticky top-32">
-              <div className="space-y-8">
-                 <div className="inline-flex items-center gap-3 px-5 py-2 bg-white shadow-sm border border-black/5 rounded-full mb-8">
-                    <Sparkles className="w-4 h-4 text-[#4EA62F]" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">The Ambition</span>
-                 </div>
+         <div className="container mx-auto px-6 relative z-10">
 
-                 <h2 className="mission-title-line text-5xl lg:text-[7rem] font-[1000] text-[#0F172A] leading-[0.85] tracking-tighter uppercase font-['Outfit',sans-serif]">
-                   Our <br />
-                   <span className="text-[#4EA62F] italic font-light lowercase px-4">Mission</span> <br />
-                   & Vision
-                 </h2>
+            {/* Cinematic Header - CENTERED & ONE LINE */}
+            <motion.div
+               style={{ y: headerY, opacity }}
+               className="max-w-7xl mx-auto mb-24 lg:mb-32 text-center flex flex-col items-center"
+            >
+               <TechnicalBadge text="Core Protocol" className="mb-10" />
+               <h2 className="h2 text-[#0F172A] uppercase mb-12 whitespace-nowrap">
+                  DECONSTRUCTING <span className="text-[#4EA62F] italic font-light lowercase px-1.5">the</span> BARRIER.
+               </h2>
+               <p className="text-xl md:text-2xl text-black/40 font-bold leading-tight tracking-tighter max-w-3xl mx-auto font-['Outfit',sans-serif]">
+                  International education is broken. We aren't just facilitating study abroad; <span className="text-black">we're re-architecting the experience.</span>
+               </p>
+            </motion.div>
 
-                 <div className="mission-metric-node flex flex-col gap-2 pt-12 border-t border-black/5">
-                    <span className="text-[9px] font-black uppercase tracking-[0.6em] text-black/20 text-center lg:text-left">Operational Target</span>
-                    <div className="flex items-center gap-4 justify-center lg:justify-start">
-                       <ShieldCheck size={18} className="text-[#4EA62F]" />
-                       <span className="text-2xl font-black text-[#0F172A] uppercase tracking-tighter font-['Outfit',sans-serif]">Systemic Clarity</span>
-                    </div>
-                 </div>
-              </div>
-           </div>
+            {/* Narrative Grid System */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 
-           {/* Right Column: High-End Narrative */}
-           <div className="w-full lg:w-3/5 space-y-16">
-              <div className="mission-narrative-block space-y-12">
-                 <div className="relative group p-10 lg:p-16 bg-white rounded-[4rem] border border-black/5 shadow-[0_40px_100px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_120px_rgba(0,0,0,0.06)] transition-all duration-1000">
-                    <Quote className="absolute top-10 right-10 w-12 h-12 text-black/[0.03]" />
-                    
-                    <p className="text-2xl lg:text-3xl font-bold text-[#0F172A]/80 leading-tight tracking-tight font-['Outfit',sans-serif]">
-                       "International education planning can be overwhelming. Students face countless options, complex requirements, and confusing processes. We created this platform to bring <span className="text-[#4EA62F] hover:bg-[#4EA62F]/5 px-2 rounded-lg transition-colors">clarity and structure</span> to this journey."
-                    </p>
-                 </div>
+               {/* Left Column: The Problem Context */}
+               <div className="lg:col-span-12 xl:col-span-5 space-y-12">
+                  <div className="p-10 lg:p-16 rounded-[4rem] bg-white border border-black/5 shadow-[0_40px_100px_rgba(0,0,0,0.03)] relative group isolate">
+                     <div className="absolute top-10 right-10 opacity-[0.03] group-hover:opacity-10 transition-opacity">
+                        <Quote size={80} />
+                     </div>
+                     <p className="text-2xl font-bold text-[#0F172A] leading-tight tracking-tight font-['Outfit',sans-serif] relative z-10">
+                        "Support usually stops at arrival. We believe that's exactly where the <span className="text-[#4EA62F]">real journey</span> begins."
+                     </p>
+                     <div className="mt-12 flex items-center gap-4 pt-8 border-t border-black/5">
+                        <div className="w-12 h-12 rounded-2xl bg-[#4EA62F]/10 flex items-center justify-center">
+                           <Target className="text-[#4EA62F] w-6 h-6" />
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black/40">Directional Alignment</span>
+                     </div>
+                  </div>
 
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="space-y-6 p-8 lg:p-0">
-                       <h4 className="text-xl font-black uppercase tracking-widest text-[#0F172A] flex items-center gap-4">
-                          <Zap size={16} className="text-[#4EA62F]" />
-                          Transparency
-                       </h4>
-                       <p className="text-lg font-bold text-black/40 leading-snug tracking-tight">
-                          Our platform provides unfiltered information about study destinations, universities, and pathways. No hidden agendas, only elite metrics.
-                       </p>
-                    </div>
+                  <div className="px-8 space-y-8">
+                     <div className="flex items-center gap-6">
+                        <div className="h-px flex-1 bg-black/5" />
+                        <span className="text-[8px] font-black uppercase tracking-[1em] text-black/20">Operational Intel</span>
+                     </div>
+                     <div className="grid grid-cols-2 gap-4">
+                        {[
+                           { icon: ShieldCheck, label: "Verified Data" },
+                           { icon: Activity, label: "Real-time Sync" }
+                        ].map((m, i) => (
+                           <div key={i} className="flex flex-col gap-3 p-6 rounded-3xl bg-gray-50 border border-black/[0.02]">
+                              <m.icon size={16} className="text-[#4EA62F]" />
+                              <span className="text-[9px] font-black uppercase tracking-widest text-black/40">{m.label}</span>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+               </div>
 
-                    <div className="space-y-6 p-8 lg:p-0">
-                       <h4 className="text-xl font-black uppercase tracking-widest text-[#0F172A] flex items-center gap-4">
-                          <Zap size={16} className="text-[#4EA62F]" />
-                          Empowerment
-                       </h4>
-                       <p className="text-lg font-bold text-black/40 leading-snug tracking-tight">
-                          We don’t just provide answers; we provide the architecture for you to build your own success story on a global stage.
-                       </p>
-                    </div>
-                 </div>
+               {/* Right Column: High-Density Narrative */}
+               <div className="lg:col-span-12 xl:col-span-7 space-y-24">
+                  <div className="space-y-12">
+                     {[
+                        {
+                           title: "The Misinformation Matrix",
+                           content: "Global education is flooded with bad actors and second-hand research. What fills the gap is a mix of online noise and a system that isn't transparent about its incentives.",
+                           icon: <Zap size={24} />
+                        },
+                        {
+                           title: "Decentralized Sovereignty",
+                           content: "We believe decisions should stay with you. We provide the architecture, the structure, and the support, but we never push outcomes that don't serve your ultimate goals.",
+                           icon: <Sparkles size={24} />
+                        },
+                        {
+                           title: "Architectural Integrity",
+                           content: "Everything is designed to work in sequence. From initial planning to professional deployment, every touchpoint is structured to eliminate operational mistakes.",
+                           icon: <Activity size={24} />
+                        }
+                     ].map((node, i) => (
+                        <motion.div
+                           key={i}
+                           initial={{ opacity: 0, x: 50 }}
+                           whileInView={{ opacity: 1, x: 0 }}
+                           viewport={{ once: true, margin: "-10%" }}
+                           transition={{ duration: 0.8, delay: i * 0.1 }}
+                           className="group"
+                        >
+                           <div className="flex gap-8 lg:gap-12 pb-16 border-b border-black/5 group-last:border-0">
+                              <div className="flex-shrink-0 w-16 h-16 rounded-[2rem] bg-white border border-black/5 shadow-xl flex items-center justify-center text-[#4EA62F] group-hover:bg-[#4EA62F] group-hover:text-white transition-all duration-700">
+                                 {node.icon}
+                              </div>
+                              <div className="space-y-4 pt-2">
+                                 <h4 className="text-3xl font-black tracking-tighter text-[#0F172A] uppercase leading-none">{node.title}</h4>
+                                 <p className="text-lg text-black/40 font-bold leading-[1.3] font-['Outfit',sans-serif]">
+                                    {node.content}
+                                 </p>
+                              </div>
+                           </div>
+                        </motion.div>
+                     ))}
+                  </div>
 
-                 <div className="p-10 bg-[#0F172A] rounded-[3rem] text-white overflow-hidden relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#4EA62F]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                    
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                       <div className="space-y-4 text-center md:text-left">
-                          <h5 className="text-[10px] font-black uppercase tracking-[0.5em] text-white/40">The Bottom Line</h5>
-                          <h4 className="text-2xl lg:text-3xl font-black uppercase tracking-tighter font-['Outfit',sans-serif]">We focus on results, not promises.</h4>
-                       </div>
-                       <div className="flex items-center gap-4">
-                          <div className="w-12 h-px bg-white/20" />
-                          <ShieldCheck className="text-[#4EA62F]" />
-                       </div>
-                    </div>
-                 </div>
-              </div>
+                  {/* Bottom Action Node */}
+                  <div className="mt-12">
+                     <motion.div
+                        whileHover={{ scale: 0.98 }}
+                        className="p-12 lg:p-16 bg-[#0F172A] rounded-[5rem] text-white overflow-hidden relative group cursor-pointer shadow-2xl"
+                     >
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#4EA62F]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-              {/* Secondary Supporting Metrics */}
-              <div className="grid grid-cols-3 gap-8">
-                 {[
-                   { val: "100%", label: "Honesty Protocol" },
-                   { val: "24/7", label: "Advisor Uptime" },
-                   { val: "Elite", label: "Guidance Track" }
-                 ].map((stat, i) => (
-                   <div key={i} className="mission-metric-node space-y-2">
-                      <div className="text-3xl lg:text-5xl font-[1000] text-[#0F172A] tracking-tighter uppercase font-['Outfit',sans-serif]">{stat.val}</div>
-                      <div className="text-[8px] font-black uppercase tracking-widest text-black/20 leading-none">{stat.label}</div>
-                   </div>
-                 ))}
-              </div>
-           </div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+                           <div className="space-y-6 text-center md:text-left">
+                              <TechnicalBadge text="Deployment Phase" className="bg-white/10 border-white/5" />
+                              <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+                                 READY TO <span className="text-[#4EA62F] italic font-light lowercase">redefine</span> ACCESS?
+                              </h3>
+                           </div>
+                           <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#4EA62F] shadow-2xl transition-all duration-700">
+                              <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
+                           </div>
+                        </div>
+                     </motion.div>
+                  </div>
+               </div>
 
-        </div>
-      </div>
+            </div>
+         </div>
 
-    </section>
-  );
-}
+      </section>
+   );
+};
